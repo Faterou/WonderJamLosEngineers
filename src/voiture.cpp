@@ -2,6 +2,8 @@
 #include <SFML/Graphics.hpp>
 #include <windows.h>
 
+extern sf::RenderWindow window;
+
 voiture::voiture(std::string nomPhoto)
 {
     m_vitesse = 1;

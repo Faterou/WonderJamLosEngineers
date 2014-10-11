@@ -1,5 +1,6 @@
 
 #include "CollisionHandler.h"
+using namespace std;
 
 CollisionHandler::CollisionHandler()
 {
@@ -8,7 +9,16 @@ CollisionHandler::CollisionHandler()
 
 bool CollisionHandler::checkAllCollisions()
 {
-    return false;
+    for(vector<GameObject*>::iterator it1 = gameObjects.begin(); it1 < gameObjects.end(); it1++)
+    {
+        for(vector<GameObject*>::iterator it2 = it1+1; it2 < gameObjects.end(); it2++)
+        {
+            if(checkCollision(*it1,*it2))
+            {
+                (*it1)->onCollision(*it2);
+            }
+        }
+    }
 }
 
 bool CollisionHandler::checkCollision(GameObject* object1, GameObject* object2)
@@ -46,11 +56,6 @@ bool CollisionHandler::OrientedBoundingBoxTest(const sf::Sprite* Object1, const 
             return false;
     }
     return true;
-}
-
-bool CollisionHandler::checkCollisionMenu(MenuItem* item, sf::Vector2i mousePosition)
-{
-
 }
 
 bool CollisionHandler::AABBCollisionTest(const sf::Sprite* itemSprite, sf::Vector2i mousePosition)
