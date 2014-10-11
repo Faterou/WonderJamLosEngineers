@@ -4,14 +4,14 @@
 #include <string>
 #include <iostream>
 #include <windows.h>
+#include "GameObject.h"
 
-static sf::RenderWindow window(sf::VideoMode(750, 750), "SFML works!");
+extern sf::RenderWindow window;
 
-class voiture
+class voiture : public GameObject
 {
     private:
-        sf::Texture m_texture;
-        sf::Sprite m_sprite;
+
         float m_vitesse;
         float m_acceleration;
         float m_maniabilite;
@@ -22,13 +22,6 @@ class voiture
     public:
         voiture(std::string nomPhoto);
         virtual ~voiture();
-        void drawCar();
-
-        sf::Texture getTexture();
-        void setTexture(std::string nomTexture);
-
-        sf::Sprite* getSprite();
-        void setSprite(std::string nomSprite);
 
         void setVitesse(float vitesse);
         float getVitesse();
