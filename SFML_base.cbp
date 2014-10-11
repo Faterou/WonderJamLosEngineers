@@ -19,7 +19,6 @@
 					<Add library="sfml-window-d" />
 					<Add library="sfml-system-d" />
 					<Add library="sfml-graphics-d" />
-					<Add library="sfml-audio" />
 				</Linker>
 			</Target>
 			<Target title="Release">
@@ -47,6 +46,7 @@
 		<Linker>
 			<Add directory="SFML-2.1/lib" />
 		</Linker>
+<<<<<<< HEAD
 		<Unit filename="include/CollisionHandler.h" />
 		<Unit filename="include/GameObject.h" />
 		<Unit filename="include/MenuItem.h" />
@@ -56,6 +56,13 @@
 		<Unit filename="src/GameObject.cpp" />
 		<Unit filename="src/MenuItem.cpp" />
 		<Unit filename="src/OrientedBoundingBox.cpp" />
+=======
+		<Unit filename="include/Map.h" />
+		<Unit filename="include/Zombie.h" />
+		<Unit filename="main.cpp" />
+		<Unit filename="src/Map.cpp" />
+		<Unit filename="src/Zombie.cpp" />
+>>>>>>> 507f28fc468b8d602014fd03419622478567fb07
 		<Extensions>
 			<code_completion />
 			<envvars />
