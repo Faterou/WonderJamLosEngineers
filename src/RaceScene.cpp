@@ -52,7 +52,9 @@ void RaceScene::drawObjects()
     for(int i=0; i<Scene::getGameObjects()->size(); i++)
     {
         if((*Scene::getGameObjects())[i] != NULL)
+        {
             (*Scene::getGameObjects())[i]->draw();
+        }
         else
         {
             std::cout << "Problem in RaceScene::drawObjects  -> null object" << std::endl;
@@ -72,7 +74,6 @@ void RaceScene::draw()
     dest.setPosition(1,0);
     map1.draw();
     dest.draw();
-    //player1->draw();
     drawObjects();
 
     sf::View view_player2(sf::FloatRect(0,0,500,500)); // TODO: Modify to take into account the player position
