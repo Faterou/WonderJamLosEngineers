@@ -51,11 +51,13 @@
 		<Unit filename="include/GameObject.h" />
 		<Unit filename="include/Map.h" />
 		<Unit filename="include/MenuItem.h" />
+		<Unit filename="include/MenuScene.h" />
 		<Unit filename="include/OrientedBoundingBox.h" />
 		<Unit filename="include/RaceScene.h" />
 		<Unit filename="include/Scene.h" />
+		<Unit filename="include/StatsScene.h" />
+		<Unit filename="include/Voiture.h" />
 		<Unit filename="include/Zombie.h" />
-		<Unit filename="include/voiture.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/CollisionHandler.cpp" />
 		<Unit filename="src/Destination.cpp" />
@@ -65,8 +67,9 @@
 		<Unit filename="src/OrientedBoundingBox.cpp" />
 		<Unit filename="src/RaceScene.cpp" />
 		<Unit filename="src/Scene.cpp" />
+		<Unit filename="src/StatsScene.cpp" />
+		<Unit filename="src/Voiture.cpp" />
 		<Unit filename="src/Zombie.cpp" />
-		<Unit filename="src/voiture.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />

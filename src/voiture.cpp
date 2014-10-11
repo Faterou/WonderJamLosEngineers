@@ -1,8 +1,10 @@
-#include "voiture.h"
+#include "Voiture.h"
 #include <SFML/Graphics.hpp>
 #include <windows.h>
+#include <cmath>
+using namespace std;
 
-voiture::voiture(std::string nomPhoto) : GameObject(sf::Sprite(),CAR)
+Voiture::Voiture(std::string nomPhoto) : GameObject(sf::Sprite(),CAR)
 {
     m_vitesse = 1;
     m_acceleration = 1;
@@ -20,62 +22,69 @@ voiture::voiture(std::string nomPhoto) : GameObject(sf::Sprite(),CAR)
 
 }
 
-voiture::~voiture()
+Voiture::~Voiture()
 {
     //dtor
 }
 
+sf::Vector2f Voiture::getHeading()
+{
+    float teta = GameObject::getSprite()->getRotation() + 90;
+    float x = cos(teta*M_PI/180);
+    float y = sin(teta*M_PI/180);
+    return sf::Vector2f(x,y);
+}
 
-void voiture::setVitesse(float vitesse)
+void Voiture::setVitesse(float vitesse)
 {
     m_vitesse = vitesse;
 }
-float voiture::getVitesse()
+float Voiture::getVitesse()
 {
     return m_vitesse;
 }
 
-void voiture::setAcceleration(float acceleration)
+void Voiture::setAcceleration(float acceleration)
 {
     m_acceleration = acceleration;
 }
-float voiture::getAcceleration()
+float Voiture::getAcceleration()
 {
     return m_acceleration;
 }
 
-void voiture::setManiabilite(float maniabilite)
+void Voiture::setManiabilite(float maniabilite)
 {
     m_maniabilite = maniabilite;
 }
-float voiture::getManiabilite()
+float Voiture::getManiabilite()
 {
     return m_maniabilite;
 }
 
-void voiture::setSuspension(float suspension)
+void Voiture::setSuspension(float suspension)
 {
 
 }
-float voiture::getSuspension()
+float Voiture::getSuspension()
 {
     return m_suspension;
 }
 
-void voiture::setMachineEssence(float machineEssence)
+void Voiture::setMachineEssence(float machineEssence)
 {
     m_machineEssence = machineEssence;
 }
-float voiture::getMachineEssence()
+float Voiture::getMachineEssence()
 {
     return m_machineEssence;
 }
 
-void voiture::setPenetrationZombie(float penetrationZombie)
+void Voiture::setPenetrationZombie(float penetrationZombie)
 {
     m_penetrationZombie = penetrationZombie;
 }
-float voiture::getPenetrationZombie()
+float Voiture::getPenetrationZombie()
 {
     return m_penetrationZombie;
 }
