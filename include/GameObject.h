@@ -3,7 +3,7 @@
 
 #include <SFML/Graphics.hpp>
 #include <string>
-//#include "Map.h"
+#include "Map.h"
 
 class GameObject
 {
@@ -12,7 +12,7 @@ class GameObject
         GameObject();
         GameObject(sf::Sprite, Type);
         virtual void onCollision(GameObject*);
-        //virtual void onCollision(Map::TypeTerrain);
+        virtual void onCollision(TypeTerrain);
         virtual void draw();
         void setSprite(sf::Sprite sprite) { this->sprite = sprite;}
         sf::Sprite* getSprite() {return &sprite;};

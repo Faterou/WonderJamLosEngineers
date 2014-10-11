@@ -12,7 +12,7 @@ GameObject::GameObject(sf::Sprite sprite, Type type) : sprite(sprite), type(type
 }
 
 void GameObject::onCollision(GameObject*) {}
-//void GameObject::onCollision(Map::TypeTerrain) {}
+void GameObject::onCollision(TypeTerrain) {}
 
 void GameObject::draw()
 {

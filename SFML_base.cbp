@@ -52,6 +52,8 @@
 		<Unit filename="include/Map.h" />
 		<Unit filename="include/MenuItem.h" />
 		<Unit filename="include/OrientedBoundingBox.h" />
+		<Unit filename="include/RaceScene.h" />
+		<Unit filename="include/Scene.h" />
 		<Unit filename="include/Zombie.h" />
 		<Unit filename="include/voiture.h" />
 		<Unit filename="main.cpp" />
@@ -61,6 +63,8 @@
 		<Unit filename="src/Map.cpp" />
 		<Unit filename="src/MenuItem.cpp" />
 		<Unit filename="src/OrientedBoundingBox.cpp" />
+		<Unit filename="src/RaceScene.cpp" />
+		<Unit filename="src/Scene.cpp" />
 		<Unit filename="src/Zombie.cpp" />
 		<Unit filename="src/voiture.cpp" />
 		<Extensions>
