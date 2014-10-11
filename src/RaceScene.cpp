@@ -1,5 +1,5 @@
 #include "RaceScene.h"
-
+#include "Map.h"
 #include "Destination.h"
 #include "StatsScene.h"
 #include "EndScene.h"

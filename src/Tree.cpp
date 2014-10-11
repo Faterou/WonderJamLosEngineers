@@ -7,7 +7,7 @@ Tree::Tree()
 
 Tree::Tree(sf::Sprite monSprite)
 {
-    treeSprite = monSprite;
+    GameObject::setSprite(monSprite);
 }
 
 Tree::~Tree()
@@ -18,6 +18,6 @@ Tree::~Tree()
 //Fonctions
 sf::Sprite Tree::getSprite()
 {
-    return treeSprite;
+   // return treeSprite;
 }
 

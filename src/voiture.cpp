@@ -1,11 +1,18 @@
-#include "Voiture.h"
-#include <SFML/Graphics.hpp>
-#include <windows.h>
-using namespace std;
-
 #ifndef M_PI
 #define M_PI           3.14159265358979323846
 #endif
+
+#include "Voiture.h"
+#include <SFML/Graphics.hpp>
+#include <windows.h>
+#include "math.h"
+#include <cctype>
+
+
+
+using namespace std;
+
+
 
 Voiture::Voiture(std::string nomPhoto) : GameObject(sf::Sprite(),CAR)
 {
@@ -25,6 +32,7 @@ Voiture::Voiture(std::string nomPhoto) : GameObject(sf::Sprite(),CAR)
     }
 
     GameObject::setTexture(texture);
+
 
 }
 
