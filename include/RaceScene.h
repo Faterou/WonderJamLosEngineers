@@ -3,6 +3,7 @@
 
 #include "Scene.h"
 #include "Map.h"
+#include "CollisionHandler.h"
 
 #define MAX_ROUND 5
 
@@ -18,6 +19,7 @@ class RaceScene : public Scene
         void drawObjects();
     protected:
     private:
+        CollisionHandler chandler;
         void populate();
         Map map;
         sf::View view_player1;

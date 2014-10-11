@@ -6,9 +6,9 @@
 #include "OrientedBoundingBox.h"
 #include <list>
 #include <vector>
+#include "Scene.h"
 
-extern std::vector<GameObject*> gameObjects;
-std::vector<GameObject*> gameObjects; //BIDON, à supprimer losque les scènes seront prêtes
+extern Scene* current_scene;
 
 class CollisionHandler
 {
