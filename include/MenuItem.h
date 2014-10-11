@@ -9,7 +9,7 @@ class MenuItem : GameObject
         MenuItem();
         MenuItem(sf::Sprite);
         virtual void onCollision(GameObject*);
-        virtual void draw()
+        virtual void draw();
         virtual ~MenuItem();
     protected:
     private:

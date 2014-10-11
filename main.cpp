@@ -3,11 +3,11 @@
 #include <windows.h>
 #include <ctime>
 #include <iostream>
+#include "Destination.h"
 #include<fstream>
 #include<string>
 #include<cctype>
 #include <Map.h>
-
 
 enum GameState {MENU, GAME};
 enum RaceState {STATS, RACE};
@@ -36,7 +36,7 @@ void processGlobalEvents()
 */
 void processMenuInputs()
 {
-    // Handle mouse move
+    // Handle mouse over
     // Handle mouse click
 }
 
@@ -46,6 +46,12 @@ void processMenuInputs()
 void drawMenu()
 {
     // Draw things
+    window.clear();
+    Destination dest;
+    dest.setPosition(1,0);
+    dest.draw();
+    window.display();
+
 }
 
 void processMenu()
@@ -207,6 +213,15 @@ void processRace()
 {
     processRaceInputs();
     updateRace();
+
+    sf::View view_player1(sf::FloatRect(0,0,500,500)); // TODO: Modify to take into account the player position
+    view_player1.setViewport(sf::FloatRect(0, 0, 0.5, 1));
+    window.setView(view_player1);
+    drawRace();
+
+    sf::View view_player2(sf::FloatRect(0,0,500,500)); // TODO: Modify to take into account the player position
+    view_player2.setViewport(sf::FloatRect(0.5, 0, 0.5, 1));
+    window.setView(view_player2);
     drawRace();
 }
 

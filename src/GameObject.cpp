@@ -1,30 +1,24 @@
 #include "GameObject.h"
 using namespace std;
+extern sf::RenderWindow window;
 
-GameObject::GameObject() : sprite(), name()
+GameObject::GameObject() : sprite(), type()
+{
+}
+
+GameObject::GameObject(sf::Sprite sprite, Type type) : sprite(sprite), type(type)
 {
 
 }
 
-GameObject::GameObject(sf::Sprite sprite) : sprite(sprite), name()
-{
+void GameObject::onCollision(GameObject*) {}
+//void GameObject::onCollision(Map::TypeTerrain) {}
 
+void GameObject::draw()
+{
+    window.draw(sprite);
 }
 
-void GameObject::onCollision(GameObject* object)
-{
-
-}
-
-void GameObject::setName(string name)
-{
-    this->name = name;
-}
-
-void GameObject::setSprite(sf::Sprite sprite)
-{
-    this->sprite = sprite;
-}
 
 GameObject::~GameObject()
 {
