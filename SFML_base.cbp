@@ -12,7 +12,6 @@
 				<Option type="1" />
 				<Option compiler="gcc" />
 				<Compiler>
-					<Add option="-std=c++11" />
 					<Add option="-g" />
 					<Add directory="include" />
 				</Compiler>
@@ -28,7 +27,7 @@
 				<Option type="1" />
 				<Option compiler="gcc" />
 				<Compiler>
-					<Add option="-O3" />
+					<Add option="-O2" />
 					<Add option="-std=c++11" />
 					<Add directory="include" />
 				</Compiler>
@@ -59,7 +58,6 @@
 		<Unit filename="include/RaceScene.h" />
 		<Unit filename="include/Scene.h" />
 		<Unit filename="include/StatsScene.h" />
-		<Unit filename="include/TextureManager.h" />
 		<Unit filename="include/Tree.h" />
 		<Unit filename="include/Zombie.h" />
 		<Unit filename="include/voiture.h" />
@@ -75,7 +73,6 @@
 		<Unit filename="src/RaceScene.cpp" />
 		<Unit filename="src/Scene.cpp" />
 		<Unit filename="src/StatsScene.cpp" />
-		<Unit filename="src/TextureManager.cpp" />
 		<Unit filename="src/Tree.cpp" />
 		<Unit filename="src/Zombie.cpp" />
 		<Unit filename="src/voiture.cpp" />
