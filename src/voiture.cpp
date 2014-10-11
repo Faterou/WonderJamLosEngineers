@@ -8,11 +8,7 @@
 #include "math.h"
 #include <cctype>
 
-
-
 using namespace std;
-
-
 
 Voiture::Voiture(std::string nomPhoto) : GameObject(sf::Sprite(),CAR)
 {

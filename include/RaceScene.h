@@ -13,9 +13,9 @@ class RaceScene : public Scene
         virtual void inputs();
         virtual void update();
         virtual void draw();
-        void drawObjects();
         virtual ~RaceScene();
         void end_race(GameObject* winner, GameObject* loser, int time_difference);
+        void drawObjects();
     protected:
     private:
         void populate();

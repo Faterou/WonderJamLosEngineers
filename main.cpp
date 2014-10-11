@@ -12,11 +12,11 @@
 #include "RaceScene.h"
 #include "Voiture.h"
 
-Scene* current_scene = new RaceScene();
-
 sf::RenderWindow window;
-Voiture* player1;
-Voiture* player2;
+Voiture* player1 = new Voiture("voitureRouge.png");
+Voiture* player2 = new Voiture("voitureRouge.png");
+
+Scene* current_scene = new RaceScene();
 
 
 /**
@@ -38,8 +38,6 @@ int main()
     int window_width = 1000;
     int window_height = 500;
     window.create(sf::VideoMode(window_width, window_height), "SFML works bitch!");
-    player1 = new Voiture("voitureRouge.png");
-    player2 = new Voiture("voitureRouge.png");
 
     while (window.isOpen())
     {

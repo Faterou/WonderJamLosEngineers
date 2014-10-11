@@ -24,6 +24,7 @@ class Map
         Map();
         virtual ~Map();
         void draw();
+        std::vector<GameObject*>* getTreeVector() {return &treeVector;}
         TypeTerrain getTileStatus(float x, float y);
 
     private:
