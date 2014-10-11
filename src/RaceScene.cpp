@@ -119,18 +119,18 @@ void RaceScene::populate()
         Scene::getGameObjects()->push_back(new Tree(s));
     }
 
-//    for(int i = 0; i<248; i++)
-//    {
-//        sf::Sprite s[4];
-//        s[0].setPosition(0,i*32);
-//        s[1].setPosition(248*32, i*32);
-//        s[2].setPosition(i*32,0);
-//        s[3].setPosition(i*32, 248*32);
-//        for(int j=0; j<4; j++)
-//        {
-//            Scene::getGameObjects()->push_back(new Tree(s[j]));
-//        }
-//    }
+    for(int i = 0; i<248; i++)
+    {
+        sf::Sprite s[4];
+        s[0].setPosition(0,i*32);
+         s[1].setPosition(248*32, i*32);
+        s[2].setPosition(i*32,0);
+        s[3].setPosition(i*32, 248*32);
+        for(int j=0; j<4; j++)
+        {
+            Scene::getGameObjects()->push_back(new Tree(s[j]));
+        }
+    }
 
     for(int i=0; i<ZOMBIE_QUANTITY; i++)
     {
