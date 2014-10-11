@@ -2,7 +2,13 @@
 
 extern Scene* current_scene;
 
-Scene::~Scene() {}
+Scene::~Scene()
+{
+    for(int i=0; i < gameObjects.size(); i++)
+    {
+        delete gameObjects[i];
+    }
+}
 
 void Scene::process()
 {
