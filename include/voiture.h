@@ -19,11 +19,11 @@ class Voiture : public GameObject
         float m_machineEssence;
         float m_penetrationZombie;
 
-        sf::Vector2f getHeading()
+        sf::Vector2f getHeading();
 
     public:
         Voiture(std::string nomPhoto);
-        virtual ~voiture();
+        virtual ~Voiture();
 
         void setVitesse(float vitesse);
         float getVitesse();
