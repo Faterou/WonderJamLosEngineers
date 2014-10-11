@@ -14,24 +14,24 @@ Zombie::~Zombie()
 ///////////////////////////////////////////////////////////////////////////////////////
 //Accesseurs et mutateurs
 ///////////////////////////////////////////////////////////////////////////////////////
-sf::Sprite Zombie::getSprite()
+sf::Sprite* Zombie::getSprite()
 {
-    return GetObject::getSprite();
+    return GameObject::getSprite();
 }
 
-void Zombie::setSprite(sf::Sprite monSprite)
+void Zombie::setSprite(sf::Sprite* monSprite)
 {
-    GetObject::setSprite(monSprite);
+    GameObject::setSprite(*monSprite);
 }
 
-sf::Texture Zombie::getTexture()
+sf::Texture* Zombie::getTexture()
 {
-    return GetObject::getTexture();
+    return GameObject::getTexture();
 }
 
-void Zombie::setTexture(sf::Texture maTexture)
+void Zombie::setTexture(sf::Texture* maTexture)
 {
-    GetObject::setTexture(maTexture);
+    GameObject::setTexture(*maTexture);
 }
 
 
@@ -42,6 +42,6 @@ void Zombie::setTexture(sf::Texture maTexture)
 
 void Zombie::draw()
 {
-    //Pour déssiner un zombie, il faut d'abod que le Sprite aie une position et un textureRect
-    window.draw(GetObject::getSprite());
+    //Pour déssiner un zombie, il faut d'abod que le Sprite aie une position et une textureRect
+    window.draw(*(GameObject::getSprite()));
 }
