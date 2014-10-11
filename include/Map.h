@@ -8,6 +8,8 @@
 #include<fstream>
 #include<string>
 #include<cctype>
+#include <stdlib.h>     /* srand, rand */
+#include <time.h>       /* time */
 
 
 extern sf::RenderWindow window;
@@ -24,7 +26,7 @@ class Map
     private:
         sf::Texture tileTexture;
         sf::Sprite tiles;
-        sf::Vector2i map[400][400];
+        sf::Vector2i map[250][250];
         sf::Vector2i loadCounter = sf::Vector2i(0,0);
 
 };
