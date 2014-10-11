@@ -28,7 +28,19 @@ RaceScene::~RaceScene()
 void RaceScene::inputs(){
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
     {
-
+        player1->moveForward();
+    }
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+    {
+        player1->moveBackward();
+    }
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+    {
+        player1->rotateRight();
+    }
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+    {
+        player1->rotateLeft();
     }
 }
 void RaceScene::update(){}
@@ -44,7 +56,6 @@ void RaceScene::draw()
     dest.setPosition(1,0);
     map1.draw();
     dest.draw();
-    player1->getSprite()->setPosition(0,0);
     player1->draw();
 
     sf::View view_player2(sf::FloatRect(0,0,500,500)); // TODO: Modify to take into account the player position
