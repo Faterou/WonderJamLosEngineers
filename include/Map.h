@@ -9,6 +9,7 @@
 #include<string>
 #include<cctype>
 
+
 extern sf::RenderWindow window;
 enum TypeTerrain { GRASS, ROAD, TREE, FINISH, RIEN};
 
