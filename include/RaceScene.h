@@ -10,6 +10,7 @@ class RaceScene : public Scene
         virtual void inputs();
         virtual void update();
         virtual void draw();
+        void drawObjects();
         virtual ~RaceScene();
     protected:
     private:

@@ -8,10 +8,10 @@ class Zombie:GameObject
 {
     public:
         void draw();
-        sf::Sprite *getSprite();
-        void setSprite(sf::Sprite);
-        sf::Texture *getTexture();
-        void setTexture(sf::Texture);
+        sf::Sprite* getSprite();
+        void setSprite(sf::Sprite*);
+        sf::Texture* getTexture();
+        void setTexture(sf::Texture*);
 
         Zombie();
         virtual ~Zombie();
