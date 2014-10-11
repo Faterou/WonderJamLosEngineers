@@ -1,6 +1,13 @@
 #include "RaceScene.h"
 
 #include "Destination.h"
+#include "StatsScene.h"
+#include "EndScene.h"
+#include <stdlib.h>
+
+#define ZOMBIE_QUANTITY 100
+
+int RaceScene::round = 0;
 
 RaceScene::RaceScene()
 {
@@ -29,4 +36,33 @@ void RaceScene::draw()
     window.setView(view_player2);
     dest.draw();
     window.display();
+}
+
+/**
+    Method to populate the map with zombies
+*/
+void RaceScene::populate()
+{
+    for(int i=0; i<ZOMBIE_QUANTITY; i++)
+    {
+        // do
+        // pick random (x,y)
+        // while checkCollision not ok
+        // Zombie z = new Zombie()
+        // z.getSprite()->setPosition(x,y)
+        // gameObjects.append(z);
+    }
+}
+
+void RaceScene::end_race(GameObject* winner, GameObject* loser, int time_difference)
+{
+    if(round < MAX_ROUND)
+    {
+        round++;
+        changeScene(new StatsScene(*winner, *loser, time_difference));
+    }
+    else
+    {
+        changeScene(new EndScene(*winner, *loser, time_difference));
+    }
 }

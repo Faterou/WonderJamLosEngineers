@@ -1,8 +1,10 @@
 #include "Destination.h"
+#include "RaceScene.h"
 #include <iostream>
 #include <SFML/Graphics.hpp>
 
 extern sf::RenderWindow window;
+extern Scene* current_scene;
 
 Destination::Destination()
 {
@@ -27,12 +29,16 @@ void Destination::onCollision(GameObject* collidedTo)
         if(first)
         {
             timer.restart();
+            winner = collidedTo;
             first = false;
         }
         else
         {
             int delta_time_players = timer.getElapsedTime().asSeconds();
             first = true;
+            RaceScene* s = (RaceScene*) current_scene;
+            s->end_race(winner, collidedTo, delta_time_players);
+
         }
     }
 }

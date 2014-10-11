@@ -1,6 +1,6 @@
 #include "StatsScene.h"
 
-StatsScene::StatsScene()
+StatsScene::StatsScene(GameObject winner, GameObject loser, int time_difference)
 {
     //ctor
 }
