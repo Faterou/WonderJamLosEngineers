@@ -38,8 +38,8 @@ int main()
     int window_width = 1000;
     int window_height = 500;
     window.create(sf::VideoMode(window_width, window_height), "SFML works bitch!");
-    player1 = new Voiture("voitureRouge.png");
-    player2 = new Voiture("voitureRouge.png");
+    player1 = new Voiture("pickUp.png");
+    player2 = new Voiture("tank.png");
 
     while (window.isOpen())
     {
