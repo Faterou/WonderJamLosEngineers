@@ -1,17 +1,19 @@
 #include "Destination.h"
+#include "RaceScene.h"
 #include <iostream>
 #include <SFML/Graphics.hpp>
 
 extern sf::RenderWindow window;
+extern Scene* current_scene;
 
 Destination::Destination()
 {
-    sf::Texture* texture = GameObject::getTexture();
-    if(!texture->loadFromFile("destination.png"))
+    sf::Texture texture;
+    if(!texture.loadFromFile("destination.png"))
     {
         std::cout << "Cannot load file: destination.png" << std::endl;
     }
-    this->getSprite()->setTexture(*texture);
+    GameObject::setTexture(texture);
     GameObject::setType(DESTINATION);
 }
 
@@ -27,12 +29,16 @@ void Destination::onCollision(GameObject* collidedTo)
         if(first)
         {
             timer.restart();
+            winner = collidedTo;
             first = false;
         }
         else
         {
             int delta_time_players = timer.getElapsedTime().asSeconds();
             first = true;
+            RaceScene* s = (RaceScene*) current_scene;
+            s->end_race(winner, collidedTo, delta_time_players);
+
         }
     }
 }

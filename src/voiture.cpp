@@ -4,6 +4,8 @@
 #include <cmath>
 using namespace std;
 
+
+
 Voiture::Voiture(std::string nomPhoto) : GameObject(sf::Sprite(),CAR)
 {
     m_vitesse_courante = 0;

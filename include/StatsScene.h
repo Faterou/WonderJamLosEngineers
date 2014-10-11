@@ -7,7 +7,7 @@
 class StatsScene : public Scene
 {
     public:
-        StatsScene();
+        StatsScene(GameObject winner, GameObject loser, int time_difference);
         virtual ~StatsScene();
 
         virtual void inputs();
