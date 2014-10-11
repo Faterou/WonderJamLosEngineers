@@ -1,4 +1,4 @@
-#ifndef ZOMBIE_H
+/*#ifndef ZOMBIE_H
 #define ZOMBIE_H
 
 #include <SFML/Graphics.hpp>
@@ -21,3 +21,4 @@ class Zombie
 };
 
 #endif // ZOMBIE_H
+*/

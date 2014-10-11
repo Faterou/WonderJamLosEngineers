@@ -1,4 +1,4 @@
-#include "Zombie.h"
+/*#include "Zombie.h"
 
 Zombie::Zombie()
 {
@@ -24,4 +24,4 @@ sf::Vector2i Zombie::getPosition()
     return position;
 }
 
-void Zombie::draw()
+void Zombie::draw()*/

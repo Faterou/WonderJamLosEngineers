@@ -46,6 +46,8 @@
 		<Linker>
 			<Add directory="SFML-2.1/lib" />
 		</Linker>
+		<Unit filename="include/CollisionHandler.h" />
+		<Unit filename="include/Destination.h" />
 		<Unit filename="include/GameObject.h" />
 		<Unit filename="include/Map.h" />
 		<Unit filename="include/MenuItem.h" />
@@ -54,6 +56,7 @@
 		<Unit filename="include/voiture.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/CollisionHandler.cpp" />
+		<Unit filename="src/Destination.cpp" />
 		<Unit filename="src/GameObject.cpp" />
 		<Unit filename="src/Map.cpp" />
 		<Unit filename="src/MenuItem.cpp" />
