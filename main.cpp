@@ -13,11 +13,11 @@
 #include "Voiture.h"
 using namespace std;
 
-Scene* current_scene = new RaceScene();
-
 sf::RenderWindow window;
-Voiture* player1;
-Voiture* player2;
+Voiture* player1 = new Voiture("tank.png");
+Voiture* player2 = new Voiture("pickUp.png");
+
+Scene* current_scene = new RaceScene();
 
 
 /**

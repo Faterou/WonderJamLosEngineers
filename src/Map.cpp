@@ -27,19 +27,23 @@ if(OpenFile.is_open())
                 //On a un facteur de chance d'avoir un arbre un peu partout
                 if(facteurRand == 0)
                 {
-                    map[loadCounter.x][loadCounter.y] = sf::Vector2i(0,1);
+                    map[loadCounter.x][loadCounter.y] = sf::Vector2i(1,0);
+//                    sf::Sprite nouveauSprite;
+//                    nouveauSprite.setPosition(x*32,y*32);
+//                    nouveauSprite.setTextureRect(sf::IntRect(0*32, 1* 32, 32 , 32));//on va rogner tiles.png
+//                    treeVector.push_back(new Tree(nouveauSprite));
                 }
                 else
                 {
                    //on met les valeurs du fichier dans la matrices map
-                    map[loadCounter.x][loadCounter.y] = sf::Vector2i(x-'0',y - '0');
+                    map[loadCounter.x][loadCounter.y] = sf::Vector2i(1,0);
 
                     if(x-'0' == 0 && y - '0' == 1)
                     {
-                        sf::Sprite nouveauSprite;
-                        nouveauSprite.setPosition(x*32,y*32);
-                        nouveauSprite.setTextureRect(sf::IntRect(0*32, 1* 32, 32 , 32));//on va rogner tiles.png
-                        treeVector.push_back(new Tree(nouveauSprite));
+//                        sf::Sprite nouveauSprite;
+//                        nouveauSprite.setPosition(x*32,y*32);
+//                        //nouveauSprite.setTextureRect(sf::IntRect(0*32, 1* 32, 32 , 32));//on va rogner tiles.png
+//                        treeVector.push_back(new Tree(nouveauSprite));
                     }
                 }
 

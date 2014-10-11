@@ -6,10 +6,9 @@
 #include <SFML/Graphics.hpp>
 #include <windows.h>
 #include "math.h"
+#include <cctype>
 
 using namespace std;
-
-
 
 Voiture::Voiture(std::string nomPhoto) : GameObject(sf::Sprite(),CAR)
 {
