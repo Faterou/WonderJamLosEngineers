@@ -49,10 +49,12 @@
 		</Linker>
 		<Unit filename="include/CollisionHandler.h" />
 		<Unit filename="include/GameObject.h" />
+		<Unit filename="include/MenuItem.h" />
 		<Unit filename="include/OrientedBoundingBox.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/CollisionHandler.cpp" />
 		<Unit filename="src/GameObject.cpp" />
+		<Unit filename="src/MenuItem.cpp" />
 		<Unit filename="src/OrientedBoundingBox.cpp" />
 		<Extensions>
 			<code_completion />
