@@ -1,11 +1,14 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
+#include <ctime>
+#include <windows.h>
+#include "voiture.h"
+
+
 
 int main()
 {
-    sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!");
-    sf::CircleShape shape(100.f);
-    shape.setFillColor(sf::Color::Green);
+    voiture player1("voitureRouge.png");
 
     while (window.isOpen())
     {
@@ -14,11 +17,34 @@ int main()
         {
             if (event.type == sf::Event::Closed)
                 window.close();
-        }
 
-        window.clear();
-        window.draw(shape);
-        window.display();
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+            {
+                std::cout << "baloney" << std::endl;
+                player1.getSprite()->move(-10, 0);
+            }
+
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+            {
+                player1.getSprite()->move(10, 0);
+            }
+
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+            {
+                player1.getSprite()->move(0, -10);
+            }
+
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+            {
+                player1.getSprite()->move(0, 10);
+            }
+
+            window.clear();
+            window.draw(*player1.getSprite());
+            //player1.drawCar();
+            window.display();
+
+        }
     }
 
     return 0;
