@@ -12,11 +12,11 @@ OrientedBoundingBox::OrientedBoundingBox (const sf::Sprite& Object) // Calculate
 
 void OrientedBoundingBox::ProjectOntoAxis (const sf::Vector2f& Axis, float& Min, float& Max) // Project all four points of the OBB onto the given axis and return the dotproducts of the two outermost points
 {
-    Min = (Points[0].x*Axis.x+Points[0].y*Axis.y);
+    Min = (m_Points[0].x*Axis.x+m_Points[0].y*Axis.y);
     Max = Min;
     for (int j = 1; j<4; j++)
     {
-        float Projection = (Points[j].x*Axis.x+Points[j].y*Axis.y);
+        float Projection = (m_Points[j].x*Axis.x+m_Points[j].y*Axis.y);
 
         if (Projection<Min)
             Min=Projection;

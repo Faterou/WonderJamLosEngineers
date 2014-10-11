@@ -1,6 +1,7 @@
 #ifndef ZOMBIE_H
 #define ZOMBIE_H
 
+#include <SFML/Graphics.hpp>
 
 class Zombie
 {
@@ -10,6 +11,7 @@ class Zombie
         void draw();
 
         Zombie();
+        Zombie(sf::Vector2i);
         virtual ~Zombie();
     protected:
     private:

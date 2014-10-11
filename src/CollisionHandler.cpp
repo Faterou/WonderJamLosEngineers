@@ -7,7 +7,7 @@ CollisionHandler::CollisionHandler()
 
 bool CollisionHandler::checkAllCollisions()
 {
-
+    return false;
 }
 
 bool CollisionHandler::checkCollision(GameObject* object1, GameObject* object2)
@@ -47,7 +47,7 @@ bool CollisionHandler::OrientedBoundingBoxTest(const sf::Sprite* Object1, const 
     return true;
 }
 
-bool CollisionHandler::checkCollisionMenu(MenuItem* item,sf::Vector2i mousePosition)
+bool CollisionHandler::checkCollisionMenu(MenuItem* item, sf::Vector2i mousePosition)
 {
 
 }

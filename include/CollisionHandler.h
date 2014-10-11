@@ -2,6 +2,7 @@
 #define COLLISIONHANDLER_H
 
 #include "GameObject.h"
+#include "MenuItem.h"
 #include "OrientedBoundingBox.h"
 #include <list>
 
@@ -16,7 +17,7 @@ class CollisionHandler
     protected:
     private:
         bool OrientedBoundingBoxTest(const sf::Sprite*, const sf::Sprite*);
-        bool AABBCollisionTest(const sf::Sprite*, sf::Vector2i)
+        bool AABBCollisionTest(const sf::Sprite*, sf::Vector2i);
 };
 
 #endif // COLLISIONHANDLER_H
