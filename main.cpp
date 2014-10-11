@@ -1,11 +1,28 @@
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
+#include <windows.h>
+#include <ctime>
 #include <iostream>
+#include<fstream>
+#include<string>
+#include<cctype>
+#include <Map.h>
+
+sf::RenderWindow window(sf::VideoMode(640, 480), "LoadmapTest");//
+
+
+
 
 int main()
 {
-    sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!");
-    sf::CircleShape shape(100.f);
-    shape.setFillColor(sf::Color::Green);
+
+    Map map1;
+
+
+    sf::SoundBuffer buffer;
+    buffer.loadFromFile("musiqueBackground.wav");
+    sf::Sound sound;
+    sound.setBuffer(buffer);
 
     while (window.isOpen())
     {
@@ -17,8 +34,16 @@ int main()
         }
 
         window.clear();
-        window.draw(shape);
+
+        map1.draw();
         window.display();
+
+
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
+        {
+            window.close();
+        }
+
     }
 
     return 0;
