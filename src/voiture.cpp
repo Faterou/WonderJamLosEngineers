@@ -111,3 +111,13 @@ void Voiture::moveBackward()
     }
 }
 
+void Voiture::rotateLeft()
+{
+    GameObject::getSprite()->rotate(-m_maniabilite);
+}
+
+void Voiture::rotateRight()
+{
+    GameObject::getSprite()->rotate(m_maniabilite);
+}
+
