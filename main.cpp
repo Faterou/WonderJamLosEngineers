@@ -14,8 +14,8 @@
 using namespace std;
 
 sf::RenderWindow window;
-Voiture* player1 = new Voiture("voitureRouge.png");
-Voiture* player2 = new Voiture("voitureRouge.png");
+Voiture* player1 = new Voiture("tank.png");
+Voiture* player2 = new Voiture("pickUp.png");
 
 Scene* current_scene = new RaceScene();
 

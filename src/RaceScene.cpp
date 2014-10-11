@@ -72,10 +72,8 @@ void RaceScene::draw()
     dest.setPosition(1,0);
     map1.draw();
     dest.draw();
-    player1->getSprite()->setPosition(0,0);
     //player1->draw();
     drawObjects();
-    player1->draw();
 
     sf::View view_player2(sf::FloatRect(0,0,500,500)); // TODO: Modify to take into account the player position
     view_player2.setViewport(sf::FloatRect(0.5, 0, 0.5, 1));
