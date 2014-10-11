@@ -31,7 +31,7 @@ void processGlobalEvents()
 
 int main()
 {
-    Map map1;
+
     int window_width = 1000;
     int window_height = 500;
     window.create(sf::VideoMode(window_width, window_height), "SFML works bitch!");

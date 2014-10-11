@@ -1,82 +1,113 @@
-#include "voiture.h"
+#include "Voiture.h"
 #include <SFML/Graphics.hpp>
 #include <windows.h>
+#include <cmath>
+using namespace std;
 
-voiture::voiture(std::string nomPhoto) : GameObject(sf::Sprite(),CAR)
+Voiture::Voiture(std::string nomPhoto) : GameObject(sf::Sprite(),CAR)
 {
-    m_vitesse = 1;
+    m_vitesse_courante = 0;
+    m_vitesse_max = 1;
     m_acceleration = 1;
     m_maniabilite = 1;
     m_suspension = 1;
     m_machineEssence = 1;
     m_penetrationZombie = 1;
 
+    sf::Texture texture;
+
     if (!texture.loadFromFile(nomPhoto))
     {
         std::cout << "Erreur chargement de personnage" << std::endl;
     }
 
-    sprite.setTexture(texture);
+    GameObject::setTexture(texture);
 
 }
 
-voiture::~voiture()
+Voiture::~Voiture()
 {
     //dtor
 }
 
-
-void voiture::setVitesse(float vitesse)
+sf::Vector2f Voiture::getHeading()
 {
-    m_vitesse = vitesse;
-}
-float voiture::getVitesse()
-{
-    return m_vitesse;
+    float teta = GameObject::getSprite()->getRotation() + 90;
+    float x = cos(teta*M_PI/180);
+    float y = sin(teta*M_PI/180);
+    return sf::Vector2f(x,y);
 }
 
-void voiture::setAcceleration(float acceleration)
+void Voiture::setVitesse_max(float vitesse)
+{
+    m_vitesse_max = vitesse;
+}
+float Voiture::getVitesse_max()
+{
+    return m_vitesse_max;
+}
+
+void Voiture::setAcceleration(float acceleration)
 {
     m_acceleration = acceleration;
 }
-float voiture::getAcceleration()
+float Voiture::getAcceleration()
 {
     return m_acceleration;
 }
 
-void voiture::setManiabilite(float maniabilite)
+void Voiture::setManiabilite(float maniabilite)
 {
     m_maniabilite = maniabilite;
 }
-float voiture::getManiabilite()
+float Voiture::getManiabilite()
 {
     return m_maniabilite;
 }
 
-void voiture::setSuspension(float suspension)
+void Voiture::setSuspension(float suspension)
 {
 
 }
-float voiture::getSuspension()
+float Voiture::getSuspension()
 {
     return m_suspension;
 }
 
-void voiture::setMachineEssence(float machineEssence)
+void Voiture::setMachineEssence(float machineEssence)
 {
     m_machineEssence = machineEssence;
 }
-float voiture::getMachineEssence()
+float Voiture::getMachineEssence()
 {
     return m_machineEssence;
 }
 
-void voiture::setPenetrationZombie(float penetrationZombie)
+void Voiture::setPenetrationZombie(float penetrationZombie)
 {
     m_penetrationZombie = penetrationZombie;
 }
-float voiture::getPenetrationZombie()
+float Voiture::getPenetrationZombie()
 {
     return m_penetrationZombie;
+}
+
+void Voiture::moveForward()
+{
+    m_vitesse_courante = m_vitesse_courante * m_acceleration;
+    GameObject::getSprite()->move(m_vitesse_courante*getHeading());
+}
+
+void Voiture::moveBackward()
+{
+    if(m_vitesse_courante > 0)
+    {
+        m_vitesse_courante = m_vitesse_courante / m_maniabilite;
+        moveForward();
+    }
+    else
+    {
+        GameObject::getSprite()->move(m_vitesse_courante*getHeading());
+    }
 }
 

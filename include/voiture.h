@@ -8,23 +8,29 @@
 
 extern sf::RenderWindow window;
 
-class voiture : public GameObject
+class Voiture : public GameObject
 {
     private:
 
-        float m_vitesse;
+        float m_vitesse_courante;
+        float m_vitesse_max;
         float m_acceleration;
         float m_maniabilite;
         float m_suspension;
         float m_machineEssence;
         float m_penetrationZombie;
 
-    public:
-        voiture(std::string nomPhoto);
-        virtual ~voiture();
+        sf::Vector2f getHeading();
 
-        void setVitesse(float vitesse);
-        float getVitesse();
+    public:
+        Voiture(std::string nomPhoto);
+        virtual ~Voiture();
+
+        void set_vitesse_courante(float);
+        float get_vitesse_courante();
+
+        void setVitesse_max(float vitesse);
+        float getVitesse_max();
 
         void setAcceleration(float acceleration);
         float getAcceleration();
@@ -40,6 +46,11 @@ class voiture : public GameObject
 
         void setPenetrationZombie(float penetrationZombie);
         float getPenetrationZombie();
+
+        void moveForward();
+        void moveBackward();
+        void rotateLeft();
+        void rotateRight();
 };
 
 #endif // VOITURE_H
