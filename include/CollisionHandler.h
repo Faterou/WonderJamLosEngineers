@@ -3,6 +3,7 @@
 
 #include "GameObject.h"
 #include "OrientedBoundingBox.h"
+#include <list>
 
 class CollisionHandler
 {
@@ -10,10 +11,12 @@ class CollisionHandler
         CollisionHandler();
         bool checkAllCollisions();
         bool checkCollision(GameObject*,GameObject*);
+        bool checkCollisionMenu(MenuItem*,sf::Vector2i);
         virtual ~CollisionHandler();
     protected:
     private:
-        bool OrientedBoundingBoxTest(const sf::Sprite* Object1, const sf::Sprite* Object2);
+        bool OrientedBoundingBoxTest(const sf::Sprite*, const sf::Sprite*);
+        bool AABBCollisionTest(const sf::Sprite*, sf::Vector2i)
 };
 
 #endif // COLLISIONHANDLER_H

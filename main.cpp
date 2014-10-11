@@ -1,9 +1,17 @@
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
+#include <windows.h>
+#include <ctime>
 #include <iostream>
 #include "Destination.h"
+#include<fstream>
+#include<string>
+#include<cctype>
+#include <Map.h>
 
 enum GameState {MENU, GAME};
 enum RaceState {STATS, RACE};
+
 
 GameState gameState = MENU;
 RaceState raceState = STATS;
@@ -117,6 +125,7 @@ void drawStats()
 {
     // Draw things
 }
+
 
 void processStats()
 {
@@ -244,6 +253,7 @@ void processGameState()
 
 int main()
 {
+    Map map1;
     int window_width = 1000;
     int window_height = 500;
     window.create(sf::VideoMode(window_width, window_height), "SFML works!");
