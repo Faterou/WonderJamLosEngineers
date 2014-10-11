@@ -10,7 +10,7 @@ class Destination : public GameObject
     public:
         virtual void onCollision(GameObject *collidedTo);
         void setPosition(int x, int y);
-        void draw();
+        //void draw();
         Destination();
         virtual ~Destination();
     protected:

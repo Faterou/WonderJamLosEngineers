@@ -42,7 +42,7 @@ void Destination::setPosition(int x, int y)
     this->getSprite()->setPosition(x,y);
 }
 
-void Destination::draw()
-{
-    window.draw(*GameObject::getSprite());
-}
+//void Destination::draw()
+//{
+//    window.draw(*GameObject::getSprite());
+//}
