@@ -22,10 +22,11 @@ class GameObject
         sf::Texture* getTexture() {return &this->texture;}
         virtual ~GameObject();
     protected:
-    private:
         sf::Sprite sprite;
         sf::Texture texture;
         Type type;
+    private:
+
 };
 
 #endif // GAMEOBJECT_H

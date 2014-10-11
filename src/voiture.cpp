@@ -2,9 +2,7 @@
 #include <SFML/Graphics.hpp>
 #include <windows.h>
 
-extern sf::RenderWindow window;
-
-voiture::voiture(std::string nomPhoto)
+voiture::voiture(std::string nomPhoto) : GameObject(sf::Sprite(),CAR)
 {
     m_vitesse = 1;
     m_acceleration = 1;
@@ -13,13 +11,12 @@ voiture::voiture(std::string nomPhoto)
     m_machineEssence = 1;
     m_penetrationZombie = 1;
 
-    if (!m_texture.loadFromFile(nomPhoto))
+    if (!texture.loadFromFile(nomPhoto))
     {
         std::cout << "Erreur chargement de personnage" << std::endl;
     }
 
-    m_sprite.setPosition(32,32);
-    m_sprite.setTexture(m_texture);
+    sprite.setTexture(texture);
 
 }
 
@@ -28,32 +25,6 @@ voiture::~voiture()
     //dtor
 }
 
-void voiture::drawCar()
-{
-    std::cout << "123" << std::endl;
-    //window.display();
-    window.draw(m_sprite);
-    //window.display();
-
-}
-
-sf::Texture voiture::getTexture()
-{
-    return m_texture;
-}
-void voiture::setTexture(std::string nomTexture)
-{
-
-}
-
-sf::Sprite* voiture::getSprite()
-{
-    return &m_sprite;
-}
-void voiture::setSprite(std::string nomSprite)
-{
-
-}
 
 void voiture::setVitesse(float vitesse)
 {
