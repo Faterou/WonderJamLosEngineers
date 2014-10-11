@@ -5,6 +5,8 @@
 #include "EndScene.h"
 #include "voiture.h"
 #include <stdlib.h>
+#include <iostream>
+using namespace std;
 
 #define ZOMBIE_QUANTITY 100
 
@@ -26,6 +28,7 @@ RaceScene::~RaceScene()
 }
 
 void RaceScene::inputs(){
+    sf::Event event;
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
     {
         player1->moveForward();
@@ -41,6 +44,19 @@ void RaceScene::inputs(){
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
     {
         player1->rotateLeft();
+    }
+    while(window.pollEvent(event))
+    {
+        if(event.type == sf::Event::KeyReleased)
+        {
+            switch(event.key.code)
+            {
+                case sf::Keyboard::Up:
+                    cout << "KEY RELEASED!!!!" << endl;
+                    break;
+                default:;
+            }
+        }
     }
 }
 void RaceScene::update(){}
