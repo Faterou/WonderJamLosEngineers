@@ -7,31 +7,21 @@
 #include <windows.h>
 #include "math.h"
 #include <cctype>
-
-
+#include "TextureManager.h"
 
 using namespace std;
 
-
-
 Voiture::Voiture(std::string nomPhoto) : GameObject(sf::Sprite(),CAR)
 {
-    m_vitesse_courante = 0;
+    m_vitesse_courante = 0.01;
     m_vitesse_max = 1;
-    m_acceleration = 1;
-    m_maniabilite = 1;
+    m_acceleration = 0.01;
+    m_maniabilite = 1.1;
     m_suspension = 1;
     m_machineEssence = 1;
     m_penetrationZombie = 1;
 
-    sf::Texture texture;
-
-    if (!texture.loadFromFile(nomPhoto))
-    {
-        std::cout << "Erreur chargement de personnage" << std::endl;
-    }
-
-    GameObject::setTexture(texture);
+    GameObject::setTexture(TextureManager::getInstance().getTexture(nomPhoto));
 
 
 }
@@ -46,6 +36,7 @@ sf::Vector2f Voiture::getHeading()
     float teta = GameObject::getSprite()->getRotation() + 90;
     float x = cos(teta*M_PI/180);
     float y = sin(teta*M_PI/180);
+
     return sf::Vector2f(x,y);
 }
 
@@ -78,7 +69,7 @@ float Voiture::getManiabilite()
 
 void Voiture::setSuspension(float suspension)
 {
-
+    m_suspension = suspension;
 }
 float Voiture::getSuspension()
 {
@@ -105,21 +96,15 @@ float Voiture::getPenetrationZombie()
 
 void Voiture::moveForward()
 {
-    m_vitesse_courante = m_vitesse_courante * m_acceleration;
-    GameObject::getSprite()->move(m_vitesse_courante*getHeading());
+    m_vitesse_courante = m_vitesse_courante + m_acceleration;
+    GameObject::getSprite()->move(-(m_vitesse_courante*getHeading()));
+    cout << "trying to move\t";
 }
 
 void Voiture::moveBackward()
 {
-    if(m_vitesse_courante > 0)
-    {
-        m_vitesse_courante = m_vitesse_courante / m_maniabilite;
-        moveForward();
-    }
-    else
-    {
-        GameObject::getSprite()->move(m_vitesse_courante*getHeading());
-    }
+    m_vitesse_courante = m_vitesse_courante + m_acceleration;
+    GameObject::getSprite()->move(m_vitesse_courante*getHeading());
 }
 
 void Voiture::rotateLeft()
@@ -130,5 +115,10 @@ void Voiture::rotateLeft()
 void Voiture::rotateRight()
 {
     GameObject::getSprite()->rotate(m_maniabilite);
+}
+void Voiture::onCollision(GameObject* object)
+{
+    GameObject::getSprite()->move(m_vitesse_courante*getHeading());
+    m_vitesse_courante = 0;
 }
 

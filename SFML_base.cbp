@@ -12,6 +12,7 @@
 				<Option type="1" />
 				<Option compiler="gcc" />
 				<Compiler>
+					<Add option="-std=c++11" />
 					<Add option="-g" />
 					<Add directory="include" />
 				</Compiler>
@@ -27,7 +28,7 @@
 				<Option type="1" />
 				<Option compiler="gcc" />
 				<Compiler>
-					<Add option="-O2" />
+					<Add option="-O3" />
 					<Add option="-std=c++11" />
 					<Add directory="include" />
 				</Compiler>
@@ -49,6 +50,7 @@
 		</Linker>
 		<Unit filename="include/CollisionHandler.h" />
 		<Unit filename="include/Destination.h" />
+		<Unit filename="include/EndScene.h" />
 		<Unit filename="include/GameObject.h" />
 		<Unit filename="include/Map.h" />
 		<Unit filename="include/MenuItem.h" />
@@ -57,12 +59,14 @@
 		<Unit filename="include/RaceScene.h" />
 		<Unit filename="include/Scene.h" />
 		<Unit filename="include/StatsScene.h" />
+		<Unit filename="include/TextureManager.h" />
 		<Unit filename="include/Tree.h" />
 		<Unit filename="include/Zombie.h" />
 		<Unit filename="include/voiture.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/CollisionHandler.cpp" />
 		<Unit filename="src/Destination.cpp" />
+		<Unit filename="src/EndScene.cpp" />
 		<Unit filename="src/GameObject.cpp" />
 		<Unit filename="src/Map.cpp" />
 		<Unit filename="src/MenuItem.cpp" />
@@ -71,6 +75,7 @@
 		<Unit filename="src/RaceScene.cpp" />
 		<Unit filename="src/Scene.cpp" />
 		<Unit filename="src/StatsScene.cpp" />
+		<Unit filename="src/TextureManager.cpp" />
 		<Unit filename="src/Tree.cpp" />
 		<Unit filename="src/Zombie.cpp" />
 		<Unit filename="src/voiture.cpp" />

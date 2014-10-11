@@ -10,10 +10,14 @@
 #include <Map.h>
 #include "Scene.h"
 #include "RaceScene.h"
-
-Scene* current_scene = new RaceScene();
+#include "Voiture.h"
+using namespace std;
 
 sf::RenderWindow window;
+Voiture* player1 = new Voiture("pickUp.png");
+Voiture* player2 = new Voiture("tank.png");
+
+Scene* current_scene = new RaceScene();
 
 
 /**
@@ -31,10 +35,12 @@ void processGlobalEvents()
 
 int main()
 {
-
     int window_width = 1000;
     int window_height = 500;
     window.create(sf::VideoMode(window_width, window_height), "SFML works bitch!");
+    player1->getSprite()->setOrigin((float)(player1->getSprite()->getGlobalBounds().width /2),(float)(player1->getSprite()->getGlobalBounds().height)/2);
+    player1->getSprite()->rotate(180);
+    player1->getSprite()->move(100,100);
 
     while (window.isOpen())
     {

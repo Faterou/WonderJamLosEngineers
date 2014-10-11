@@ -3,6 +3,7 @@
 
 #include "Scene.h"
 #include "Map.h"
+#include "CollisionHandler.h"
 
 #define MAX_ROUND 5
 
@@ -13,11 +14,12 @@ class RaceScene : public Scene
         virtual void inputs();
         virtual void update();
         virtual void draw();
-        void drawObjects();
         virtual ~RaceScene();
         void end_race(GameObject* winner, GameObject* loser, int time_difference);
+        void drawObjects();
     protected:
     private:
+        CollisionHandler chandler;
         void populate();
         Map map;
         static int round;

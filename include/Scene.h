@@ -14,7 +14,7 @@ class Scene
         virtual void draw() = 0;
         void changeScene(Scene*);
 
-        std::vector< GameObject* >* getGameObjects() {return &gameObjects;}
+        std::vector< GameObject* >* getGameObjects() {return &gameObjects;};
     protected:
     private:
         std::vector< GameObject* > gameObjects;
