@@ -8,26 +8,10 @@
 #include<cctype>
 #include <Map.h>
 
-sf::RenderWindow window(sf::VideoMode(640, 480), "LoadmapTest");//
 
-
-
-
-<<<<<<< HEAD
-int main()
-{
-
-    Map map1;
-
-
-    sf::SoundBuffer buffer;
-    buffer.loadFromFile("musiqueBackground.wav");
-    sf::Sound sound;
-    sound.setBuffer(buffer);
-=======
 enum GameState {MENU, GAME};
 enum RaceState {STATS, RACE};
->>>>>>> e885fb76d2ba804f9e0b56c379f4e87c2f29d755
+
 
 GameState gameState = MENU;
 RaceState raceState = STATS;
@@ -136,19 +120,7 @@ void drawStats()
     // Draw things
 }
 
-<<<<<<< HEAD
-        window.clear();
 
-        map1.draw();
-        window.display();
-
-
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
-        {
-            window.close();
-        }
-
-=======
 void processStats()
 {
     processStatsInputs();
@@ -266,6 +238,7 @@ void processGameState()
 
 int main()
 {
+    Map map1;
     int window_width = 1000;
     int window_height = 500;
     window.create(sf::VideoMode(window_width, window_height), "SFML works!");
@@ -274,7 +247,6 @@ int main()
     {
         processGlobalEvents();
         processGameState();
->>>>>>> e885fb76d2ba804f9e0b56c379f4e87c2f29d755
     }
 
     return 0;
