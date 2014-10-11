@@ -15,6 +15,7 @@ Scene* current_scene = new RaceScene();
 
 sf::RenderWindow window;
 
+
 /**
     Function to handle events of the main loop, like the one to close the window.
 */

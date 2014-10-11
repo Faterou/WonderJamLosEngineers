@@ -5,6 +5,8 @@
 #include <iostream>
 #include <windows.h>
 
+extern sf::RenderWindow window;
+
 class voiture
 {
     private:
