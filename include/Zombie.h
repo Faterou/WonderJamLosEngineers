@@ -11,7 +11,6 @@ class Zombie: public GameObject
         sf::Sprite* getSprite();
         void setSprite(sf::Sprite*);
         sf::Texture* getTexture();
-        void setTexture(sf::Texture*);
 
         Zombie();
         virtual ~Zombie();

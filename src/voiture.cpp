@@ -7,6 +7,7 @@
 #include <windows.h>
 #include "math.h"
 #include <cctype>
+#include "TextureManager.h"
 
 using namespace std;
 
@@ -20,14 +21,7 @@ Voiture::Voiture(std::string nomPhoto) : GameObject(sf::Sprite(),CAR)
     m_machineEssence = 1;
     m_penetrationZombie = 1;
 
-    sf::Texture texture;
-
-    if (!texture.loadFromFile(nomPhoto))
-    {
-        std::cout << "Erreur chargement de personnage" << std::endl;
-    }
-
-    GameObject::setTexture(texture);
+    GameObject::setTexture(TextureManager::getInstance().getTexture(nomPhoto));
 
 
 }

@@ -2,18 +2,14 @@
 #include "RaceScene.h"
 #include <iostream>
 #include <SFML/Graphics.hpp>
+#include <TextureManager.h>
 
 extern sf::RenderWindow window;
 extern Scene* current_scene;
 
 Destination::Destination()
 {
-    sf::Texture texture;
-    if(!texture.loadFromFile("destination.png"))
-    {
-        std::cout << "Cannot load file: destination.png" << std::endl;
-    }
-    GameObject::setTexture(texture);
+    GameObject::setTexture(TextureManager::getInstance().getTexture("destination.png"));
     GameObject::setType(DESTINATION);
 }
 
