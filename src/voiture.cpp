@@ -42,10 +42,7 @@ sf::Vector2f Voiture::getHeading()
     float teta = GameObject::getSprite()->getRotation() + 90;
     float x = cos(teta*M_PI/180);
     float y = sin(teta*M_PI/180);
-    float length = sqrt(pow(x,2)+pow(y,2));
-    x = x / length;
-    y = y / length;
-    cout << "x = " << x << " y = " << y << endl;
+
     return sf::Vector2f(x,y);
 }
 
