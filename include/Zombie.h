@@ -4,7 +4,7 @@
 #include <SFML/Graphics.hpp>
 #include <GameObject.h>
 
-class Zombie:GameObject
+class Zombie: public GameObject
 {
     public:
         void draw();
