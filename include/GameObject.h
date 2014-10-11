@@ -7,18 +7,23 @@
 class GameObject
 {
     public:
+        enum Type {TREE, ZOMBIE, CAR, DESTINATION, MENU_ITEM};
         GameObject();
-        GameObject(sf::Sprite);
-        virtual void onCollision(GameObject*);
-        void setSprite(sf::Sprite);
+        GameObject(sf::Sprite, Type);
+        virtual void onCollision(GameObject*) = 0;
+        virtual void draw() = 0;
+        void setSprite(sf::Sprite sprite) { this->sprite = sprite;}
         sf::Sprite* getSprite() {return &sprite;};
-        void setName(std::string name);
-        std::string getName() {return name;};
+        void setType(Type type) {this->type = type;};
+        Type getType() {return type;};
+        void setTexture(sf::Texture texture) {this->texture = texture;}
+        sf::Texture* getTexture() {return &this->texture;}
         virtual ~GameObject();
     protected:
     private:
         sf::Sprite sprite;
-        std::string name;
+        sf::Texture texture;
+        Type type;
 };
 
 #endif // GAMEOBJECT_H

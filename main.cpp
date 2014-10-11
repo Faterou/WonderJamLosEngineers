@@ -1,5 +1,6 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
+#include "Destination.h"
 
 enum GameState {MENU, GAME};
 enum RaceState {STATS, RACE};
@@ -37,6 +38,12 @@ void processMenuInputs()
 void drawMenu()
 {
     // Draw things
+    window.clear();
+    Destination dest;
+    dest.setPosition(1,0);
+    dest.draw();
+    window.display();
+
 }
 
 void processMenu()
