@@ -1,7 +1,7 @@
 #ifndef TREE_H
 #define TREE_H
 
-#include <GameObject.h>
+#include "GameObject.h"
 
 
 class Tree : public GameObject
@@ -12,7 +12,6 @@ class Tree : public GameObject
         sf::Sprite getSprite();
         virtual ~Tree();
     protected:
-        sf::Sprite treeSprite;
     private:
 
 };

@@ -33,9 +33,18 @@ if(OpenFile.is_open())
                 {
                    //on met les valeurs du fichier dans la matrices map
                     map[loadCounter.x][loadCounter.y] = sf::Vector2i(x-'0',y - '0');
+
+                    if(x-'0' == 0 && y - '0' == 1)
+                    {
+                        sf::Sprite nouveauSprite;
+                        nouveauSprite.setPosition(x*32,y*32);
+                        nouveauSprite.setTextureRect(sf::IntRect(0*32, 1* 32, 32 , 32));//on va rogner tiles.png
+                        treeVector.push_back(new Tree(nouveauSprite));
+                    }
                 }
 
             }
+
             if(OpenFile.peek() == '\n')
             {
                 loadCounter.x = 0;

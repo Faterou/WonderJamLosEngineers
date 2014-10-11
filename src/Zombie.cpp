@@ -1,5 +1,7 @@
 #include "Zombie.h"
 
+extern sf::RenderWindow window;
+
 //Constructeur
 Zombie::Zombie()
 {

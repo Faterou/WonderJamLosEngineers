@@ -1,15 +1,18 @@
 #ifndef MAP_H
 #define MAP_H
 #include <SFML/Graphics.hpp>
+#include "GameObject.h"
 #include <SFML/Audio.hpp>
-#include <windows.h>
 #include <ctime>
 #include <iostream>
 #include<fstream>
 #include<string>
 #include<cctype>
+#include <vector>
+#include <Tree.h>
 #include <stdlib.h>     /* srand, rand */
 #include <time.h>       /* time */
+
 
 
 extern sf::RenderWindow window;
@@ -28,6 +31,8 @@ class Map
         sf::Sprite tiles;
         sf::Vector2i map[250][250];
         sf::Vector2i loadCounter = sf::Vector2i(0,0);
+
+        std::vector<GameObject*> treeVector;
 
 };
 
