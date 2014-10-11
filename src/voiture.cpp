@@ -12,10 +12,10 @@ using namespace std;
 
 Voiture::Voiture(std::string nomPhoto) : GameObject(sf::Sprite(),CAR)
 {
-    m_vitesse_courante = 0;
+    m_vitesse_courante = 0.01;
     m_vitesse_max = 1;
-    m_acceleration = 1;
-    m_maniabilite = 1;
+    m_acceleration = 0.01;
+    m_maniabilite = 1.1;
     m_suspension = 1;
     m_machineEssence = 1;
     m_penetrationZombie = 1;
@@ -42,6 +42,10 @@ sf::Vector2f Voiture::getHeading()
     float teta = GameObject::getSprite()->getRotation() + 90;
     float x = cos(teta*M_PI/180);
     float y = sin(teta*M_PI/180);
+    float length = sqrt(pow(x,2)+pow(y,2));
+    x = x / length;
+    y = y / length;
+    cout << "x = " << x << " y = " << y << endl;
     return sf::Vector2f(x,y);
 }
 
@@ -74,7 +78,7 @@ float Voiture::getManiabilite()
 
 void Voiture::setSuspension(float suspension)
 {
-
+    m_suspension = suspension;
 }
 float Voiture::getSuspension()
 {
@@ -101,15 +105,17 @@ float Voiture::getPenetrationZombie()
 
 void Voiture::moveForward()
 {
-    m_vitesse_courante = m_vitesse_courante * m_acceleration;
-    GameObject::getSprite()->move(m_vitesse_courante*getHeading());
+    m_vitesse_courante = m_vitesse_courante + m_acceleration;
+    cout << m_vitesse_courante << endl;
+    GameObject::getSprite()->move(-(m_vitesse_courante*getHeading()));
 }
 
 void Voiture::moveBackward()
 {
+    cout << m_vitesse_courante << endl;
     if(m_vitesse_courante > 0)
     {
-        m_vitesse_courante = m_vitesse_courante / m_maniabilite;
+        m_vitesse_courante = m_vitesse_courante - m_maniabilite;
         moveForward();
     }
     else

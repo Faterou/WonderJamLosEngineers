@@ -11,6 +11,7 @@
 #include "Scene.h"
 #include "RaceScene.h"
 #include "Voiture.h"
+using namespace std;
 
 sf::RenderWindow window;
 Voiture* player1 = new Voiture("voitureRouge.png");
@@ -34,10 +35,14 @@ void processGlobalEvents()
 
 int main()
 {
-
     int window_width = 1000;
     int window_height = 500;
     window.create(sf::VideoMode(window_width, window_height), "SFML works bitch!");
+    player1 = new Voiture("pickUp.png");
+    player2 = new Voiture("tank.png");
+    player1->getSprite()->setOrigin((float)(player1->getSprite()->getGlobalBounds().width /2),(float)(player1->getSprite()->getGlobalBounds().height)/2);
+    player1->getSprite()->rotate(180);
+    player1->getSprite()->move(20,20);
 
     while (window.isOpen())
     {
