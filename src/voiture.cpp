@@ -1,10 +1,11 @@
 #include "Voiture.h"
 #include <SFML/Graphics.hpp>
 #include <windows.h>
-#include <cmath>
 using namespace std;
 
-
+#ifndef M_PI
+#define M_PI           3.14159265358979323846
+#endif
 
 Voiture::Voiture(std::string nomPhoto) : GameObject(sf::Sprite(),CAR)
 {

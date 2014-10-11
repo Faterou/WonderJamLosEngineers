@@ -3,16 +3,14 @@
 
 #include <SFML/Graphics.hpp>
 #include <string>
-#include "Map.h"
 
 class GameObject
 {
     public:
-        enum Type {ZOMBIE, CAR, DESTINATION, MENU_ITEM};
+        enum Type {ZOMBIE, CAR, DESTINATION, MENU_ITEM, TREE};
         GameObject();
         GameObject(sf::Sprite, Type);
         virtual void onCollision(GameObject*);
-        virtual void onCollision(TypeTerrain);
         virtual void draw();
         void setSprite(sf::Sprite sprite) { this->sprite = sprite;}
         sf::Sprite* getSprite() {return &sprite;};

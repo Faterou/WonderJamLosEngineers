@@ -1,5 +1,7 @@
 #include "Zombie.h"
 
+extern sf::Window window;
+
 //Constructeur
 Zombie::Zombie()
 {
@@ -42,6 +44,5 @@ void Zombie::setTexture(sf::Texture* maTexture)
 
 void Zombie::draw()
 {
-    //Pour déssiner un zombie, il faut d'abod que le Sprite aie une position et une textureRect
-    window.draw(*(GameObject::getSprite()));
+    GameObject::draw();
 }

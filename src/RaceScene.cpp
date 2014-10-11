@@ -8,13 +8,16 @@
 
 #define ZOMBIE_QUANTITY 100
 
+extern Voiture* player1;
+extern Voiture* player2;
+
 int RaceScene::round = 0;
 Map map1;
-Voiture v("voitureRouge.png");
 
-RaceScene::RaceScene()
+RaceScene::RaceScene() : map()
 {
-    //ctor
+    Scene::getGameObjects()->push_back(player1);
+    Scene::getGameObjects()->push_back(player2);
 }
 
 RaceScene::~RaceScene()
@@ -22,7 +25,12 @@ RaceScene::~RaceScene()
     //dtor
 }
 
-void RaceScene::inputs(){}
+void RaceScene::inputs(){
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+    {
+
+    }
+}
 void RaceScene::update(){}
 void RaceScene::draw()
 {
@@ -36,8 +44,8 @@ void RaceScene::draw()
     dest.setPosition(1,0);
     map1.draw();
     dest.draw();
-    v.getSprite()->setPosition(0,0);
-    v.draw();
+    player1->getSprite()->setPosition(0,0);
+    player1->draw();
 
     sf::View view_player2(sf::FloatRect(0,0,500,500)); // TODO: Modify to take into account the player position
     view_player2.setViewport(sf::FloatRect(0.5, 0, 0.5, 1));
