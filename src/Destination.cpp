@@ -8,12 +8,12 @@ extern Scene* current_scene;
 
 Destination::Destination()
 {
-    sf::Texture* texture = GameObject::getTexture();
-    if(!texture->loadFromFile("destination.png"))
+    sf::Texture texture;
+    if(!texture.loadFromFile("destination.png"))
     {
         std::cout << "Cannot load file: destination.png" << std::endl;
     }
-    this->getSprite()->setTexture(*texture);
+    GameObject::setTexture(texture);
     GameObject::setType(DESTINATION);
 }
 

@@ -3,12 +3,14 @@
 #include "Destination.h"
 #include "StatsScene.h"
 #include "EndScene.h"
+#include "voiture.h"
 #include <stdlib.h>
 
 #define ZOMBIE_QUANTITY 100
 
 int RaceScene::round = 0;
 Map map1;
+Voiture v("voitureRouge.png");
 
 RaceScene::RaceScene()
 {
@@ -34,6 +36,8 @@ void RaceScene::draw()
     dest.setPosition(1,0);
     map1.draw();
     dest.draw();
+    v.getSprite()->setPosition(0,0);
+    v.draw();
 
     sf::View view_player2(sf::FloatRect(0,0,500,500)); // TODO: Modify to take into account the player position
     view_player2.setViewport(sf::FloatRect(0.5, 0, 0.5, 1));
