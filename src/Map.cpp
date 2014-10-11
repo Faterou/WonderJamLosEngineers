@@ -7,10 +7,13 @@ if(OpenFile.is_open())
     {
         std::string tileLocation;
         OpenFile >> tileLocation;
+        srand (time(NULL));
+        int facteurRand;
         tileTexture.loadFromFile(tileLocation);
         tiles.setTexture(tileTexture);
         while(!OpenFile.eof())
         {
+            //Ici, on initialise la carte avec les valeurs du fichier Map1.txt.
             std::string str;
             OpenFile >> str;
             char x = str[0], y = str[2];
@@ -20,7 +23,18 @@ if(OpenFile.is_open())
             }
             else
             {
-                map[loadCounter.x][loadCounter.y] = sf::Vector2i(x-'0',y - '0');
+                facteurRand =  rand() % 100;
+                //On a un facteur de chance d'avoir un arbre un peu partout
+                if(facteurRand == 0)
+                {
+                    map[loadCounter.x][loadCounter.y] = sf::Vector2i(0,1);
+                }
+                else
+                {
+                   //on met les valeurs du fichier dans la matrices map
+                    map[loadCounter.x][loadCounter.y] = sf::Vector2i(x-'0',y - '0');
+                }
+
             }
             if(OpenFile.peek() == '\n')
             {
