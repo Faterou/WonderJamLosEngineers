@@ -14,8 +14,8 @@
 using namespace std;
 
 sf::RenderWindow window;
-Voiture* player1 = new Voiture("tank.png");
-Voiture* player2 = new Voiture("pickUp.png");
+Voiture* player1 = new Voiture("pickUp.png");
+Voiture* player2 = new Voiture("tank.png");
 
 Scene* current_scene = new RaceScene();
 
@@ -40,7 +40,7 @@ int main()
     window.create(sf::VideoMode(window_width, window_height), "SFML works bitch!");
     player1->getSprite()->setOrigin((float)(player1->getSprite()->getGlobalBounds().width /2),(float)(player1->getSprite()->getGlobalBounds().height)/2);
     player1->getSprite()->rotate(180);
-    player1->getSprite()->move(20,20);
+    player1->getSprite()->move(100,100);
 
     while (window.isOpen())
     {

@@ -103,22 +103,14 @@ float Voiture::getPenetrationZombie()
 void Voiture::moveForward()
 {
     m_vitesse_courante = m_vitesse_courante + m_acceleration;
-    cout << m_vitesse_courante << endl;
     GameObject::getSprite()->move(-(m_vitesse_courante*getHeading()));
+    cout << "trying to move\t";
 }
 
 void Voiture::moveBackward()
 {
-    cout << m_vitesse_courante << endl;
-    if(m_vitesse_courante > 0)
-    {
-        m_vitesse_courante = m_vitesse_courante - m_maniabilite;
-        moveForward();
-    }
-    else
-    {
-        GameObject::getSprite()->move(m_vitesse_courante*getHeading());
-    }
+    m_vitesse_courante = m_vitesse_courante + m_acceleration;
+    GameObject::getSprite()->move(m_vitesse_courante*getHeading());
 }
 
 void Voiture::rotateLeft()
@@ -129,5 +121,10 @@ void Voiture::rotateLeft()
 void Voiture::rotateRight()
 {
     GameObject::getSprite()->rotate(m_maniabilite);
+}
+void Voiture::onCollision(GameObject* object)
+{
+    GameObject::getSprite()->move(m_vitesse_courante*getHeading());
+    m_vitesse_courante = 0;
 }
 

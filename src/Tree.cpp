@@ -18,6 +18,7 @@ Tree::Tree(sf::Sprite monSprite)
     }
 
     GameObject::setTexture(texture);
+    GameObject::setType(TREE);
 }
 
 Tree::~Tree()
