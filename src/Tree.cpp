@@ -1,6 +1,7 @@
 #include "Tree.h"
 
 #include <iostream>
+#include <TextureManager.h>
 
 Tree::Tree()
 {
@@ -10,14 +11,8 @@ Tree::Tree()
 Tree::Tree(sf::Sprite monSprite)
 {
     GameObject::setSprite(monSprite);
-    sf::Texture texture;
 
-    if (!texture.loadFromFile("Tree1.png"))
-    {
-        std::cout << "Erreur chargement d'arbre" << std::endl;
-    }
-
-    GameObject::setTexture(texture);
+    GameObject::setTexture(TextureManager::getInstance().getTexture("Tree1.png"));
 }
 
 Tree::~Tree()
