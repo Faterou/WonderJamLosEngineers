@@ -27,7 +27,13 @@ if(OpenFile.is_open())
                 //On a un facteur de chance d'avoir un arbre un peu partout
                 if(facteurRand == 0)
                 {
+
                     map[loadCounter.x][loadCounter.y] = sf::Vector2i(0,1);
+
+                    sf::Sprite nouveauSprite;
+                    nouveauSprite.setPosition(x*32,y*32);
+                    nouveauSprite.setTextureRect(sf::IntRect(0*32, 1* 32, 32 , 32));//on va rogner tiles.png
+                    treeVector.push_back(new Tree(nouveauSprite));
                 }
                 else
                 {
@@ -114,4 +120,9 @@ TypeTerrain Map::getTileStatus(float x, float y)
         return FINISH;
     }
 
+}
+
+std::vector<GameObject*> Map::getTreeVector()
+{
+    return treeVector;
 }
