@@ -19,5 +19,6 @@ void Scene::process()
 
 void Scene::changeScene(Scene* scene)
 {
+    delete current_scene;
     current_scene = scene;
 }
