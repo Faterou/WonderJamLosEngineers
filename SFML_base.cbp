@@ -47,8 +47,10 @@
 			<Add directory="SFML-2.1/lib" />
 		</Linker>
 		<Unit filename="include/Map.h" />
+		<Unit filename="include/Zombie.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/Map.cpp" />
+		<Unit filename="src/Zombie.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />
