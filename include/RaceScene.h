@@ -20,6 +20,8 @@ class RaceScene : public Scene
     private:
         void populate();
         Map map;
+        sf::View view_player1;
+        sf::View view_player2;
         static int round;
 };
 

@@ -9,7 +9,7 @@
 using namespace std;
 
 #define ZOMBIE_QUANTITY 100
-#define TREE_QUANTITY 700
+#define TREE_QUANTITY 500
 
 extern Voiture* player1;
 extern Voiture* player2;
@@ -17,11 +17,16 @@ extern Voiture* player2;
 int RaceScene::round = 0;
 Map map1;
 
-RaceScene::RaceScene() : map()
+RaceScene::RaceScene() : map(),view_player1(sf::FloatRect(-250,-250,500,500)), view_player2(sf::FloatRect(0,0,500,500))
 {
+    view_player1.setViewport(sf::FloatRect(0, 0, 0.5, 1));
+    view_player2.setViewport(sf::FloatRect(0.5, 0, 0.5, 1));
+
+
     Scene::getGameObjects()->push_back(player1);
     Scene::getGameObjects()->push_back(player2);
     populate();
+    std::cout << Scene::getGameObjects()->size() << std::endl;
 }
 
 RaceScene::~RaceScene()
@@ -34,6 +39,8 @@ void RaceScene::inputs(){
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
     {
         player1->moveForward();
+        view_player1.setCenter(player1->getSprite()->getPosition());
+
     }
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
     {
@@ -83,8 +90,7 @@ void RaceScene::draw()
 
     window.clear();
 
-    sf::View view_player1(sf::FloatRect(0,0,500,500)); // TODO: Modify to take into account the player position
-    view_player1.setViewport(sf::FloatRect(0, 0, 0.5, 1));
+
     window.setView(view_player1);
     Destination dest;
     dest.setPosition(1,0);
@@ -92,8 +98,7 @@ void RaceScene::draw()
     dest.draw();
     drawObjects();
 
-    sf::View view_player2(sf::FloatRect(0,0,500,500)); // TODO: Modify to take into account the player position
-    view_player2.setViewport(sf::FloatRect(0.5, 0, 0.5, 1));
+
     window.setView(view_player2);
     map1.draw();
     dest.draw();
@@ -117,13 +122,13 @@ void RaceScene::populate()
         Scene::getGameObjects()->push_back(new Tree(s));
     }
 
-    for(int i = 0; i<248; i++)
+    for(int i = 0; i<248/2; i++)
     {
         sf::Sprite s[4];
-        s[0].setPosition(0,i*32);
-        s[1].setPosition(248*32, i*32);
-        s[2].setPosition(i*32,0);
-        s[3].setPosition(i*32, 248*32);
+        s[0].setPosition(0,i*60);
+        s[1].setPosition(248*32, i*60);
+        s[2].setPosition(i*60,0);
+        s[3].setPosition(i*60, 248*32);
         for(int j=0; j<4; j++)
         {
             Scene::getGameObjects()->push_back(new Tree(s[j]));
