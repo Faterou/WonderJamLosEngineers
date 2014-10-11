@@ -12,7 +12,8 @@ class Voiture : public GameObject
 {
     private:
 
-        float m_vitesse;
+        float m_vitesse_courante;
+        float m_vitesse_max;
         float m_acceleration;
         float m_maniabilite;
         float m_suspension;
@@ -25,8 +26,11 @@ class Voiture : public GameObject
         Voiture(std::string nomPhoto);
         virtual ~Voiture();
 
-        void setVitesse(float vitesse);
-        float getVitesse();
+        void set_vitesse_courante(float);
+        float get_vitesse_courante();
+
+        void setVitesse_max(float vitesse);
+        float getVitesse_max();
 
         void setAcceleration(float acceleration);
         float getAcceleration();

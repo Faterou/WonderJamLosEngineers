@@ -6,19 +6,22 @@ using namespace std;
 
 Voiture::Voiture(std::string nomPhoto) : GameObject(sf::Sprite(),CAR)
 {
-    m_vitesse = 1;
+    m_vitesse_courante = 0;
+    m_vitesse_max = 1;
     m_acceleration = 1;
     m_maniabilite = 1;
     m_suspension = 1;
     m_machineEssence = 1;
     m_penetrationZombie = 1;
 
+    sf::Texture texture;
+
     if (!texture.loadFromFile(nomPhoto))
     {
         std::cout << "Erreur chargement de personnage" << std::endl;
     }
 
-    sprite.setTexture(texture);
+    GameObject::setTexture(texture);
 
 }
 
@@ -35,13 +38,13 @@ sf::Vector2f Voiture::getHeading()
     return sf::Vector2f(x,y);
 }
 
-void Voiture::setVitesse(float vitesse)
+void Voiture::setVitesse_max(float vitesse)
 {
-    m_vitesse = vitesse;
+    m_vitesse_max = vitesse;
 }
-float Voiture::getVitesse()
+float Voiture::getVitesse_max()
 {
-    return m_vitesse;
+    return m_vitesse_max;
 }
 
 void Voiture::setAcceleration(float acceleration)
@@ -87,5 +90,24 @@ void Voiture::setPenetrationZombie(float penetrationZombie)
 float Voiture::getPenetrationZombie()
 {
     return m_penetrationZombie;
+}
+
+void Voiture::moveForward()
+{
+    m_vitesse_courante = m_vitesse_courante * m_acceleration;
+    GameObject::getSprite()->move(m_vitesse_courante*getHeading());
+}
+
+void Voiture::moveBackward()
+{
+    if(m_vitesse_courante > 0)
+    {
+        m_vitesse_courante = m_vitesse_courante / m_maniabilite;
+        moveForward();
+    }
+    else
+    {
+        GameObject::getSprite()->move(m_vitesse_courante*getHeading());
+    }
 }
 
