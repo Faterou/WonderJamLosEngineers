@@ -5,6 +5,10 @@
 #include "MenuItem.h"
 #include "OrientedBoundingBox.h"
 #include <list>
+#include <vector>
+
+extern std::vector<GameObject*> gameObjects;
+std::vector<GameObject*> gameObjects; //BIDON, à supprimer losque les scènes seront prêtes
 
 class CollisionHandler
 {
@@ -12,7 +16,6 @@ class CollisionHandler
         CollisionHandler();
         bool checkAllCollisions();
         bool checkCollision(GameObject*,GameObject*);
-        bool checkCollisionMenu(MenuItem*,sf::Vector2i);
         virtual ~CollisionHandler();
     protected:
     private:
