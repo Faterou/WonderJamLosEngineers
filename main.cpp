@@ -13,8 +13,8 @@ enum GameState {MENU, GAME};
 enum RaceState {STATS, RACE};
 
 
-GameState gameState = MENU;
-RaceState raceState = STATS;
+GameState gameState = GAME;
+RaceState raceState = RACE;
 
 sf::RenderWindow window;
 
@@ -46,11 +46,7 @@ void processMenuInputs()
 void drawMenu()
 {
     // Draw things
-    window.clear();
-    Destination dest;
-    dest.setPosition(1,0);
-    dest.draw();
-    window.display();
+
 
 }
 
@@ -199,6 +195,7 @@ void updateRace()
 {
     // Each loop, update the zombies and the players positions.
     // Also, check for victory condition.
+
 }
 
 /**
@@ -207,6 +204,10 @@ void updateRace()
 void drawRace()
 {
     // Draw map, zombies and players
+
+    Destination dest;
+    dest.setPosition(1,0);
+    dest.draw();
 }
 
 void processRace()
@@ -214,6 +215,7 @@ void processRace()
     processRaceInputs();
     updateRace();
 
+    window.clear();
     sf::View view_player1(sf::FloatRect(0,0,500,500)); // TODO: Modify to take into account the player position
     view_player1.setViewport(sf::FloatRect(0, 0, 0.5, 1));
     window.setView(view_player1);
@@ -223,6 +225,7 @@ void processRace()
     view_player2.setViewport(sf::FloatRect(0.5, 0, 0.5, 1));
     window.setView(view_player2);
     drawRace();
+    window.display();
 }
 
 void processGame()
@@ -256,7 +259,7 @@ int main()
     Map map1;
     int window_width = 1000;
     int window_height = 500;
-    window.create(sf::VideoMode(window_width, window_height), "SFML works!");
+    window.create(sf::VideoMode(window_width, window_height), "SFML works bitch!");
 
     while (window.isOpen())
     {

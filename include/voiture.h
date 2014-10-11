@@ -5,8 +5,6 @@
 #include <iostream>
 #include <windows.h>
 
-static sf::RenderWindow window(sf::VideoMode(750, 750), "SFML works!");
-
 class voiture
 {
     private:
