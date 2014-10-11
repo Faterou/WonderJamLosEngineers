@@ -98,7 +98,6 @@ void Voiture::moveForward()
 {
     m_vitesse_courante = m_vitesse_courante + m_acceleration;
     GameObject::getSprite()->move(-(m_vitesse_courante*getHeading()));
-    cout << "trying to move\t";
 }
 
 void Voiture::moveBackward()

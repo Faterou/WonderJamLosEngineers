@@ -40,7 +40,7 @@ int main()
     window.create(sf::VideoMode(window_width, window_height), "SFML works bitch!");
     player1->getSprite()->setOrigin((float)(player1->getSprite()->getGlobalBounds().width /2),(float)(player1->getSprite()->getGlobalBounds().height)/2);
     player1->getSprite()->rotate(180);
-    player1->getSprite()->move(100,100);
+    player1->getSprite()->move(150,150);
 
     while (window.isOpen())
     {
