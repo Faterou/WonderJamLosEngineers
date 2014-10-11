@@ -12,6 +12,8 @@
 
 using namespace std;
 
+
+
 Voiture::Voiture(std::string nomPhoto) : GameObject(sf::Sprite(),CAR)
 {
     m_vitesse_courante = 0;
@@ -118,5 +120,15 @@ void Voiture::moveBackward()
     {
         GameObject::getSprite()->move(m_vitesse_courante*getHeading());
     }
+}
+
+void Voiture::rotateLeft()
+{
+    GameObject::getSprite()->rotate(-m_maniabilite);
+}
+
+void Voiture::rotateRight()
+{
+    GameObject::getSprite()->rotate(m_maniabilite);
 }
 

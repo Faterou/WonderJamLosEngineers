@@ -10,13 +10,13 @@ class Destination : public GameObject
     public:
         virtual void onCollision(GameObject *collidedTo);
         void setPosition(int x, int y);
-        //void draw();
         Destination();
         virtual ~Destination();
     protected:
     private:
         sf::Clock timer;
         bool first = true;
+        GameObject* winner;
 };
 
 #endif // DESTINATION_H
