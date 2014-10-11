@@ -1,24 +1,24 @@
-/*#ifndef ZOMBIE_H
+#ifndef ZOMBIE_H
 #define ZOMBIE_H
 
 #include <SFML/Graphics.hpp>
+#include <GameObject.h>
 
-class Zombie
+class Zombie:GameObject
 {
     public:
-        sf::Vector2i getPosition() const;
-        void setPosition(sf::Vector2i);
         void draw();
+        sf::Sprite getSprite();
+        void setSprite(sf::Sprite);
+        sf::Texture getTexture();
+        void setTexture(sf::Texture);
 
         Zombie();
-        Zombie(sf::Vector2i);
         virtual ~Zombie();
     protected:
     private:
-        sf::Vector2i position;
-        sf::Texture zombieTexture;
-        sf::Sprite zombieSprite;
+
 };
 
 #endif // ZOMBIE_H
-*/
+

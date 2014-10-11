@@ -1,27 +1,47 @@
-/*#include "Zombie.h"
+#include "Zombie.h"
 
+//Constructeur
 Zombie::Zombie()
 {
     //ctor
 }
-Zombie::Zombie(sf::Vector2i maPosition)
-{
-    position = maPosition;
-}
-
+//Destructeur
 Zombie::~Zombie()
 {
     //dtor
 }
 
-void Zombie::setPosition(sf::Vector2i maPosition)
+///////////////////////////////////////////////////////////////////////////////////////
+//Accesseurs et mutateurs
+///////////////////////////////////////////////////////////////////////////////////////
+sf::Sprite Zombie::getSprite()
 {
-    position = maPosition;
+    return GetObject::getSprite();
 }
 
-sf::Vector2i Zombie::getPosition()
+void Zombie::setSprite(sf::Sprite monSprite)
 {
-    return position;
+    GetObject::setSprite(monSprite);
 }
 
-void Zombie::draw()*/
+sf::Texture Zombie::getTexture()
+{
+    return GetObject::getTexture();
+}
+
+void Zombie::setTexture(sf::Texture maTexture)
+{
+    GetObject::setTexture(maTexture);
+}
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////
+//Fonctions
+///////////////////////////////////////////////////////////////////////////////////////////////
+
+
+void Zombie::draw()
+{
+    //Pour déssiner un zombie, il faut d'abod que le Sprite aie une position et un textureRect
+    window.draw(GetObject::getSprite());
+}
