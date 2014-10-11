@@ -13,6 +13,7 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-g" />
+					<Add directory="include" />
 				</Compiler>
 				<Linker>
 					<Add library="sfml-window-d" />
@@ -27,12 +28,14 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-O2" />
+					<Add directory="include" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
 					<Add library="sfml-window" />
 					<Add library="sfml-graphics" />
 					<Add library="sfml-system" />
+					<Add library="sfml-audio" />
 				</Linker>
 			</Target>
 		</Build>
@@ -43,7 +46,9 @@
 		<Linker>
 			<Add directory="SFML-2.1/lib" />
 		</Linker>
+		<Unit filename="include/Map.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="src/Map.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />
