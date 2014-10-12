@@ -11,11 +11,16 @@ class Zombie: public GameObject
         void draw();
         sf::Sprite* getSprite();
         void setSprite(sf::Sprite*);
+        void move();
+        bool getDeath();
+        virtual void onCollision(GameObject*);
         Zombie();
         Zombie(std::string);
         virtual ~Zombie();
     protected:
     private:
+        sf::Vector2f getHeading();
+        bool death = false;
 
 };
 

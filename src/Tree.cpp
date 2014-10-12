@@ -8,10 +8,8 @@ Tree::Tree()
 
 }
 
-Tree::Tree(sf::Sprite monSprite)
+Tree::Tree(sf::Sprite monSprite) : GameObject(monSprite,TREE)
 {
-    GameObject::setSprite(monSprite);
-
     GameObject::setTexture(TextureManager::getInstance().getTexture("Tree1.png"));
 }
 

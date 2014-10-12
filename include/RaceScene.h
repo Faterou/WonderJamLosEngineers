@@ -15,6 +15,7 @@ class RaceScene : public Scene
         virtual void update();
         virtual void draw();
         virtual ~RaceScene();
+        void checkCollisions();
         void end_race(GameObject* winner, GameObject* loser, int time_difference);
         void drawObjects();
     protected:

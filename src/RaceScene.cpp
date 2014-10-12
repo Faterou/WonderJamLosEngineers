@@ -11,7 +11,7 @@
 
 using namespace std;
 
-#define ZOMBIE_QUANTITY 200
+#define ZOMBIE_QUANTITY 2000
 #define TREE_QUANTITY 500
 
 extern Voiture* player1;
@@ -20,7 +20,7 @@ extern Voiture* player2;
 int RaceScene::round = 0;
 Map map1;
 
-RaceScene::RaceScene() : map(), chandler(), view_player1(sf::FloatRect(-250,-250,500,500)), view_player2(sf::FloatRect(0,0,500,500)), m_thread(&RaceScene::update,this)
+RaceScene::RaceScene() : map(), chandler(), view_player1(sf::FloatRect(-250,-250,500,500)), view_player2(sf::FloatRect(0,0,500,500)), m_thread(&RaceScene::checkCollisions,this)
 {
 
     view_player1.setViewport(sf::FloatRect(0, 0, 0.5, 1));
@@ -91,7 +91,17 @@ void RaceScene::inputs(){
         }
     }
 }
-void RaceScene::update(){
+
+void RaceScene::update()
+{
+    for(vector<Zombie*>::iterator it = getZombies()->begin(); it < getZombies()->end(); it++)
+    {
+        if(!(*it)->getDeath())
+            (*it)->move();
+    }
+}
+
+void RaceScene::checkCollisions(){
     while(1)
     {
         chandler.checkAllCollisions();
@@ -125,12 +135,14 @@ void RaceScene::draw()
     map1.draw();
     dest.draw();
     drawObjects();
+    player1->draw();
 
 
     window.setView(view_player2);
     map1.draw();
     dest.draw();
     drawObjects();
+    player2->draw();
 
     window.display();
 }
@@ -220,6 +232,13 @@ void RaceScene::populate()
                 break;
         }
         Scene::getGameObjects()->push_back(z);
+    }
+    for(vector<GameObject*>::iterator it = getGameObjects()->begin(); it < getGameObjects()->end(); it++)
+    {
+        if((*it)->getType() == GameObject::ZOMBIE)
+        {
+            getZombies()->push_back((Zombie*)*it);
+        }
     }
 }
 
