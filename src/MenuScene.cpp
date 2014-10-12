@@ -10,7 +10,6 @@
 
 MenuScene::MenuScene()
 {
-    window.clear();
     sf::Text menuPlay;
     sf::Text menuExit;
     sf::Text menuAide;
@@ -84,7 +83,7 @@ void MenuScene::inputs()
                 std::cout << "TU peux pas y aller!!!" << std::endl;
             }
      }
-
+    //Pour ralentir la saisie
      Sleep(100);
 }
 
