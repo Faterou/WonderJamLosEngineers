@@ -18,7 +18,7 @@ using namespace std;
 extern Voiture* player1;
 extern Voiture* player2;
 
-int RaceScene::round = 0;
+int RaceScene::round = 1;
 Map map1;
 
 RaceScene::RaceScene(GameObject* last_winner, GameObject* last_loser, int delta) : map(), chandler(), view_player1(sf::FloatRect(-250,-250,500,500)), view_player2(sf::FloatRect(0,0,500,500)), m_thread(&RaceScene::checkCollisions,this), terminate_thread(false),
@@ -433,7 +433,7 @@ void RaceScene::end_race(GameObject* winner, GameObject* loser, int time_differe
 {
     player1->set_vitesse_courante(0);
     player2->set_vitesse_courante(0);
-    if(false && round < MAX_ROUND)
+    if(round < MAX_ROUND)
     {
         terminate_thread = true;
         round++;

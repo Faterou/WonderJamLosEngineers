@@ -5,7 +5,7 @@
 #include "Map.h"
 #include "CollisionHandler.h"
 
-#define MAX_ROUND 5
+#define MAX_ROUND 2
 
 class RaceScene : public Scene
 {
