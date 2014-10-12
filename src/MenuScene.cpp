@@ -24,39 +24,29 @@ void MenuScene::inputs()
 {
     sf::Event event1;
 
-    while (window.pollEvent(event1))
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
     {
+        std::cout << "allo" << std::endl;
+        if (selectedItemIndex - 1 >= 0)
+        {
+        menu[selectedItemIndex].setColor(sf::Color::White);
+        selectedItemIndex--;
+        menu[selectedItemIndex].setColor(sf::Color::Red);
+        }
+    }
+
+
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+     {
         std::cout << selectedItemIndex << std::endl;
 
-        if (event1.type == sf::Event::KeyPressed)
-        {
             std::cout << selectedItemIndex << std::endl;
-
-            if (event1.key.code == sf::Keyboard::Up)
-            {
-                if (selectedItemIndex - 1 >= 0)
-                {
-                menu[selectedItemIndex].setColor(sf::Color::White);
-                selectedItemIndex--;
-                menu[selectedItemIndex].setColor(sf::Color::Red);
-                }
-            }
+            menu[selectedItemIndex].setColor(sf::Color::White);
+            selectedItemIndex++;
+            menu[selectedItemIndex].setColor(sf::Color::Red);
+     }
 
 
-             if (event1.key.code == sf::Keyboard::Down)
-             {
-                std::cout << selectedItemIndex << std::endl;
-                if (selectedItemIndex + 1 < 4)
-                {
-                    std::cout << selectedItemIndex << std::endl;
-                    menu[selectedItemIndex].setColor(sf::Color::White);
-                    selectedItemIndex++;
-                    menu[selectedItemIndex].setColor(sf::Color::Red);
-                }
-            }
-        }
-
-    }
 
 }
 

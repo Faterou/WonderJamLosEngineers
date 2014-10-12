@@ -17,8 +17,6 @@ class MenuScene : public Scene
         virtual void update();
         virtual void draw();
 
-        void MoveUp();
-        void MoveDown();
         int GetPressedItem() { return selectedItemIndex; }
 
     protected:
@@ -26,7 +24,7 @@ class MenuScene : public Scene
         int selectedItemIndex = 0;
         sf::Font font;
 
-        sf::Text menu[MAX_NUMBER_OF_ITEMS];
+        sf::Text menu[4];
 
 };
 

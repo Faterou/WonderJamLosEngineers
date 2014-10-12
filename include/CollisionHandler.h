@@ -15,6 +15,7 @@ class CollisionHandler
     public:
         CollisionHandler();
         bool checkAllCollisions();
+        bool checkAllCollisions(GameObject* go, std::vector<GameObject*> *objects);
         bool checkCollision(GameObject*,GameObject*);
         virtual ~CollisionHandler();
     protected:
