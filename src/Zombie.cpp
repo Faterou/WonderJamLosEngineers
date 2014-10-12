@@ -1,11 +1,11 @@
 #include "Zombie.h"
-
+using namespace std;
 extern sf::Window window;
 
 //Constructeur
-Zombie::Zombie()
+Zombie::Zombie(string nomPhoto) : GameObject(sf::Sprite(),ZOMBIE)
 {
-    //ctor
+    GameObject::setTexture(TextureManager::getInstance().getTexture(nomPhoto));
 }
 //Destructeur
 Zombie::~Zombie()
@@ -25,13 +25,6 @@ void Zombie::setSprite(sf::Sprite* monSprite)
 {
     GameObject::setSprite(*monSprite);
 }
-
-sf::Texture* Zombie::getTexture()
-{
-    return GameObject::getTexture();
-}
-
-
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
 //Fonctions
