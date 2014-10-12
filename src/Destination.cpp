@@ -28,7 +28,7 @@ void Destination::onCollision(GameObject* collidedTo)
             winner = collidedTo;
             first = false;
         }
-        else
+        else if (collidedTo != winner)
         {
             int delta_time_players = timer.getElapsedTime().asSeconds();
             first = true;
