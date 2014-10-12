@@ -23,3 +23,15 @@ void Scene::changeScene(Scene* scene)
 {
     current_scene = scene;
 }
+
+vector<GameObject*>::iterator Scene::addObjectToVector(GameObject* object)
+{
+    gameObjects.push_back(object);
+    vector<GameObject*>::iterator it = gameObjects.end()-1;
+    return it;
+}
+
+void Scene::deleteObjectFromVector(vector<GameObject*>::iterator objectPos)
+{
+    gameObjects.erase(objectPos);
+}
