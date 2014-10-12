@@ -15,6 +15,20 @@ extern Voiture* player2;
 
 MenuScene::MenuScene()
 {
+
+
+    if (!backgroundBuffer.loadFromFile("menuBackground.wav"))
+    {
+       std::cout << "impossible de loader la musique background \n";
+    }
+
+    m_sound.setBuffer(backgroundBuffer);
+
+    m_sound.setLoop(true);
+
+    m_sound.play();
+
+
     sf::Text menuPlay;
     sf::Text menuExit;
     sf::Text menuAide;
@@ -97,12 +111,14 @@ void MenuScene::inputs()
          {
             Scene* next_scene = new StatsScene(*player1, *player2, 20000);
             this->changeScene(next_scene);
+            m_sound.stop();
             break;
          }
          case 1:
              {
                 Scene* next_scene= new AideScene();
                 this->changeScene(next_scene);
+                m_sound.stop();
                 break;
              }
 
@@ -111,6 +127,7 @@ void MenuScene::inputs()
             break;
 
          case 3:
+             m_sound.stop();
              window.close();
             break;
 
@@ -145,6 +162,8 @@ void MenuScene::draw()
     window.display();
 
 }
+
+
 
 
 

@@ -45,6 +45,9 @@ class StatsScene : public Scene
         sf::Clock horlogeDebutStats;
         int m_time_difference;
 
+        sf::Sound m_sound;
+        sf::SoundBuffer backgroundBuffer;
+
 
 
 };

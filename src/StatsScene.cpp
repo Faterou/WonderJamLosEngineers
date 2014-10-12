@@ -18,6 +18,16 @@ extern Voiture* player2;
 
 StatsScene::StatsScene(GameObject winner, GameObject loser, int time_difference)
 {
+     if (!backgroundBuffer.loadFromFile("menuBackground.wav"))
+    {
+       std::cout << "impossible de loader la musique background \n";
+    }
+
+    m_sound.setBuffer(backgroundBuffer);
+
+    m_sound.setLoop(true);
+
+    m_sound.play();
 
     horlogeDebutStats.restart();
     m_time_difference = time_difference;
@@ -171,6 +181,7 @@ void StatsScene::inputs()
 
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Return))
     {
+        m_sound.stop();
         Scene* next_scene = new RaceScene();
         this->changeScene(next_scene);
     }
@@ -376,11 +387,11 @@ void StatsScene::update()
 
     if(tempsActuel >= m_time_difference)
     {
+        m_sound.stop();
         Scene* next_scene = new RaceScene();
         this->changeScene(next_scene);
     }
 
-    std::cout << "temps actuel: " << tempsActuel << endl;
 }
 void StatsScene::draw()
 {

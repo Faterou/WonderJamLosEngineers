@@ -23,6 +23,62 @@ Map map1;
 RaceScene::RaceScene() : map(), chandler(), view_player1(sf::FloatRect(-250,-250,500,500)), view_player2(sf::FloatRect(0,0,500,500)), m_thread(&RaceScene::checkCollisions,this), terminate_thread(false)
 {
 
+     if (!backgroundBuffer.loadFromFile("gameBackground.wav"))
+    {
+       std::cout << "impossible de loader la musique background \n";
+    }
+
+    m_sound.setBuffer(backgroundBuffer);
+
+    m_sound.setLoop(true);
+    m_sound.setVolume(75);
+    m_sound.play();
+
+    /////////////////////////////////////////////////////////////////////////////////
+    //iNITIALISATION DES BRUITAGES
+    /////////////////////////////////////////////////////////////////////////////////
+    //Iddle
+/*
+    if (!iddleBuffer.loadFromFile("blindeIddle.wav"))
+    {
+       std::cout << "impossible de loader la musique iddle \n";
+    }
+
+    m_soundIddle.setBuffer(iddleBuffer);
+    //m_soundIddle.setVolume(50);
+
+    //Decapitation
+    if (!decapitationBuffer.loadFromFile("decapitation.wav"))
+    {
+       std::cout << "impossible de loader la musique decapitation \n";
+    }
+
+    m_soundDecapitation.setBuffer(decapitationBuffer);
+    m_soundDecapitation.setVolume(100);
+
+
+    //Decceleration
+    if (!decBuffer.loadFromFile("blindeDec.wav"))
+    {
+       std::cout << "impossible de loader la musique decceleration \n";
+    }
+
+    m_soundDec.setBuffer(decBuffer);
+
+    //Accelération et run
+
+    if (!acc_runBuffer.loadFromFile("blindeAcc_run.wav"))
+    {
+       std::cout << "impossible de loader la musique decapitation \n";
+    }
+
+    m_soundAcc_run.setBuffer(acc_runBuffer);
+*/
+
+    ///////////////////////////////////////////////////////////////
+    //FIN INITIALISATION SON : Pour l'instant, on n'inclut pas le bruit des véhicules.
+    ///////////////////////////////////////////////////////////////
+
     view_player1.setViewport(sf::FloatRect(0, 0, 0.5, 1));
     view_player2.setViewport(sf::FloatRect(0.5, 0, 0.5, 1));
 
@@ -42,6 +98,8 @@ void RaceScene::inputs(){
     sf::Event event;
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
     {
+
+        //Gestion Action
         action1 = 1;
         if(winner != player1)
         {
@@ -97,6 +155,7 @@ void RaceScene::inputs(){
     }
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
     {
+        m_sound.stop();
         window.close();
     }
 
@@ -116,6 +175,8 @@ void RaceScene::update()
     {
         if(!(*it)->getDeath())
             (*it)->move();
+
+
     }
     player1->move();
     player2->move();

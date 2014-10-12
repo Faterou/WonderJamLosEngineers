@@ -4,6 +4,7 @@
 #include "Scene.h"
 #include "Map.h"
 #include "CollisionHandler.h"
+#include <SFML/Audio.hpp>
 
 #define MAX_ROUND 5
 
@@ -31,6 +32,14 @@ class RaceScene : public Scene
         bool terminate_thread;
         GameObject* winner;
         GameObject* destination;
+
+        sf::Sound m_sound;
+        sf::SoundBuffer backgroundBuffer;
+
+
+
+
+
 };
 
 #endif // RACESCENE_H

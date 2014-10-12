@@ -2,6 +2,8 @@
 #define M_PI           3.14159265358979323846
 #endif
 #include "Zombie.h"
+#include <SFML/Audio.hpp>
+#include <iostream>
 using namespace std;
 extern sf::Window window;
 
@@ -72,6 +74,7 @@ void Zombie::onCollision(GameObject* collidedTo)
 {
     if(collidedTo->getType() == GameObject::CAR)
     {
+
         death = true;
         GameObject::setTexture(TextureManager::getInstance().getTexture("blood1.png"));
     }
