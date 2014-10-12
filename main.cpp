@@ -12,14 +12,16 @@
 #include "RaceScene.h"
 #include "StatsScene.h"
 #include "Voiture.h"
+#include "StatsScene.h"
 using namespace std;
 
 sf::RenderWindow window;
 Voiture* player1 = new Voiture("pickUp.png");
 Voiture* player2 = new Voiture("tank.png");
 
-Scene* current_scene = new RaceScene();
+
 //Scene* current_scene = new StatsScene(*player1, *player2, 10);
+Scene* current_scene = new RaceScene();
 /**
     Function to handle events of the main loop, like the one to close the window.
 */

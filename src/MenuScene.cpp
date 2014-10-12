@@ -56,11 +56,6 @@ void MenuScene::draw()
 
     sf::Texture texture;
     sf::Sprite sprite;
-    sf::Font font;
-    sf::Text menuPlay;
-    sf::Text menuExit;
-    sf::Text menuAide;
-    sf::Text menuSetting;
 
     if (!texture.loadFromFile("imageMenu.png"))
     {
