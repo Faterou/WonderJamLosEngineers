@@ -27,10 +27,11 @@ class Map
         void draw();
         std::vector<GameObject*>* getTreeVector() {return &treeVector;}
         TypeTerrain getTileStatus(float x, float y);
+        sf::Vector2i map[250][250];
     private:
         sf::Texture tileTexture;
         sf::Sprite tiles;
-        sf::Vector2i map[250][250];
+
         sf::Vector2i loadCounter = sf::Vector2i(0,0);
 
         std::vector<GameObject*> treeVector;
