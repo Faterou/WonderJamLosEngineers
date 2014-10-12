@@ -41,22 +41,22 @@ MenuScene::MenuScene()
 
     menu[0].setFont(font);
     menu[0].setColor(sf::Color::Red);
-    menu[0].setString("Play");
+    menu[0].setString("Jouer");
     menu[0].setPosition(sf::Vector2f(450, 125));
 
     menu[1].setFont(font);
     menu[1].setColor(sf::Color::White);
-    menu[1].setString("Help");
+    menu[1].setString("Aide");
     menu[1].setPosition(sf::Vector2f(450, 200));
 
     menu[2].setFont(font);
     menu[2].setColor(sf::Color::White);
-    menu[2].setString("Setting");
+    menu[2].setString("Paramètres");
     menu[2].setPosition(sf::Vector2f(425, 275));
 
     menu[3].setFont(font);
     menu[3].setColor(sf::Color::White);
-    menu[3].setString("Exit");
+    menu[3].setString("Quitter");
     menu[3].setPosition(sf::Vector2f(450, 350));
 }
 
