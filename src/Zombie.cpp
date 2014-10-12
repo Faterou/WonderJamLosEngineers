@@ -3,6 +3,8 @@
 #endif
 #include "Zombie.h"
 #include "Scene.h"
+#include <iostream>
+#include <Windows.h>
 using namespace std;
 extern sf::RenderWindow window;
 extern Scene* current_scene;
@@ -12,6 +14,7 @@ void managePoints(vector<GameObject*>::iterator object)
     sf::Clock clock;
     while(clock.getElapsedTime().asSeconds() < 0.5)
     {
+        Sleep(25);
         (*object)->getSprite()->setScale(clock.getElapsedTime().asSeconds()*3+1,clock.getElapsedTime().asSeconds()*3 +1);
     }
     current_scene->deleteObjectFromVector(object);
