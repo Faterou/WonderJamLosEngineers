@@ -29,6 +29,15 @@ Voiture::Voiture(std::string nomPhoto) : GameObject(sf::Sprite(),CAR)
     m_machineEssence = m_maniabilite_m;
     m_penetrationZombie = (m_penetrationZombie_m - 1);
 
+    m_vitesse_max = 10;
+    m_acceleration = 0.01;
+    m_maniabilite = 2;
+    m_suspension = 1;
+    m_machineEssence = 1;
+    m_penetrationZombie = 0;
+    petrole = 0;
+    money =0;
+
 
     GameObject::setTexture(TextureManager::getInstance().getTexture(nomPhoto));
 }
@@ -163,13 +172,21 @@ float Voiture::getPenetrationZombie_m()
 
 void Voiture::moveForward()
 {
+    if(m_vitesse_courante < 0)
+    {
+        m_vitesse_courante = m_vitesse_courante + m_maniabilite / 10;
+    }
     if(m_vitesse_courante < m_vitesse_max)
         m_vitesse_courante = m_vitesse_courante + m_acceleration;
 }
 
 void Voiture::moveBackward()
 {
-    if(m_vitesse_courante > -m_vitesse_max)
+    if(m_vitesse_courante > 0)
+    {
+        m_vitesse_courante = m_vitesse_courante - m_maniabilite /10;
+    }
+    else if(m_vitesse_courante > -m_vitesse_max)
         m_vitesse_courante = m_vitesse_courante - m_acceleration;
 }
 
@@ -209,6 +226,7 @@ void Voiture::onCollision(GameObject* object)
     else if (object->getType() == GameObject::ZOMBIE)
     {
         m_vitesse_courante = m_vitesse_courante / (7-m_penetrationZombie);
+        petrole++;
     }
 
 }

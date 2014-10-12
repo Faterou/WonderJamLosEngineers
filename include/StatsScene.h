@@ -39,6 +39,7 @@ class StatsScene : public Scene
         sf::View view_player2;
 
         sf::Font font;
+        sf::Text compteur;
         sf::Text aptitude[6];
         sf::Text aptitudeVitesse[20];
         sf::Text aptitudeAcceleration[20];
@@ -47,6 +48,9 @@ class StatsScene : public Scene
         sf::Text aptitudeSuspension[20];
         sf::Text aptitudeImpact[20];
         sf::Text barre[20];
+
+        sf::Clock horlogeDebutStats;
+        int m_time_difference;
 
 
 
