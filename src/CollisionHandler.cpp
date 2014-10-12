@@ -34,7 +34,7 @@ bool CollisionHandler::checkAllCollisions(GameObject* go, vector<GameObject*>* o
         {
             if(checkCollision(*it1,go))
             {
-                    return true;
+                return true;
             }
         }
     }

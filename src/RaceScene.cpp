@@ -185,8 +185,8 @@ void RaceScene::populate()
 
     for(int i=0; i<ZOMBIE_QUANTITY; i++)
     {
-        int x = rand() % 248*32;
-        int y = rand() % 248*32;
+        int x;
+        int y;
         int rotation = rand() % 4;
         int zombie_type = rand() % 3;
         Zombie* z;
@@ -201,10 +201,12 @@ void RaceScene::populate()
             default:
                 z = new Zombie("zombie3.png");
         }
-        //do
-        //{
-        z->getSprite()->setPosition(x,y);
-        //} while(chandler.checkAllCollisions(z));
+        do
+        {
+            x = rand() % 248*32;
+            y = rand() % 248*32;
+            z->getSprite()->setPosition(x,y);
+        } while(chandler.checkAllCollisions(z,Scene::getGameObjects()));
         switch(rotation)
         {
             case 0:
