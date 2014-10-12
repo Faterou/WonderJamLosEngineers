@@ -3,6 +3,7 @@
 #include "Destination.h"
 #include "StatsScene.h"
 #include "EndScene.h"
+#include "RaceScene.h"
 #include "voiture.h"
 #include <stdlib.h>
 #include <iostream>
@@ -143,6 +144,17 @@ void StatsScene::inputs()
                 std::cout << "TU peux pas y aller!!!" << std::endl;
             }
      }
+
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
+    {
+        window.close();
+    }
+
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Return))
+    {
+        Scene* next_scene = new RaceScene();
+        this->changeScene(next_scene);
+    }
 
     switch(selectedItemIndex)
     {
