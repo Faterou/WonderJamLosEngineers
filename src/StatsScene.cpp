@@ -16,9 +16,6 @@ using namespace std;
 extern Voiture* player1;
 extern Voiture* player2;
 
-extern Voiture* player1;
-extern Voiture* player2;
-
 StatsScene::StatsScene(GameObject winner, GameObject loser, int time_difference)
 {
     view_player1.setViewport(sf::FloatRect(0, 0, 0.5, 1));
@@ -362,6 +359,7 @@ void StatsScene::inputs()
         break;
     }
           cout << player1->getPenetrationZombie_m() << endl;
+          player1->miseAJourVoiture();
 }
 
 void StatsScene::update()
