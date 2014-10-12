@@ -168,7 +168,6 @@ void RaceScene::populate()
     {
         player1->getSprite()->move(rand() % (248*32),rand() % (248*32));
     } while(chandler.checkAllCollisions(player1, Scene::getGameObjects()));
-    player1->getSprite()->setPosition(200,200); // TODO delete
     view_player1.setCenter(player1->getSprite()->getPosition());
 
     player2->getSprite()->rotate(180);
@@ -176,24 +175,22 @@ void RaceScene::populate()
     {
         player2->getSprite()->move(rand() % (248*32),rand() % (248*32));
     } while(chandler.checkAllCollisions(player2, Scene::getGameObjects()));
-    player2->getSprite()->setPosition(300,200);// TODO delete
     view_player2.setCenter(player2->getSprite()->getPosition());
 
 
     Scene::getGameObjects()->push_back(player1);
     Scene::getGameObjects()->push_back(player2);
 
-<<<<<<< HEAD
+
     Destination* dest = new Destination();
-    dest->getSprite()->move(60,60);
-//    do
-//    {
-//        dest->getSprite()->move(rand() % (248*32),rand() % (248*32));
-//    } while(chandler.checkAllCollisions(player2, Scene::getGameObjects()));
+    do
+    {
+        dest->getSprite()->move(rand() % (248*32),rand() % (248*32));
+    } while(chandler.checkAllCollisions(player2, Scene::getGameObjects()));
     getGameObjects()->push_back(dest);
     std::cout << dest->getSprite()->getPosition().x << "," << dest->getSprite()->getPosition().y << std::endl;
 
-=======
+
     for(int i=0; i<ZOMBIE_QUANTITY; i++)
     {
         int x;
@@ -232,7 +229,7 @@ void RaceScene::populate()
         }
         Scene::getGameObjects()->push_back(z);
     }
->>>>>>> ad495044a344977d60cc58545c6d611ed3422f53
+
 }
 
 void RaceScene::end_race(GameObject* winner, GameObject* loser, int time_difference)
