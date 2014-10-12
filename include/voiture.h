@@ -19,15 +19,11 @@ class Voiture : public GameObject
         float m_vitesse_max;
         float m_acceleration;
         float m_maniabilite;
-        float m_suspension;
-        float m_machineEssence;
         float m_penetrationZombie;
 
         float m_vitesse_max_m;
         float m_acceleration_m;
         float m_maniabilite_m;
-        float m_suspension_m;
-        float m_machineEssence_m;
         float m_penetrationZombie_m;
 
 
@@ -50,11 +46,6 @@ class Voiture : public GameObject
         void setManiabilite(float maniabilite);
         float getManiabilite();
 
-        void setSuspension(float suspension);
-        float getSuspension();
-
-        void setMachineEssence(float machineEssence);
-        float getMachineEssence();
 
         void setPenetrationZombie(float penetrationZombie);
         float getPenetrationZombie();
@@ -67,12 +58,6 @@ class Voiture : public GameObject
 
         void setManiabilite_m(float maniabilite);
         float getManiabilite_m();
-
-        void setMachineEssence_m(float machineEssence);
-        float getMachineEssence_m();
-
-        void setSuspension_m(float suspension);
-        float getSuspension_m();
 
         void setPenetrationZombie_m(float penetrationZombie);
         float getPenetrationZombie_m();

@@ -25,46 +25,43 @@ class StatsScene : public Scene
         void afficherStats();
 
 
+
     protected:
     private:
         int selectedItemIndex1 = 0;
-        int selectedStatVitesse1;
-        int selectedStatAcceleration1;
-        int selectedStatManiabilite1;
-        int selectedStatGenerateurDePetrole1;
-        int selectedStatSuspension1;
-        int selectedStatImpact1;
+        int selectedStatVitesse1 = 0;
+        int selectedStatAcceleration1 = 0;
+        int selectedStatManiabilite1 = 0;
+        int selectedStatImpact1 = 0;
 
         int selectedItemIndex2 = 0;
-        int selectedStatVitesse2;
-        int selectedStatAcceleration2;
-        int selectedStatManiabilite2;
-        int selectedStatGenerateurDePetrole2;
-        int selectedStatSuspension2;
-        int selectedStatImpact2;
+        int selectedStatVitesse2 = 0;
+        int selectedStatAcceleration2 = 0;
+        int selectedStatManiabilite2 = 0;
+        int selectedStatImpact2 = 0;
 
         sf::View view_player1;
         sf::View view_player2;
 
         sf::Font font;
         sf::Text compteur;
-        sf::Text aptitude1[6];
+        sf::Text aptitude1[4];
         sf::Text aptitudeVitesse1[20];
         sf::Text aptitudeAcceleration1[20];
         sf::Text aptitudeManiabilite1[20];
-        sf::Text aptitudeGenerationDePetrole1[20];
-        sf::Text aptitudeSuspension1[20];
         sf::Text aptitudeImpact1[20];
         sf::Text barre1[20];
 
-        sf::Text aptitude2[6];
+        sf::Text aptitude2[4];
         sf::Text aptitudeVitesse2[20];
         sf::Text aptitudeAcceleration2[20];
         sf::Text aptitudeManiabilite2[20];
-        sf::Text aptitudeGenerationDePetrole2[20];
-        sf::Text aptitudeSuspension2[20];
         sf::Text aptitudeImpact2[20];
         sf::Text barre2[20];
+
+        sf::Text cash[6];
+        sf::Text description[6];
+        sf::Text pasAssezDargent[1];
 
         sf::Clock horlogeDebutStats;
         int m_time_difference;
