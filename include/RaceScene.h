@@ -31,6 +31,7 @@ class RaceScene : public Scene
         bool terminate_thread;
         GameObject* winner;
         GameObject* destination;
+        void sort_trees();
 };
 
 #endif // RACESCENE_H

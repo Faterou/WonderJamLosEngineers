@@ -16,7 +16,6 @@ using namespace std;
 extern Voiture* player1;
 extern Voiture* player2;
 
-
 StatsScene::StatsScene(GameObject winner, GameObject loser, int time_difference)
 {
     view_player1.setViewport(sf::FloatRect(0, 0, 0.5, 1));
