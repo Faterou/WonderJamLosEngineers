@@ -19,14 +19,12 @@ Map map1;
 
 RaceScene::RaceScene() : map(), chandler(), view_player1(sf::FloatRect(-250,-250,500,500)), view_player2(sf::FloatRect(0,0,500,500)), m_thread(&RaceScene::update,this)
 {
+
     view_player1.setViewport(sf::FloatRect(0, 0, 0.5, 1));
     view_player2.setViewport(sf::FloatRect(0.5, 0, 0.5, 1));
 
 
-    Scene::getGameObjects()->push_back(player1);
-    Scene::getGameObjects()->push_back(player2);
     populate();
-    std::cout << Scene::getGameObjects()->size() << std::endl;
     m_thread.launch();
 }
 
@@ -46,6 +44,7 @@ void RaceScene::inputs(){
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
     {
         player1->moveBackward();
+        view_player1.setCenter(player1->getSprite()->getPosition());
     }
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
     {
@@ -55,6 +54,26 @@ void RaceScene::inputs(){
     {
         player1->rotateLeft();
     }
+
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::W))
+    {
+        player2->moveForward();
+        view_player2.setCenter(player2->getSprite()->getPosition());
+    }
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+    {
+        player2->moveBackward();
+        view_player2.setCenter(player2->getSprite()->getPosition());
+    }
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+    {
+        player2->rotateRight();
+    }
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+    {
+        player2->rotateLeft();
+    }
+
     while(window.pollEvent(event))
     {
         if(event.type == sf::Event::KeyReleased)
@@ -118,6 +137,19 @@ void RaceScene::draw()
 */
 void RaceScene::populate()
 {
+
+    player1->getSprite()->rotate(180);
+    player1->getSprite()->move(rand() % (248*32),rand() % (248*32));
+    view_player1.setCenter(player1->getSprite()->getPosition());
+
+    player2->getSprite()->rotate(180);
+    player2->getSprite()->move(rand() % (248*32),rand() % (248*32));
+    view_player2.setCenter(player2->getSprite()->getPosition());
+
+
+    Scene::getGameObjects()->push_back(player1);
+    Scene::getGameObjects()->push_back(player2);
+
     for(int i = 0; i<TREE_QUANTITY; i++)
     {
         int x = 32 + (rand() % (246*32));
