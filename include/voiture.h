@@ -23,6 +23,7 @@ class Voiture : public GameObject
         float m_machineEssence;
         float m_penetrationZombie;
 
+
         sf::Vector2f getHeading();
 
     public:

@@ -5,10 +5,13 @@
 #include "EndScene.h"
 #include "Scene.h"
 #include "RaceScene.h"
+#include "AideScene.h"
+#include "StatsScene.h"
 #include "voiture.h"
 #include <stdlib.h>
 
-
+extern Voiture* player1;
+extern Voiture* player2;
 
 MenuScene::MenuScene()
 {
@@ -87,17 +90,21 @@ void MenuScene::inputs()
      }
      if(sf::Keyboard::isKeyPressed(sf::Keyboard::Return))
      {
+         Sleep(200);
          switch(selectedItemIndex)
          {
          case 0:        //Attention, ici la prochaine étape serait d'aller à une StatsScene
          {
-            Scene* next_scene= new RaceScene();
+            Scene* next_scene = new StatsScene(*player1, *player2, 10);
             this->changeScene(next_scene);
             break;
          }
          case 1:
-            std::cout << "case 1 \n";
-            break;
+             {
+                Scene* next_scene= new AideScene();
+                this->changeScene(next_scene);
+                break;
+             }
 
          case 2:
             std::cout << "case 2 \n";
@@ -124,7 +131,7 @@ void MenuScene::draw()
 
     if (!texture.loadFromFile("imageMenu.png"))
     {
-        std::cout << "Ca marche pas gros mongole" << std::endl;
+        std::cout << "L'image de fond ne peut être chargé" << std::endl;
     }
 
     sprite.setTexture(texture);

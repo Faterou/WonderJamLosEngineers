@@ -49,6 +49,7 @@
 		<Linker>
 			<Add directory="SFML-2.1/lib" />
 		</Linker>
+		<Unit filename="include/AideScene.h" />
 		<Unit filename="include/CollisionHandler.h" />
 		<Unit filename="include/Destination.h" />
 		<Unit filename="include/EndScene.h" />
@@ -65,6 +66,7 @@
 		<Unit filename="include/Zombie.h" />
 		<Unit filename="include/voiture.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="src/AideScene.cpp" />
 		<Unit filename="src/CollisionHandler.cpp" />
 		<Unit filename="src/Destination.cpp" />
 		<Unit filename="src/EndScene.cpp" />

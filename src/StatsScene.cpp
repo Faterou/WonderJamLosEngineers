@@ -3,6 +3,7 @@
 #include "Destination.h"
 #include "StatsScene.h"
 #include "EndScene.h"
+#include "RaceScene.h"
 #include "voiture.h"
 #include <stdlib.h>
 #include <iostream>
@@ -144,16 +145,28 @@ void StatsScene::inputs()
             }
      }
 
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
+    {
+        window.close();
+    }
+
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Return))
+    {
+        Scene* next_scene = new RaceScene();
+        this->changeScene(next_scene);
+    }
+
     switch(selectedItemIndex)
     {
     case 0:
 
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
         {
-            if (selectedItemIndex  > 0)
+            if (selectedStatVitesse  > 0)
             {
-                selectedStatVitesse--;
                 aptitudeVitesse[selectedStatVitesse].setString("");
+                selectedStatVitesse--;
+
                 Sleep(100);
             }
             else
@@ -162,7 +175,7 @@ void StatsScene::inputs()
 
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
         {
-            if (selectedItemIndex < 19)
+            if (selectedStatVitesse < 19)
             {
                 selectedStatVitesse++;
                 aptitudeVitesse[selectedStatVitesse].setString("+");
@@ -180,8 +193,8 @@ void StatsScene::inputs()
         {
             if (selectedStatAcceleration  > 0)
             {
-                selectedStatAcceleration--;
                 aptitudeAcceleration[selectedStatAcceleration].setString("");
+                selectedStatAcceleration--;
                 Sleep(100);
             }
             else
@@ -205,18 +218,122 @@ void StatsScene::inputs()
         break;
 
     case 2:
+         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+        {
+            if (selectedStatManiabilite  > 0)
+            {
+                aptitudeManiabilite[selectedStatManiabilite].setString("");
+                selectedStatManiabilite--;
+                Sleep(100);
+            }
+            else
+                cout << "wow wow wow el malade calme toi" << endl;
+        }
+
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+        {
+            if (selectedStatManiabilite < 19)
+            {
+                selectedStatManiabilite++;
+                aptitudeManiabilite[selectedStatManiabilite].setString("+");
+                Sleep(100);
+            }
+            else
+            {
+                std::cout << "TU peux pas y aller!!!" << std::endl;
+            }
+        }
 
         break;
 
     case 3:
 
+         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+        {
+            if (selectedStatGenerateurDePetrole  > 0)
+            {
+                aptitudeGenerationDePetrole[selectedStatGenerateurDePetrole].setString("");
+                selectedStatGenerateurDePetrole--;
+                Sleep(100);
+            }
+            else
+                cout << "wow wow wow el malade calme toi" << endl;
+        }
+
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+        {
+            if (selectedStatGenerateurDePetrole < 19)
+            {
+                selectedStatGenerateurDePetrole++;
+                aptitudeGenerationDePetrole[selectedStatGenerateurDePetrole].setString("+");
+                Sleep(100);
+            }
+            else
+            {
+                std::cout << "TU peux pas y aller!!!" << std::endl;
+            }
+        }
+
         break;
 
     case 4:
 
+         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+        {
+            if (selectedStatSuspension  > 0)
+            {
+                aptitudeSuspension[selectedStatSuspension].setString("");
+                selectedStatSuspension--;
+                Sleep(100);
+            }
+            else
+                cout << "wow wow wow el malade calme toi" << endl;
+        }
+
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+        {
+            if (selectedStatSuspension < 19)
+            {
+                selectedStatSuspension++;
+                aptitudeSuspension[selectedStatSuspension].setString("+");
+                Sleep(100);
+            }
+            else
+            {
+                std::cout << "TU peux pas y aller!!!" << std::endl;
+            }
+        }
+
         break;
 
     case 5:
+
+         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+        {
+            if (selectedStatImpact  > 0)
+            {
+                aptitudeImpact[selectedStatImpact].setString("");
+                selectedStatImpact--;
+                Sleep(100);
+            }
+            else
+                cout << "wow wow wow el malade calme toi" << endl;
+        }
+
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+        {
+            if (selectedStatImpact < 19)
+            {
+                selectedStatImpact++;
+                aptitudeImpact[selectedStatImpact].setString("+");
+                Sleep(100);
+
+            }
+            else
+            {
+                std::cout << "TU peux pas y aller!!!" << std::endl;
+            }
+        }
 
         break;
 
