@@ -1,5 +1,6 @@
 
 #include "CollisionHandler.h"
+#include <iostream>
 using namespace std;
 
 CollisionHandler::CollisionHandler()
@@ -13,15 +14,31 @@ bool CollisionHandler::checkAllCollisions()
     {
         if((*it1)->getType() != GameObject::TREE)
         {
-            for(vector<GameObject*>::iterator it2 = it1+1; it2 < current_scene->getGameObjects()->end(); it2++)
+            for(vector<GameObject*>::iterator it2 = current_scene->getGameObjects()->begin(); it2 < current_scene->getGameObjects()->end(); it2++)
             {
-                if(checkCollision(*it1,*it2))
+                if(*it1 != *it2 && checkCollision(*it1,*it2))
                 {
                     (*it1)->onCollision(*it2);
                 }
             }
         }
     }
+}
+
+bool CollisionHandler::checkAllCollisions(GameObject* go, vector<GameObject*>* objects)
+{
+    for(vector<GameObject*>::iterator it1 = objects->begin(); it1 < objects->end(); it1++)
+    {
+
+        if(*it1 != go)
+        {
+            if(checkCollision(*it1,go))
+            {
+                    return true;
+            }
+        }
+    }
+    return false;
 }
 
 bool CollisionHandler::checkCollision(GameObject* object1, GameObject* object2)

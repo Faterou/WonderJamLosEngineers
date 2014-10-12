@@ -7,6 +7,8 @@
 #include <stdlib.h>
 #include <iostream>
 #include <Zombie.h>
+#include <ProbeObject.h>
+
 using namespace std;
 
 #define ZOMBIE_QUANTITY 200
@@ -138,19 +140,6 @@ void RaceScene::draw()
 */
 void RaceScene::populate()
 {
-
-    player1->getSprite()->rotate(180);
-    player1->getSprite()->move(rand() % (248*32),rand() % (248*32));
-    view_player1.setCenter(player1->getSprite()->getPosition());
-
-    player2->getSprite()->rotate(180);
-    player2->getSprite()->move(rand() % (248*32),rand() % (248*32));
-    view_player2.setCenter(player2->getSprite()->getPosition());
-
-
-    Scene::getGameObjects()->push_back(player1);
-    Scene::getGameObjects()->push_back(player2);
-
     for(int i = 0; i<TREE_QUANTITY; i++)
     {
         int x = 32 + (rand() % (246*32));
@@ -160,6 +149,8 @@ void RaceScene::populate()
         s.setPosition(x,y);
         Scene::getGameObjects()->push_back(new Tree(s));
     }
+
+
 
     for(int i = 0; i<248/2; i++)
     {
@@ -173,6 +164,24 @@ void RaceScene::populate()
             Scene::getGameObjects()->push_back(new Tree(s[j]));
         }
     }
+
+    player1->getSprite()->rotate(180);
+    do
+    {
+        player1->getSprite()->move(rand() % (248*32),rand() % (248*32));
+    } while(chandler.checkAllCollisions(player1, Scene::getGameObjects()));
+    view_player1.setCenter(player1->getSprite()->getPosition());
+
+    player2->getSprite()->rotate(180);
+    do
+    {
+        player2->getSprite()->move(rand() % (248*32),rand() % (248*32));
+    } while(chandler.checkAllCollisions(player2, Scene::getGameObjects()));
+    view_player2.setCenter(player2->getSprite()->getPosition());
+
+
+    Scene::getGameObjects()->push_back(player1);
+    Scene::getGameObjects()->push_back(player2);
 
     for(int i=0; i<ZOMBIE_QUANTITY; i++)
     {
@@ -192,10 +201,9 @@ void RaceScene::populate()
             default:
                 z = new Zombie("zombie3.png");
         }
-
         //do
         //{
-            z->getSprite()->setPosition(x,y);
+        z->getSprite()->setPosition(x,y);
         //} while(chandler.checkAllCollisions(z));
         switch(rotation)
         {
