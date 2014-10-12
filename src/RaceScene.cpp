@@ -6,10 +6,12 @@
 #include "voiture.h"
 #include <stdlib.h>
 #include <iostream>
+#include <Zombie.h>
 #include <ProbeObject.h>
+
 using namespace std;
 
-#define ZOMBIE_QUANTITY 100
+#define ZOMBIE_QUANTITY 200
 #define TREE_QUANTITY 500
 
 extern Voiture* player1;
@@ -163,16 +165,6 @@ void RaceScene::populate()
         }
     }
 
-    for(int i=0; i<ZOMBIE_QUANTITY; i++)
-    {
-        // do
-        // pick random (x,y)
-        // while checkCollision not ok
-        // Zombie z = new Zombie()
-        // z.getSprite()->setPosition(x,y)
-        // gameObjects.append(z);
-    }
-
     player1->getSprite()->rotate(180);
     do
     {
@@ -191,7 +183,44 @@ void RaceScene::populate()
     Scene::getGameObjects()->push_back(player1);
     Scene::getGameObjects()->push_back(player2);
 
-
+    for(int i=0; i<ZOMBIE_QUANTITY; i++)
+    {
+        int x;
+        int y;
+        int rotation = rand() % 4;
+        int zombie_type = rand() % 3;
+        Zombie* z;
+        switch(zombie_type)
+        {
+            case 0:
+                z = new Zombie("zombie1.png");
+                break;
+            case 1:
+                z = new Zombie("zombie2.png");
+                break;
+            default:
+                z = new Zombie("zombie3.png");
+        }
+        do
+        {
+            x = rand() % 248*32;
+            y = rand() % 248*32;
+            z->getSprite()->setPosition(x,y);
+        } while(chandler.checkAllCollisions(z,Scene::getGameObjects()));
+        switch(rotation)
+        {
+            case 0:
+                z->getSprite()->setRotation(90);
+                break;
+            case 1:
+                z->getSprite()->setRotation(180);
+                break;
+            case 2:
+                z->getSprite()->setRotation(270);
+                break;
+        }
+        Scene::getGameObjects()->push_back(z);
+    }
 }
 
 void RaceScene::end_race(GameObject* winner, GameObject* loser, int time_difference)

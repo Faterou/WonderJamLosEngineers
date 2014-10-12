@@ -3,6 +3,7 @@
 
 #include <SFML/Graphics.hpp>
 #include <GameObject.h>
+#include "TextureManager.h"
 
 class Zombie: public GameObject
 {
@@ -10,9 +11,8 @@ class Zombie: public GameObject
         void draw();
         sf::Sprite* getSprite();
         void setSprite(sf::Sprite*);
-        sf::Texture* getTexture();
-
         Zombie();
+        Zombie(std::string);
         virtual ~Zombie();
     protected:
     private:
