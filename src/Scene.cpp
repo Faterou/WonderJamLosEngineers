@@ -15,6 +15,7 @@ Scene::~Scene()
 void Scene::process()
 {
     inputs();
+    update();
     draw();
 }
 

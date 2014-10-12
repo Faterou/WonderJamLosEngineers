@@ -18,7 +18,16 @@ bool CollisionHandler::checkAllCollisions()
             {
                 if(*it1 != *it2 && checkCollision(*it1,*it2))
                 {
-                    (*it1)->onCollision(*it2);
+                    if(((*it1)->getType() == GameObject::ZOMBIE && ((Zombie*)(*it1))->getDeath()) || ((*it2)->getType() == GameObject::ZOMBIE && ((Zombie*)(*it2))->getDeath()))
+                    {
+
+                    }
+                    else
+                    {
+                        (*it1)->onCollision(*it2);
+                        (*it2)->onCollision(*it1);
+                    }
+
                 }
             }
         }
