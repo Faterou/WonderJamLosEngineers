@@ -16,8 +16,6 @@ using namespace std;
 extern Voiture* player1;
 extern Voiture* player2;
 
-
-
 extern Voiture* player1;
 extern Voiture* player2;
 
