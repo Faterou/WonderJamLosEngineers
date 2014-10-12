@@ -43,15 +43,20 @@ void RaceScene::inputs(){
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
     {
         action1 = 1;
-        player1->moveForward();
-        view_player1.setCenter(player1->getSprite()->getPosition());
+        if(winner != player1)
+        {
+            player1->moveForward();
+        }
 
     }
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
     {
         action1 = 1;
-        player1->moveBackward();
-        view_player1.setCenter(player1->getSprite()->getPosition());
+        if(winner != player1)
+        {
+            player1->moveBackward();
+        }
+        std::cout << player1->getSprite()->getPosition().x << "," << player1->getSprite()->getPosition().y << std::endl;
     }
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
     {
@@ -67,14 +72,18 @@ void RaceScene::inputs(){
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::W))
     {
         action2 = 1;
-        player2->moveForward();
-        view_player2.setCenter(player2->getSprite()->getPosition());
+        if(winner != player2)
+        {
+            player2->moveForward();
+        }
     }
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::S))
     {
         action2 = 1;
-        player2->moveBackward();
-        view_player2.setCenter(player2->getSprite()->getPosition());
+        if(winner != player2)
+        {
+            player2->moveBackward();
+        }
     }
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::D))
     {
@@ -89,26 +98,11 @@ void RaceScene::inputs(){
     if(!action1)
     {
         player1->idle();
-        view_player1.setCenter(player1->getSprite()->getPosition());
     }
     if(!action2)
     {
         player2->idle();
-        view_player2.setCenter(player2->getSprite()->getPosition());
     }
-//    while(window.pollEvent(event))
-//    {
-//        if(event.type == sf::Event::KeyReleased)
-//        {
-//            switch(event.key.code)
-//            {
-//                case sf::Keyboard::Up:
-//                    cout << "KEY RELEASED!!!!" << endl;
-//                    break;
-//                default:;
-//            }
-//        }
-//    }
 }
 
 void RaceScene::update()
@@ -148,20 +142,47 @@ void RaceScene::draw()
 {
 
     window.clear();
-
-
     window.setView(view_player1);
-    Destination dest;
-    dest.setPosition(1,0);
-    map1.draw();
-    drawObjects();
-    player1->draw();
-
-    //PROBLEME: Player1 est dessiné avant les taches de sang dans la view de player2
-    window.setView(view_player2);
+    view_player1.setCenter(player1->getSprite()->getPosition().x, player1->getSprite()->getPosition().y);
     map1.draw();
     drawObjects();
     player2->draw();
+    player1->draw();
+    if(winner == player1)
+    {
+        view_player1.setCenter(3700,3700);
+
+        sf::CircleShape circle(100);
+        circle.setPosition(destination->getSprite()->getPosition().x -50, destination->getSprite()->getPosition().y -50);
+        circle.setFillColor(sf::Color::Red);
+        window.draw(circle);
+
+        sf::CircleShape circle2(100);
+        circle2.setPosition(player2->getSprite()->getPosition().x - 50, player2->getSprite()->getPosition().y - 50);
+        circle2.setFillColor(sf::Color::Blue);
+        window.draw(circle2);
+    }
+
+    window.setView(view_player2);
+    view_player2.setCenter(player2->getSprite()->getPosition().x, player2->getSprite()->getPosition().y);
+    map1.draw();
+    drawObjects();
+    player1->draw();
+    player2->draw();
+    if(winner == player2)
+    {
+        view_player2.setCenter(3700,3700);
+
+        sf::CircleShape circle(100);
+        circle.setPosition(destination->getSprite()->getPosition().x -50, destination->getSprite()->getPosition().y -50);
+        circle.setFillColor(sf::Color::Red);
+        window.draw(circle);
+
+        sf::CircleShape circle2(100);
+        circle2.setPosition(player1->getSprite()->getPosition().x -50, player1->getSprite()->getPosition().y -50);
+        circle2.setFillColor(sf::Color::Blue);
+        window.draw(circle2);
+    }
 
     window.display();
 }
@@ -173,8 +194,8 @@ void RaceScene::populate()
 {
     for(int i = 0; i<TREE_QUANTITY; i++)
     {
-        int x = 32 + (rand() % (246*32));
-        int y = 32 + (rand() % (246*32));
+        int x = 32 + (rand() % (240*32));
+        int y = 32 + (rand() % (240*32));
 
         sf::Sprite s;
         s.setPosition(x,y);
@@ -183,13 +204,13 @@ void RaceScene::populate()
 
 
 
-    for(int i = 0; i<248/2; i++)
+    for(int i = 0; i<265/2; i++)
     {
         sf::Sprite s[4];
         s[0].setPosition(0,i*60);
-        s[1].setPosition(248*32, i*60);
+        s[1].setPosition(247*32, i*60);
         s[2].setPosition(i*60,0);
-        s[3].setPosition(i*60, 248*32);
+        s[3].setPosition(i*60, 247*32);
         for(int j=0; j<4; j++)
         {
             Scene::getGameObjects()->push_back(new Tree(s[j]));
@@ -199,14 +220,14 @@ void RaceScene::populate()
     player1->getSprite()->rotate(180);
     do
     {
-        player1->getSprite()->move(rand() % (248*32),rand() % (248*32));
+        player1->getSprite()->setPosition(100 + rand() % (240*32),100 + rand() % (240*32));
     } while(chandler.checkAllCollisions(player1, Scene::getGameObjects()));
     view_player1.setCenter(player1->getSprite()->getPosition());
 
     player2->getSprite()->rotate(180);
     do
     {
-        player2->getSprite()->move(rand() % (248*32),rand() % (248*32));
+        player2->getSprite()->setPosition(100 + rand() % (240*32),100 + rand() % (240*32));
     } while(chandler.checkAllCollisions(player2, Scene::getGameObjects()));
     view_player2.setCenter(player2->getSprite()->getPosition());
 
@@ -218,9 +239,10 @@ void RaceScene::populate()
     Destination* dest = new Destination();
     do
     {
-        dest->getSprite()->move(rand() % (248*32),rand() % (248*32));
+        dest->getSprite()->setPosition(100 + rand() % (240*32),100 + rand() % (240*32));
     } while(chandler.checkAllCollisions(player2, Scene::getGameObjects()));
     getGameObjects()->push_back(dest);
+    destination = dest;
     std::cout << dest->getSprite()->getPosition().x << "," << dest->getSprite()->getPosition().y << std::endl;
 
 
@@ -244,8 +266,8 @@ void RaceScene::populate()
         }
         do
         {
-            x = rand() % 248*32;
-            y = rand() % 248*32;
+            x = rand() % 240*32;
+            y = rand() % 240*32;
             z->getSprite()->setPosition(x,y);
         } while(chandler.checkAllCollisions(z,Scene::getGameObjects()));
         switch(rotation)
@@ -283,5 +305,19 @@ void RaceScene::end_race(GameObject* winner, GameObject* loser, int time_differe
     else
     {
         changeScene(new EndScene(*winner, *loser, time_difference));
+    }
+}
+
+void RaceScene::first_player_finished(GameObject* first_player)
+{
+    if(first_player == player1)
+    {
+        view_player1.zoom(20);
+        winner = player1;
+    }
+    else
+    {
+        view_player2.zoom(20);
+        winner = player2;
     }
 }
