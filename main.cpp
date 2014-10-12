@@ -19,8 +19,8 @@ sf::RenderWindow window;
 Voiture* player1 = new Voiture("pickUp.png");
 Voiture* player2 = new Voiture("tank.png");
 
-Scene* current_scene = new StatsScene(*player1, *player2, 10);
-
+//Scene* current_scene = new StatsScene(*player1, *player2, 10);
+Scene* current_scene = new MenuScene();
 
 //Scene* current_scene = new RaceScene();
 
