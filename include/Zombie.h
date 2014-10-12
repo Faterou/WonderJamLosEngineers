@@ -4,6 +4,7 @@
 #include <SFML/Graphics.hpp>
 #include <GameObject.h>
 #include "TextureManager.h"
+#include <SFML/Audio.hpp>
 
 class Zombie: public GameObject
 {

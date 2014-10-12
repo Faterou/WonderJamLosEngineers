@@ -43,6 +43,9 @@ class StatsScene : public Scene
         sf::View view_player1;
         sf::View view_player2;
 
+        sf::Text nombreArgentJoueur1;
+        sf::Text nombreArgentJoueur2;
+
         sf::Font font;
         sf::Text compteur;
         sf::Text aptitude1[4];
@@ -66,9 +69,14 @@ class StatsScene : public Scene
         sf::Clock horlogeDebutStats;
         int m_time_difference;
 
+
+        sf::Sound m_sound;
+        sf::SoundBuffer backgroundBuffer;
+
         GameObject* winner;
         GameObject* loser;
         int delta;
+
 
 
 
