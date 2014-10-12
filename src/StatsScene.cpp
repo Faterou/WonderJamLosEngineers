@@ -153,7 +153,7 @@ StatsScene::StatsScene(GameObject* winner, GameObject* loser, int time_differenc
 
     cash[3].setFont(font);
     cash[3].setColor(sf::Color::White);
-    cash[3].setString("1500$");
+    cash[3].setString("750$");
     cash[3].setCharacterSize(12);
     cash[3].setPosition(sf::Vector2f(0, 195));
 
@@ -270,8 +270,6 @@ void StatsScene::inputs()
             Sleep(100);
 
         }
-        else
-            cout << "wow wow wow el malade calme toi" << endl;
     }
 
 
@@ -284,10 +282,6 @@ void StatsScene::inputs()
             aptitude1[selectedItemIndex1].setColor(sf::Color::Red);
             Sleep(100);
         }
-        else
-            {
-                std::cout << "TU peux pas y aller!!!" << std::endl;
-            }
      }
 
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
@@ -316,8 +310,6 @@ void StatsScene::inputs()
                 player1->setMoney((player1->getMoney()) + 100);
                 Sleep(100);
             }
-            else
-                cout << "wow wow wow el malade calme toi" << endl;
         }
 
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
@@ -332,10 +324,6 @@ void StatsScene::inputs()
                     Sleep(100);
                 }
             }
-            else
-            {
-                std::cout << "TU peux pas y aller!!!" << std::endl;
-            }
         }
 
         break;
@@ -349,8 +337,6 @@ void StatsScene::inputs()
                 player1->setAcceleration_m(--selectedStatAcceleration1);
                 Sleep(100);
             }
-            else
-                cout << "wow wow wow el malade calme toi" << endl;
         }
 
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
@@ -366,10 +352,6 @@ void StatsScene::inputs()
                 Sleep(100);
                 }
             }
-            else
-            {
-                std::cout << "TU peux pas y aller!!!" << std::endl;
-            }
         }
 
         break;
@@ -384,8 +366,6 @@ void StatsScene::inputs()
                 player1->setMoney((player1->getMoney()) + 500);
                 Sleep(100);
             }
-            else
-                cout << "wow wow wow el malade calme toi" << endl;
         }
 
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
@@ -399,10 +379,6 @@ void StatsScene::inputs()
                 player1->setMoney((player1->getMoney()) - 500);
                 Sleep(100);
                 }
-            }
-            else
-            {
-                std::cout << "TU peux pas y aller!!!" << std::endl;
             }
         }
 
@@ -419,8 +395,6 @@ void StatsScene::inputs()
                 player1->setMoney((player1->getMoney()) + 750);
                 Sleep(100);
             }
-            else
-                cout << "wow wow wow el malade calme toi" << endl;
         }
 
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
@@ -436,10 +410,6 @@ void StatsScene::inputs()
                 Sleep(100);
 
             }
-            else
-            {
-                std::cout << "TU peux pas y aller!!!" << std::endl;
-            }
         }
 
         break;
@@ -454,8 +424,6 @@ void StatsScene::inputs()
             aptitude2[selectedItemIndex2].setColor(sf::Color::Red);
             Sleep(100);
         }
-        else
-            cout << "wow wow wow el malade calme toi" << endl;
     }
 
 
@@ -468,10 +436,6 @@ void StatsScene::inputs()
             aptitude2[selectedItemIndex2].setColor(sf::Color::Red);
             Sleep(100);
         }
-        else
-            {
-                std::cout << "TU peux pas y aller!!!" << std::endl;
-            }
      }
 
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
@@ -498,8 +462,6 @@ void StatsScene::inputs()
                 player2->setMoney((player2->getMoney()) + 100);
                 Sleep(100);
             }
-            else
-                cout << "wow wow wow el malade calme toi" << endl;
         }
 
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::D))
@@ -514,10 +476,6 @@ void StatsScene::inputs()
                 Sleep(100);
                 }
             }
-            else
-            {
-                std::cout << "TU peux pas y aller!!!" << std::endl;
-            }
         }
 
         break;
@@ -531,8 +489,6 @@ void StatsScene::inputs()
                 player2->setMoney((player2->getMoney()) + 250);
                 Sleep(100);
             }
-            else
-                cout << "wow wow wow el malade calme toi" << endl;
         }
 
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::D))
@@ -546,10 +502,6 @@ void StatsScene::inputs()
                 player2->setMoney((player2->getMoney()) - 250);
                 Sleep(100);
                 }
-            }
-            else
-            {
-                std::cout << "TU peux pas y aller!!!" << std::endl;
             }
         }
 
@@ -565,8 +517,6 @@ void StatsScene::inputs()
                 player2->setMoney((player2->getMoney()) + 500);
                 Sleep(100);
             }
-            else
-                cout << "wow wow wow el malade calme toi" << endl;
         }
 
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::D))
@@ -580,10 +530,6 @@ void StatsScene::inputs()
                 player2->setMoney((player2->getMoney()) - 500);
                 Sleep(100);
                 }
-            }
-            else
-            {
-                std::cout << "TU peux pas y aller!!!" << std::endl;
             }
         }
 
@@ -600,8 +546,6 @@ void StatsScene::inputs()
                 player2->setMoney((player2->getMoney()) + 750);
                 Sleep(100);
             }
-            else
-                cout << "wow wow wow el malade calme toi" << endl;
         }
 
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::D))
@@ -615,10 +559,6 @@ void StatsScene::inputs()
                 player2->setMoney((player2->getMoney()) - 750);
                 Sleep(100);
                 }
-            }
-            else
-            {
-                std::cout << "TU peux pas y aller!!!" << std::endl;
             }
         }
 

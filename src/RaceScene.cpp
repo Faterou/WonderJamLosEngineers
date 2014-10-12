@@ -499,6 +499,10 @@ void RaceScene::end_race(GameObject* winner, GameObject* loser, int time_differe
         terminate_thread = true;
         round++;
         m_sound.stop();
+        player1->setMoney(player1->getMoney() + (player1->getPetrole() * 15));
+        player1->setPetrole(0);
+        player2->setMoney(player2->getMoney() + (player2->getPetrole() * 15));
+        player2 ->setPetrole(0);
         changeScene(new StatsScene(winner, loser, time_difference));
     }
     else
