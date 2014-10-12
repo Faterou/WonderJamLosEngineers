@@ -52,7 +52,11 @@ MenuScene::~MenuScene()
 }
 
 
-void MenuScene::update(){}
+void MenuScene::update()
+{
+
+
+}
 
 void MenuScene::inputs()
 {
@@ -95,7 +99,7 @@ void MenuScene::inputs()
          {
          case 0:        //Attention, ici la prochaine étape serait d'aller à une StatsScene
          {
-            Scene* next_scene = new StatsScene(*player1, *player2, 10);
+            Scene* next_scene = new StatsScene(*player1, *player2, 20000);
             this->changeScene(next_scene);
             break;
          }

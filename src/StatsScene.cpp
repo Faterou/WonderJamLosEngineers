@@ -6,16 +6,43 @@
 #include "RaceScene.h"
 #include "voiture.h"
 #include <stdlib.h>
-#include <iostream>
+#include "voiture.h"
+#include <iostream>   // std::cout
+#include <string>     // std::string, std::to_string
+#include <sstream>
+
 
 using namespace std;
+extern Voiture* player1;
+extern Voiture* player2;
+
+
+
+extern Voiture* player1;
+extern Voiture* player2;
 
 StatsScene::StatsScene(GameObject winner, GameObject loser, int time_difference)
 {
+    view_player1.setViewport(sf::FloatRect(0, 0, 0.5, 1));
+    view_player2.setViewport(sf::FloatRect(0.5, 0, 0.5, 1));
+
+    horlogeDebutStats.restart();
+    m_time_difference = time_difference;
+
+    std::stringstream ss;
+    ss << m_time_difference;
+    string tempsRestant = ss.str();
+
     if (!font.loadFromFile("arial.ttf"))
     {
         std::cout << "erreur" << std::endl;
     }
+    //string tempsRestemps = (string)m_time_difference;
+    compteur.setFont(font);
+    compteur.setColor(sf::Color::White);
+    compteur.setString("Temps restant : " + tempsRestant);
+    compteur.setCharacterSize(20);
+    compteur.setPosition(sf::Vector2f(200, 25));
 
     aptitude[0].setFont(font);
     aptitude[0].setColor(sf::Color::Red);
@@ -108,7 +135,6 @@ StatsScene::~StatsScene()
 }
 void StatsScene::afficherStats()
 {
-
 }
 
 void StatsScene::inputs()
@@ -164,7 +190,7 @@ void StatsScene::inputs()
             if (selectedStatVitesse  > 0)
             {
                 aptitudeVitesse[selectedStatVitesse].setString("");
-                selectedStatVitesse--;
+                player1->setVitesseMax_m(--selectedStatVitesse);
 
                 Sleep(100);
             }
@@ -176,7 +202,7 @@ void StatsScene::inputs()
         {
             if (selectedStatVitesse < 19)
             {
-                selectedStatVitesse++;
+                player1->setVitesseMax_m(++selectedStatVitesse);
                 aptitudeVitesse[selectedStatVitesse].setString("+");
                 Sleep(100);
             }
@@ -193,7 +219,7 @@ void StatsScene::inputs()
             if (selectedStatAcceleration  > 0)
             {
                 aptitudeAcceleration[selectedStatAcceleration].setString("");
-                selectedStatAcceleration--;
+                player1->setAcceleration_m(--selectedStatAcceleration);
                 Sleep(100);
             }
             else
@@ -204,7 +230,7 @@ void StatsScene::inputs()
         {
             if (selectedStatAcceleration < 19)
             {
-                selectedStatAcceleration++;
+                player1->setAcceleration_m(++selectedStatAcceleration);
                 aptitudeAcceleration[selectedStatAcceleration].setString("+");
                 Sleep(100);
             }
@@ -222,7 +248,7 @@ void StatsScene::inputs()
             if (selectedStatManiabilite  > 0)
             {
                 aptitudeManiabilite[selectedStatManiabilite].setString("");
-                selectedStatManiabilite--;
+                player1->setManiabilite_m(--selectedStatManiabilite);
                 Sleep(100);
             }
             else
@@ -233,7 +259,8 @@ void StatsScene::inputs()
         {
             if (selectedStatManiabilite < 19)
             {
-                selectedStatManiabilite++;
+                cout << player1->getManiabilite_m();
+                player1->setManiabilite_m(++selectedStatManiabilite);
                 aptitudeManiabilite[selectedStatManiabilite].setString("+");
                 Sleep(100);
             }
@@ -252,7 +279,7 @@ void StatsScene::inputs()
             if (selectedStatGenerateurDePetrole  > 0)
             {
                 aptitudeGenerationDePetrole[selectedStatGenerateurDePetrole].setString("");
-                selectedStatGenerateurDePetrole--;
+                player1->setMachineEssence_m(--selectedStatGenerateurDePetrole);
                 Sleep(100);
             }
             else
@@ -263,7 +290,7 @@ void StatsScene::inputs()
         {
             if (selectedStatGenerateurDePetrole < 19)
             {
-                selectedStatGenerateurDePetrole++;
+                player1->setMachineEssence_m(++selectedStatGenerateurDePetrole);
                 aptitudeGenerationDePetrole[selectedStatGenerateurDePetrole].setString("+");
                 Sleep(100);
             }
@@ -282,7 +309,7 @@ void StatsScene::inputs()
             if (selectedStatSuspension  > 0)
             {
                 aptitudeSuspension[selectedStatSuspension].setString("");
-                selectedStatSuspension--;
+                player1->setSuspension_m(--selectedStatSuspension);
                 Sleep(100);
             }
             else
@@ -293,7 +320,7 @@ void StatsScene::inputs()
         {
             if (selectedStatSuspension < 19)
             {
-                selectedStatSuspension++;
+                player1->setSuspension_m(++selectedStatSuspension);
                 aptitudeSuspension[selectedStatSuspension].setString("+");
                 Sleep(100);
             }
@@ -312,7 +339,7 @@ void StatsScene::inputs()
             if (selectedStatImpact  > 0)
             {
                 aptitudeImpact[selectedStatImpact].setString("");
-                selectedStatImpact--;
+                player1->setPenetrationZombie_m(--selectedStatImpact);
                 Sleep(100);
             }
             else
@@ -323,7 +350,7 @@ void StatsScene::inputs()
         {
             if (selectedStatImpact < 19)
             {
-                selectedStatImpact++;
+                player1->setPenetrationZombie_m(++selectedStatImpact);
                 aptitudeImpact[selectedStatImpact].setString("+");
                 Sleep(100);
 
@@ -335,15 +362,38 @@ void StatsScene::inputs()
         }
 
         break;
+    }
+          cout << player1->getPenetrationZombie_m() << endl;
+}
+
+void StatsScene::update()
+{
+    selectedStatVitesse = ((int)player1->getVitesseMax_m());
+    selectedStatAcceleration = ((int)player1->getAcceleration_m());
+    selectedStatManiabilite = ((int)player1->getManiabilite_m());
+    selectedStatGenerateurDePetrole = ((int)player1->getMachineEssence_m());
+    selectedStatSuspension = ((int)player1->getSuspension_m());
+    selectedStatImpact = ((int)player1->getPenetrationZombie_m());
 
 
+    int tempsActuel = horlogeDebutStats.getElapsedTime().asMilliseconds();
+    int monTempsRestant = (m_time_difference - tempsActuel) / 1000;
+
+    std::stringstream ss;
+    ss << monTempsRestant;
+    string tempsRestant = ss.str();
+
+    compteur.setString("Temps restant : " + tempsRestant);
+
+    if(tempsActuel >= m_time_difference)
+    {
+        Scene* next_scene = new RaceScene();
+        this->changeScene(next_scene);
     }
 
-
-
-
+    std::cout << "temps actuel: " << tempsActuel << endl;
 }
-void StatsScene::update(){}
+
 void StatsScene::draw()
 {
      window.clear();
@@ -357,6 +407,9 @@ void StatsScene::draw()
     }
 
     fleche.setTexture(flecheQuiPointe);
+
+    window.draw(compteur);
+
 
    for(int i(0); i < 20; i++)
    {
