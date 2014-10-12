@@ -1,1 +1,1 @@
-.\bin\Debug\SFML_base.exe
+.\bin\Release\SFML_base.exe
