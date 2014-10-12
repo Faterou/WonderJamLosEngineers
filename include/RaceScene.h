@@ -33,6 +33,9 @@ class RaceScene : public Scene
         GameObject* destination;
         void sort_trees();
         sf::Font font;
+
+        sf::Sound m_sound;
+        sf::SoundBuffer backgroundBuffer;
 };
 
 #endif // RACESCENE_H
