@@ -21,7 +21,8 @@ extern Voiture* player2;
 int RaceScene::round = 0;
 Map map1;
 
-RaceScene::RaceScene() : map(), chandler(), view_player1(sf::FloatRect(-250,-250,500,500)), view_player2(sf::FloatRect(0,0,500,500)), m_thread(&RaceScene::checkCollisions,this), terminate_thread(false)
+RaceScene::RaceScene(GameObject* last_winner, GameObject* last_loser, int delta) : map(), chandler(), view_player1(sf::FloatRect(-250,-250,500,500)), view_player2(sf::FloatRect(0,0,500,500)), m_thread(&RaceScene::checkCollisions,this), terminate_thread(false),
+    last_winner(last_winner), last_loser(last_loser), delta(delta)
 {
 
     view_player1.setViewport(sf::FloatRect(0, 0, 0.5, 1));
@@ -34,6 +35,7 @@ RaceScene::RaceScene() : map(), chandler(), view_player1(sf::FloatRect(-250,-250
         std::cout << "erreur" << std::endl;
     }
     m_thread.launch();
+    clock.restart();
 }
 
 RaceScene::~RaceScene()
@@ -48,7 +50,7 @@ void RaceScene::inputs(){
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
     {
         action1 = 1;
-        if(winner != player1)
+        if(winner != player1 && (last_loser != player1 || clock.getElapsedTime().asSeconds() > delta))
         {
             player1->moveForward();
         }
@@ -57,7 +59,7 @@ void RaceScene::inputs(){
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
     {
         action1 = 1;
-        if(winner != player1)
+        if(winner != player1 && (last_loser != player1 || clock.getElapsedTime().asSeconds() > delta))
         {
             player1->moveBackward();
         }
@@ -66,18 +68,24 @@ void RaceScene::inputs(){
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
     {
         action1 = 1;
-        player1->rotateRight();
+        if(winner != player1 && (last_loser != player1 || clock.getElapsedTime().asSeconds() > delta))
+        {
+            player1->rotateRight();
+        }
     }
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
     {
         action1 = 1;
-        player1->rotateLeft();
+        if(winner != player1 && (last_loser != player1 || clock.getElapsedTime().asSeconds() > delta))
+        {
+            player1->rotateLeft();
+        }
     }
 
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::W))
     {
         action2 = 1;
-        if(winner != player2)
+        if(winner != player2 && (last_loser != player2 || clock.getElapsedTime().asSeconds() > delta))
         {
             player2->moveForward();
         }
@@ -85,7 +93,7 @@ void RaceScene::inputs(){
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::S))
     {
         action2 = 1;
-        if(winner != player2)
+        if(winner != player2 && (last_loser != player2 || clock.getElapsedTime().asSeconds() > delta))
         {
             player2->moveBackward();
         }
@@ -93,12 +101,18 @@ void RaceScene::inputs(){
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::D))
     {
         action2 = 1;
-        player2->rotateRight();
+        if(winner != player2 && (last_loser != player2 || clock.getElapsedTime().asSeconds() > delta))
+        {
+            player2->rotateRight();
+        }
     }
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::A))
     {
         action2 = 1;
-        player2->rotateLeft();
+        if(winner != player2 && (last_loser != player2 || clock.getElapsedTime().asSeconds() > delta))
+        {
+            player2->rotateLeft();
+        }
     }
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
     {
@@ -175,7 +189,7 @@ void RaceScene::draw()
 
     sf::Text petrol1;
     ostringstream oss;
-    oss << "Petrol: " << player1->getPetrole();
+    oss << "Pétrole: " << player1->getPetrole();
     petrol1.setFont(font);
     petrol1.setColor(sf::Color::White);
     petrol1.setString(oss.str());
@@ -206,7 +220,7 @@ void RaceScene::draw()
     }
     sf::Text petrol2;
     ostringstream oss2;
-    oss2 << "Petrol: " << player2->getPetrole();
+    oss2 << "Pétrole: " << player2->getPetrole();
     petrol2.setFont(font);
     petrol2.setColor(sf::Color::White);
     petrol2.setString(oss2.str());
@@ -397,7 +411,7 @@ void RaceScene::end_race(GameObject* winner, GameObject* loser, int time_differe
     {
         terminate_thread = true;
         round++;
-        changeScene(new StatsScene(*winner, *loser, time_difference));
+        changeScene(new StatsScene(winner, loser, time_difference));
     }
     else
     {

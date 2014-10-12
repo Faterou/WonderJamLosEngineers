@@ -10,7 +10,7 @@
 class RaceScene : public Scene
 {
     public:
-        RaceScene();
+        RaceScene(GameObject* last_winner, GameObject* last_loser, int delta);
         virtual void inputs();
         virtual void update();
         virtual void draw();
@@ -33,6 +33,10 @@ class RaceScene : public Scene
         GameObject* destination;
         void sort_trees();
         sf::Font font;
+        GameObject* last_winner;
+        GameObject* last_loser;
+        int delta;
+        sf::Clock clock;
 };
 
 #endif // RACESCENE_H
