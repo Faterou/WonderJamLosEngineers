@@ -5,6 +5,7 @@
 #include "EndScene.h"
 #include "Scene.h"
 #include "RaceScene.h"
+#include "AideScene.h"
 #include "voiture.h"
 #include <stdlib.h>
 
@@ -96,8 +97,11 @@ void MenuScene::inputs()
             break;
          }
          case 1:
-            std::cout << "case 1 \n";
-            break;
+             {
+                Scene* next_scene= new AideScene();
+                this->changeScene(next_scene);
+                break;
+             }
 
          case 2:
             std::cout << "case 2 \n";
@@ -124,7 +128,7 @@ void MenuScene::draw()
 
     if (!texture.loadFromFile("imageMenu.png"))
     {
-        std::cout << "Ca marche pas gros mongole" << std::endl;
+        std::cout << "L'image de fond ne peut être chargé" << std::endl;
     }
 
     sprite.setTexture(texture);

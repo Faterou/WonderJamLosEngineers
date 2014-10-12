@@ -86,6 +86,11 @@ void RaceScene::inputs(){
         action2 = 1;
         player2->rotateLeft();
     }
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
+    {
+        window.close();
+    }
+
     if(!action1)
     {
         player1->idle();
