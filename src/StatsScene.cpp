@@ -360,6 +360,7 @@ void StatsScene::inputs()
         break;
     }
           cout << player1->getPenetrationZombie_m() << endl;
+          player1->miseAJourVoiture();
 }
 
 void StatsScene::update()

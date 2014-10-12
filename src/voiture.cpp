@@ -50,6 +50,11 @@ Voiture::~Voiture()
 void Voiture::miseAJourVoiture()
 {
     m_vitesse_max = (m_vitesse_max_m * 10);
+    m_acceleration = (m_acceleration_m  / 10 );
+    m_maniabilite = (m_maniabilite_m);
+    m_machineEssence = (m_machineEssence_m);
+    m_suspension = (m_suspension_m);
+    m_penetrationZombie = (m_penetrationZombie_m + 1);
 }
 
 sf::Vector2f Voiture::getHeading()
