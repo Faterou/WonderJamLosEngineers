@@ -25,6 +25,7 @@ class StatsScene : public Scene
         void afficherStats();
 
 
+
     protected:
     private:
         int selectedItemIndex1 = 0;
@@ -65,6 +66,10 @@ class StatsScene : public Scene
         sf::Text aptitudeSuspension2[20];
         sf::Text aptitudeImpact2[20];
         sf::Text barre2[20];
+
+        sf::Text cash[6];
+        sf::Text description[6];
+        sf::Text pasAssezDargent[1];
 
         sf::Clock horlogeDebutStats;
         int m_time_difference;
