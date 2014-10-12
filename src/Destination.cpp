@@ -11,6 +11,7 @@ Destination::Destination()
 {
     GameObject::setTexture(TextureManager::getInstance().getTexture("destination.png"));
     GameObject::setType(DESTINATION);
+    GameObject::getSprite()->setScale(2.0,2.0);
 }
 
 Destination::~Destination()
