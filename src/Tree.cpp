@@ -1,13 +1,18 @@
 #include "Tree.h"
 
+#include <iostream>
+#include <TextureManager.h>
+
 Tree::Tree()
 {
-    //ctor
+
 }
 
 Tree::Tree(sf::Sprite monSprite)
 {
     GameObject::setSprite(monSprite);
+
+    GameObject::setTexture(TextureManager::getInstance().getTexture("Tree1.png"));
 }
 
 Tree::~Tree()

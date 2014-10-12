@@ -31,10 +31,6 @@ sf::Texture* Zombie::getTexture()
     return GameObject::getTexture();
 }
 
-void Zombie::setTexture(sf::Texture* maTexture)
-{
-    GameObject::setTexture(*maTexture);
-}
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////

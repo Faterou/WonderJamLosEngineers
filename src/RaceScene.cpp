@@ -5,8 +5,11 @@
 #include "EndScene.h"
 #include "voiture.h"
 #include <stdlib.h>
+#include <iostream>
+using namespace std;
 
 #define ZOMBIE_QUANTITY 100
+#define TREE_QUANTITY 500
 
 extern Voiture* player1;
 extern Voiture* player2;
@@ -14,10 +17,16 @@ extern Voiture* player2;
 int RaceScene::round = 0;
 Map map1;
 
-RaceScene::RaceScene() : map()
+RaceScene::RaceScene() : map(), chandler(), view_player1(sf::FloatRect(-250,-250,500,500)), view_player2(sf::FloatRect(0,0,500,500))
 {
+    view_player1.setViewport(sf::FloatRect(0, 0, 0.5, 1));
+    view_player2.setViewport(sf::FloatRect(0.5, 0, 0.5, 1));
+
+
     Scene::getGameObjects()->push_back(player1);
     Scene::getGameObjects()->push_back(player2);
+    populate();
+    std::cout << Scene::getGameObjects()->size() << std::endl;
 }
 
 RaceScene::~RaceScene()
@@ -26,32 +35,76 @@ RaceScene::~RaceScene()
 }
 
 void RaceScene::inputs(){
+    sf::Event event;
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
     {
+        player1->moveForward();
+        view_player1.setCenter(player1->getSprite()->getPosition());
 
     }
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+    {
+        player1->moveBackward();
+    }
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+    {
+        player1->rotateRight();
+    }
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+    {
+        player1->rotateLeft();
+    }
+    while(window.pollEvent(event))
+    {
+        if(event.type == sf::Event::KeyReleased)
+        {
+            switch(event.key.code)
+            {
+                case sf::Keyboard::Up:
+                    cout << "KEY RELEASED!!!!" << endl;
+                    break;
+                default:;
+            }
+        }
+    }
 }
-void RaceScene::update(){}
+void RaceScene::update(){
+    //chandler.checkAllCollisions();
+}
+
+void RaceScene::drawObjects()
+{
+    for(int i=0; i<Scene::getGameObjects()->size(); i++)
+    {
+        if((*Scene::getGameObjects())[i] != NULL)
+        {
+            (*Scene::getGameObjects())[i]->draw();
+        }
+        else
+        {
+            std::cout << "Problem in RaceScene::drawObjects  -> null object" << std::endl;
+        }
+    }
+}
+
 void RaceScene::draw()
 {
 
     window.clear();
 
-    sf::View view_player1(sf::FloatRect(0,0,500,500)); // TODO: Modify to take into account the player position
-    view_player1.setViewport(sf::FloatRect(0, 0, 0.5, 1));
+
     window.setView(view_player1);
     Destination dest;
     dest.setPosition(1,0);
     map1.draw();
     dest.draw();
-    player1->getSprite()->setPosition(0,0);
-    player1->draw();
+    drawObjects();
 
-    sf::View view_player2(sf::FloatRect(0,0,500,500)); // TODO: Modify to take into account the player position
-    view_player2.setViewport(sf::FloatRect(0.5, 0, 0.5, 1));
+
     window.setView(view_player2);
     map1.draw();
     dest.draw();
+    drawObjects();
 
     window.display();
 }
@@ -61,6 +114,29 @@ void RaceScene::draw()
 */
 void RaceScene::populate()
 {
+    for(int i = 0; i<TREE_QUANTITY; i++)
+    {
+        int x = 32 + (rand() % (246*32));
+        int y = 32 + (rand() % (246*32));
+
+        sf::Sprite s;
+        s.setPosition(x,y);
+        Scene::getGameObjects()->push_back(new Tree(s));
+    }
+
+    for(int i = 0; i<248/2; i++)
+    {
+        sf::Sprite s[4];
+        s[0].setPosition(0,i*60);
+        s[1].setPosition(248*32, i*60);
+        s[2].setPosition(i*60,0);
+        s[3].setPosition(i*60, 248*32);
+        for(int j=0; j<4; j++)
+        {
+            Scene::getGameObjects()->push_back(new Tree(s[j]));
+        }
+    }
+
     for(int i=0; i<ZOMBIE_QUANTITY; i++)
     {
         // do
@@ -70,6 +146,8 @@ void RaceScene::populate()
         // z.getSprite()->setPosition(x,y)
         // gameObjects.append(z);
     }
+
+
 }
 
 void RaceScene::end_race(GameObject* winner, GameObject* loser, int time_difference)

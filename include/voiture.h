@@ -51,6 +51,8 @@ class Voiture : public GameObject
         void moveBackward();
         void rotateLeft();
         void rotateRight();
+
+        virtual void onCollision(GameObject*);
 };
 
 #endif // VOITURE_H

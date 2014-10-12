@@ -16,13 +16,13 @@ class GameObject
         sf::Sprite* getSprite() {return &sprite;};
         void setType(Type type) {this->type = type;};
         Type getType() {return type;};
-        void setTexture(sf::Texture texture) {this->texture = texture; sprite.setTexture(this->texture);}
-        sf::Texture* getTexture() {return &this->texture;}
+        void setTexture(sf::Texture* texture) {this->texture = texture; sprite.setTexture(*this->texture);}
+        sf::Texture* getTexture() {return this->texture;}
         virtual ~GameObject();
     protected:
     private:
         sf::Sprite sprite;
-        sf::Texture texture;
+        sf::Texture* texture;
         Type type;
 };
 

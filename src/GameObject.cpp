@@ -1,4 +1,5 @@
 #include "GameObject.h"
+#include <iostream>
 using namespace std;
 extern sf::RenderWindow window;
 
@@ -11,7 +12,9 @@ GameObject::GameObject(sf::Sprite sprite, Type type) : sprite(sprite), type(type
 
 }
 
-void GameObject::onCollision(GameObject*) {}
+void GameObject::onCollision(GameObject* object) {
+
+}
 
 void GameObject::draw()
 {

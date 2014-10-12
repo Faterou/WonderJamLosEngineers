@@ -23,9 +23,10 @@ class Map
     public:
         Map();
         virtual ~Map();
-        void draw();
-        TypeTerrain getTileStatus(float x, float y);
 
+        void draw();
+        std::vector<GameObject*>* getTreeVector() {return &treeVector;}
+        TypeTerrain getTileStatus(float x, float y);
     private:
         sf::Texture tileTexture;
         sf::Sprite tiles;
