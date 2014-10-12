@@ -32,6 +32,7 @@ class RaceScene : public Scene
         GameObject* winner;
         GameObject* destination;
         void sort_trees();
+        sf::Font font;
 };
 
 #endif // RACESCENE_H

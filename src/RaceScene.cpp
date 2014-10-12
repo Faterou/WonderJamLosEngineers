@@ -8,6 +8,7 @@
 #include <iostream>
 #include <Zombie.h>
 #include <ProbeObject.h>
+#include <sstream>
 
 using namespace std;
 
@@ -28,6 +29,10 @@ RaceScene::RaceScene() : map(), chandler(), view_player1(sf::FloatRect(-250,-250
 
 
     populate();
+    if (!font.loadFromFile("arial.ttf"))
+    {
+        std::cout << "erreur" << std::endl;
+    }
     m_thread.launch();
 }
 
@@ -168,6 +173,16 @@ void RaceScene::draw()
         window.draw(circle2);
     }
 
+    sf::Text petrol1;
+    ostringstream oss;
+    oss << "Petrol: " << player1->getPetrole();
+    petrol1.setFont(font);
+    petrol1.setColor(sf::Color::White);
+    petrol1.setString(oss.str());
+    petrol1.setCharacterSize(20);
+    petrol1.setPosition(sf::Vector2f(player1->getSprite()->getPosition().x - 250, player1->getSprite()->getPosition().y -250));
+    window.draw(petrol1);
+
     window.setView(view_player2);
     view_player2.setCenter(player2->getSprite()->getPosition().x, player2->getSprite()->getPosition().y);
     map1.draw();
@@ -188,6 +203,15 @@ void RaceScene::draw()
         circle2.setFillColor(sf::Color::Blue);
         window.draw(circle2);
     }
+    sf::Text petrol2;
+    ostringstream oss2;
+    oss2 << "Petrol: " << player2->getPetrole();
+    petrol2.setFont(font);
+    petrol2.setColor(sf::Color::White);
+    petrol2.setString(oss2.str());
+    petrol2.setCharacterSize(20);
+    petrol2.setPosition(sf::Vector2f(player2->getSprite()->getPosition().x - 250, player2->getSprite()->getPosition().y -250));
+    window.draw(petrol2);
 
     window.display();
 }
