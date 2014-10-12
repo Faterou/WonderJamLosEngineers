@@ -5,12 +5,12 @@
 #include "Map.h"
 #include "CollisionHandler.h"
 
-#define MAX_ROUND 5
+#define MAX_ROUND 2
 
 class RaceScene : public Scene
 {
     public:
-        RaceScene();
+        RaceScene(GameObject* last_winner, GameObject* last_loser, int delta);
         virtual void inputs();
         virtual void update();
         virtual void draw();
@@ -34,8 +34,14 @@ class RaceScene : public Scene
         void sort_trees();
         sf::Font font;
 
+
         sf::Sound m_sound;
         sf::SoundBuffer backgroundBuffer;
+        GameObject* last_winner;
+        GameObject* last_loser;
+        int delta;
+        sf::Clock clock;
+
 };
 
 #endif // RACESCENE_H
