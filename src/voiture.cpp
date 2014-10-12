@@ -220,8 +220,16 @@ void Voiture::onCollision(GameObject* object)
 {
     if(object->getType() == GameObject::TREE || object->getType() == GameObject::CAR)
     {
+        bool negatif = m_vitesse_courante < 0;
         m_vitesse_courante = 0;
-        GameObject::getSprite()->move(m_vitesse_courante*getHeading());
+        if(negatif)
+        {
+            GameObject::getSprite()->move(-2.0f*getHeading());
+        }
+        else
+        {
+            GameObject::getSprite()->move(2.0f*getHeading());
+        }
     }
     else if (object->getType() == GameObject::ZOMBIE)
     {
