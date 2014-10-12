@@ -20,7 +20,7 @@ Voiture::Voiture(std::string nomPhoto) : GameObject(sf::Sprite(),CAR)
     m_machineEssence_m = 1;
     m_penetrationZombie_m = 0;
 
-    m_vitesse_courante = 0.01;
+    m_vitesse_courante = 0.0;
 
     petrole = 0;
     money =0;
@@ -36,8 +36,8 @@ Voiture::~Voiture()
 
 void Voiture::miseAJourVoiture()
 {
-    m_vitesse_max = (m_vitesse_max_m * 4);
-    m_acceleration = (m_acceleration_m  / 4 );
+    m_vitesse_max = (m_vitesse_max_m * 5);
+    m_acceleration = (m_acceleration_m  / 20 );
     m_maniabilite = (m_maniabilite_m * 2 );
     m_machineEssence = (m_machineEssence_m);
     m_suspension = (m_suspension_m);
@@ -184,12 +184,18 @@ void Voiture::moveBackward()
 
 void Voiture::rotateLeft()
 {
-    GameObject::getSprite()->rotate(-m_maniabilite);
+    if(m_vitesse_courante >= 0)
+        GameObject::getSprite()->rotate(-m_maniabilite);
+    else
+        GameObject::getSprite()->rotate(m_maniabilite);
 }
 
 void Voiture::rotateRight()
 {
-    GameObject::getSprite()->rotate(m_maniabilite);
+    if(m_vitesse_courante >= 0)
+        GameObject::getSprite()->rotate(m_maniabilite);
+    else
+        GameObject::getSprite()->rotate(-m_maniabilite);
 }
 
 void Voiture::move()
@@ -202,10 +208,14 @@ void Voiture::idle()
     if(m_vitesse_courante > 0)
     {
         m_vitesse_courante = m_vitesse_courante - m_acceleration * 2;
+        if(m_vitesse_courante < 0)
+            m_vitesse_courante = 0;
     }
     else if(m_vitesse_courante < 0)
     {
         m_vitesse_courante = m_vitesse_courante + m_acceleration * 2;
+        if(m_vitesse_courante > 0)
+            m_vitesse_courante = 0;
     }
 }
 void Voiture::onCollision(GameObject* object)
