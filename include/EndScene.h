@@ -16,6 +16,9 @@ class EndScene : public Scene
     protected:
     private:
         std::string results;
+
+        sf::Sound m_sound;
+        sf::SoundBuffer backgroundBuffer;
 };
 
 #endif // ENDSCENE_H

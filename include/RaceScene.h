@@ -33,10 +33,15 @@ class RaceScene : public Scene
         GameObject* destination;
         void sort_trees();
         sf::Font font;
+
+
+        sf::Sound m_sound;
+        sf::SoundBuffer backgroundBuffer;
         GameObject* last_winner;
         GameObject* last_loser;
         int delta;
         sf::Clock clock;
+
 };
 
 #endif // RACESCENE_H

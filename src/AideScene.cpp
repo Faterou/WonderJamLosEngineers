@@ -5,7 +5,17 @@ extern sf::RenderWindow window;
 
 AideScene::AideScene()
 {
-    //ctor
+
+    if (!backgroundBuffer.loadFromFile("menuBackground.wav"))
+    {
+       std::cout << "impossible de loader la musique background \n";
+    }
+
+    m_sound.setBuffer(backgroundBuffer);
+
+    m_sound.setLoop(true);
+
+    m_sound.play();
 }
 
 AideScene::~AideScene()
@@ -17,6 +27,7 @@ void AideScene::inputs()
 {
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
     {
+        m_sound.stop();
         Scene* next_scene = new MenuScene();
         this->changeScene(next_scene);
     }

@@ -10,6 +10,18 @@ extern Voiture* player1;
 
 EndScene::EndScene(GameObject* winner, GameObject* loser, int time_difference)
 {
+
+    if (!backgroundBuffer.loadFromFile("StatBackground0.wav"))
+    {
+       std::cout << "impossible de loader la musique background \n";
+    }
+
+    m_sound.setBuffer(backgroundBuffer);
+
+    m_sound.setLoop(true);
+
+    m_sound.play();
+
     std::ostringstream oss;
     int player_number;
     if(winner == player1) player_number = 1;
