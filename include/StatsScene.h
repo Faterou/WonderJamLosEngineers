@@ -43,6 +43,9 @@ class StatsScene : public Scene
         sf::View view_player1;
         sf::View view_player2;
 
+        sf::Text nombreArgentJoueur1;
+        sf::Text nombreArgentJoueur2;
+
         sf::Font font;
         sf::Text compteur;
         sf::Text aptitude1[4];

@@ -42,6 +42,31 @@ StatsScene::StatsScene(GameObject winner, GameObject loser, int time_difference)
     compteur.setCharacterSize(20);
     compteur.setPosition(sf::Vector2f(200, 25));
 
+
+
+    std::stringstream argentStream1;
+    argentStream1 << player1->getMoney();
+    string montantRestant1 = argentStream1.str();
+
+    nombreArgentJoueur1.setFont(font);
+    nombreArgentJoueur1.setColor(sf::Color::Red);
+    nombreArgentJoueur1.setString("Montant restant : " + montantRestant1);
+    nombreArgentJoueur1.setCharacterSize(20);
+    nombreArgentJoueur1.setPosition(sf::Vector2f(200, 400));
+
+    std::stringstream argentStream2;
+    argentStream2 << player2->getMoney();
+    string montantRestant2 = argentStream2.str();
+
+    nombreArgentJoueur2.setFont(font);
+    nombreArgentJoueur2.setColor(sf::Color::Red);
+    nombreArgentJoueur2.setString("Montant restant : " + montantRestant1);
+    nombreArgentJoueur2.setCharacterSize(20);
+    nombreArgentJoueur2.setPosition(sf::Vector2f(200, 400));
+
+
+
+
     pasAssezDargent[0].setFont(font);
     pasAssezDargent[0].setColor(sf::Color::Red);
     pasAssezDargent[0].setString("Manque de fond");
@@ -272,9 +297,10 @@ void StatsScene::inputs()
         {
             if (selectedStatVitesse1  > 0)
             {
+
                 aptitudeVitesse1[selectedStatVitesse1].setString("");
                 player1->setVitesseMax_m(--selectedStatVitesse1);
-
+                player1->setMoney((player1->getMoney()) + 100);
                 Sleep(100);
             }
             else
@@ -288,6 +314,7 @@ void StatsScene::inputs()
                   if (player1->getMoney() >= 100)
                 {
                     player1->setVitesseMax_m(++selectedStatVitesse1);
+                    player1->setMoney((player1->getMoney()) - 100);
                     aptitudeVitesse1[selectedStatVitesse1].setString("+");
                     Sleep(100);
                 }
@@ -305,6 +332,7 @@ void StatsScene::inputs()
             if (selectedStatAcceleration1  > 0)
             {
                 aptitudeAcceleration1[selectedStatAcceleration1].setString("");
+                player1->setMoney((player1->getMoney()) + 250);
                 player1->setAcceleration_m(--selectedStatAcceleration1);
                 Sleep(100);
             }
@@ -316,9 +344,14 @@ void StatsScene::inputs()
         {
             if (selectedStatAcceleration1 < 19)
             {
+                if (player1->getMoney() >= 250)
+                {
+
                 player1->setAcceleration_m(++selectedStatAcceleration1);
                 aptitudeAcceleration1[selectedStatAcceleration1].setString("+");
+                player1->setMoney((player1->getMoney()) - 250);
                 Sleep(100);
+                }
             }
             else
             {
@@ -335,6 +368,7 @@ void StatsScene::inputs()
             {
                 aptitudeManiabilite1[selectedStatManiabilite1].setString("");
                 player1->setManiabilite_m(--selectedStatManiabilite1);
+                player1->setMoney((player1->getMoney()) + 500);
                 Sleep(100);
             }
             else
@@ -345,10 +379,13 @@ void StatsScene::inputs()
         {
             if (selectedStatManiabilite1 < 19)
             {
-                cout << player1->getManiabilite_m();
+                if (player1->getMoney() >= 500)
+                {
                 player1->setManiabilite_m(++selectedStatManiabilite1);
                 aptitudeManiabilite1[selectedStatManiabilite1].setString("+");
+                player1->setMoney((player1->getMoney()) - 500);
                 Sleep(100);
+                }
             }
             else
             {
@@ -366,6 +403,7 @@ void StatsScene::inputs()
             {
                 aptitudeImpact1[selectedStatImpact1].setString("");
                 player1->setPenetrationZombie_m(--selectedStatImpact1);
+                player1->setMoney((player1->getMoney()) + 750);
                 Sleep(100);
             }
             else
@@ -376,8 +414,12 @@ void StatsScene::inputs()
         {
             if (selectedStatImpact1 < 5)
             {
+                if(player1->getMoney() >= 750)
+                {
                 player1->setPenetrationZombie_m(++selectedStatImpact1);
                 aptitudeImpact1[selectedStatImpact1].setString("+");
+                player1->setMoney((player1->getMoney()) - 750);
+                }
                 Sleep(100);
 
             }
@@ -440,7 +482,7 @@ void StatsScene::inputs()
             {
                 aptitudeVitesse2[selectedStatVitesse2].setString("");
                 player2->setVitesseMax_m(--selectedStatVitesse2);
-
+                player2->setMoney((player2->getMoney()) + 100);
                 Sleep(100);
             }
             else
@@ -451,9 +493,13 @@ void StatsScene::inputs()
         {
             if (selectedStatVitesse2 < 19)
             {
+                if(player2->getMoney() >=100)
+                {
                 player2->setVitesseMax_m(++selectedStatVitesse2);
                 aptitudeVitesse2[selectedStatVitesse2].setString("+");
+                player2->setMoney((player2->getMoney()) - 100);
                 Sleep(100);
+                }
             }
             else
             {
@@ -469,6 +515,7 @@ void StatsScene::inputs()
             {
                 aptitudeAcceleration2[selectedStatAcceleration2].setString("");
                 player2->setAcceleration_m(--selectedStatAcceleration2);
+                player2->setMoney((player2->getMoney()) + 250);
                 Sleep(100);
             }
             else
@@ -479,9 +526,13 @@ void StatsScene::inputs()
         {
             if (selectedStatAcceleration2 < 19)
             {
+                if (player2->getMoney() >= 250)
+                {
                 player2->setAcceleration_m(++selectedStatAcceleration2);
                 aptitudeAcceleration2[selectedStatAcceleration2].setString("+");
+                player2->setMoney((player2->getMoney()) - 250);
                 Sleep(100);
+                }
             }
             else
             {
@@ -498,6 +549,7 @@ void StatsScene::inputs()
             {
                 aptitudeManiabilite2[selectedStatManiabilite2].setString("");
                 player2->setManiabilite_m(--selectedStatManiabilite2);
+                player2->setMoney((player2->getMoney()) + 500);
                 Sleep(100);
             }
             else
@@ -508,9 +560,13 @@ void StatsScene::inputs()
         {
             if (selectedStatManiabilite2 < 19)
             {
+                if(player2->getMoney() >=500)
+                {
                 player2->setManiabilite_m(++selectedStatManiabilite2);
                 aptitudeManiabilite2[selectedStatManiabilite2].setString("+");
+                player2->setMoney((player2->getMoney()) - 500);
                 Sleep(100);
+                }
             }
             else
             {
@@ -528,6 +584,7 @@ void StatsScene::inputs()
             {
                 aptitudeImpact2[selectedStatImpact2].setString("");
                 player2->setPenetrationZombie_m(--selectedStatImpact2);
+                player2->setMoney((player2->getMoney()) + 750);
                 Sleep(100);
             }
             else
@@ -538,10 +595,13 @@ void StatsScene::inputs()
         {
             if (selectedStatImpact2 < 19)
             {
+                if(player2->getMoney() >=750)
+                {
                 player2->setPenetrationZombie_m(++selectedStatImpact2);
                 aptitudeImpact2[selectedStatImpact2].setString("+");
+                player2->setMoney((player2->getMoney()) - 750);
                 Sleep(100);
-
+                }
             }
             else
             {
@@ -570,11 +630,24 @@ void StatsScene::update()
     int tempsActuel = horlogeDebutStats.getElapsedTime().asMilliseconds();
     int monTempsRestant = (m_time_difference - tempsActuel) / 1000;
 
+
     std::stringstream ss;
     ss << monTempsRestant;
     string tempsRestant = ss.str();
 
     compteur.setString("Temps restant : " + tempsRestant);
+
+    std::stringstream argentStream1;
+    argentStream1 << player1->getMoney();
+    string montantRestant1 = argentStream1.str();
+
+    nombreArgentJoueur1.setString("Montant restant : " + montantRestant1);
+
+    std::stringstream argentStream2;
+    argentStream2 << player2->getMoney();
+    string montantRestant2 = argentStream2.str();
+
+    nombreArgentJoueur2.setString("Montant restant : " + montantRestant2);
 
     if(tempsActuel >= m_time_difference)
     {
@@ -592,6 +665,7 @@ void StatsScene::draw()
     window.setView(view_player1);
     window.draw(compteur);
 
+    window.draw(nombreArgentJoueur1);
 
    for(int i(0); i < 20; i++)
    {
@@ -622,6 +696,7 @@ void StatsScene::draw()
 
     window.setView(view_player2);
     window.draw(compteur);
+    window.draw(nombreArgentJoueur2);
 
 
    for(int i(0); i < 20; i++)
