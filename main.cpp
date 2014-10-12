@@ -20,11 +20,11 @@ Voiture* player1 = new Voiture("pickUp.png");
 Voiture* player2 = new Voiture("tank.png");
 
 //Scene* current_scene = new StatsScene(*player1, *player2, 10);
-Scene* current_scene = new MenuScene();
+//Scene* current_scene = new MenuScene();
 
 //Scene* current_scene = new RaceScene();
 
-//Scene* current_scene = new StatsScene(*player1, *player2, 10);
+Scene* current_scene = new StatsScene(*player1, *player2, 10);
 /**
     Function to handle events of the main loop, like the one to close the window.
 */

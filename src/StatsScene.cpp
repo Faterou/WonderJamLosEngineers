@@ -332,7 +332,12 @@ void StatsScene::inputs()
 
 
 }
-void StatsScene::update(){}
+void StatsScene::update()
+{
+    //selectedStatVitesse = (player1.get_vitesse_courante() * 10);
+
+
+}
 void StatsScene::draw()
 {
      window.clear();
