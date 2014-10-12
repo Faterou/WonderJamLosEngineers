@@ -9,19 +9,19 @@ CollisionHandler::CollisionHandler()
 
 bool CollisionHandler::checkAllCollisions()
 {
-//    for(vector<GameObject*>::iterator it1 = current_scene->getGameObjects()->begin(); it1 < current_scene->getGameObjects()->end(); it1++)
-//    {
-//        if((*it1)->getType() != GameObject::TREE)
-//        {
-//            for(vector<GameObject*>::iterator it2 = it1+1; it2 < current_scene->getGameObjects()->end(); it2++)
-//            {
-//                if(checkCollision(*it1,*it2))
-//                {
-//                    (*it1)->onCollision(*it2);
-//                }
-//            }
-//        }
-//    }
+    for(vector<GameObject*>::iterator it1 = current_scene->getGameObjects()->begin(); it1 < current_scene->getGameObjects()->end(); it1++)
+    {
+        if((*it1)->getType() != GameObject::TREE)
+        {
+            for(vector<GameObject*>::iterator it2 = it1+1; it2 < current_scene->getGameObjects()->end(); it2++)
+            {
+                if(checkCollision(*it1,*it2))
+                {
+                    (*it1)->onCollision(*it2);
+                }
+            }
+        }
+    }
 }
 
 bool CollisionHandler::checkCollision(GameObject* object1, GameObject* object2)

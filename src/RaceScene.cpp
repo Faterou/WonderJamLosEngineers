@@ -17,7 +17,7 @@ extern Voiture* player2;
 int RaceScene::round = 0;
 Map map1;
 
-RaceScene::RaceScene() : map(), chandler(), view_player1(sf::FloatRect(0,0,500,500)), view_player2(sf::FloatRect(0,0,500,500))
+RaceScene::RaceScene() : map(), chandler(), view_player1(sf::FloatRect(-250,-250,500,500)), view_player2(sf::FloatRect(0,0,500,500)), m_thread(&RaceScene::update,this)
 {
 
     view_player1.setViewport(sf::FloatRect(0, 0, 0.5, 1));
@@ -25,6 +25,7 @@ RaceScene::RaceScene() : map(), chandler(), view_player1(sf::FloatRect(0,0,500,5
 
 
     populate();
+    m_thread.launch();
 }
 
 RaceScene::~RaceScene()
@@ -88,7 +89,10 @@ void RaceScene::inputs(){
     }
 }
 void RaceScene::update(){
-    chandler.checkAllCollisions();
+    while(1)
+    {
+        chandler.checkAllCollisions();
+    }
 }
 
 void RaceScene::drawObjects()
