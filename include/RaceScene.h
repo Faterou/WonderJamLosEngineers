@@ -18,6 +18,7 @@ class RaceScene : public Scene
         void checkCollisions();
         void end_race(GameObject* winner, GameObject* loser, int time_difference);
         void drawObjects();
+        void first_player_finished(GameObject*);
     protected:
     private:
         CollisionHandler chandler;
@@ -28,6 +29,8 @@ class RaceScene : public Scene
         static int round;
         sf::Thread m_thread;
         bool terminate_thread;
+        GameObject* winner;
+        GameObject* destination;
 };
 
 #endif // RACESCENE_H

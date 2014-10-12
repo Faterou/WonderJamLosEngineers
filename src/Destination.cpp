@@ -27,6 +27,9 @@ void Destination::onCollision(GameObject* collidedTo)
             timer.restart();
             winner = collidedTo;
             first = false;
+            RaceScene* s = (RaceScene*) current_scene;
+            s->first_player_finished(collidedTo);
+
         }
         else if (collidedTo != winner)
         {
