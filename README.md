@@ -21,6 +21,7 @@ Contrôles
 ---------
 
 Joueur1: Flèches
+
 Joueur2: WASD
 
 Les touches Entrée, Espace et Escape sont aussi utilisés dans les menus.
