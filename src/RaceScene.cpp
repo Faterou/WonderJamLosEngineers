@@ -197,6 +197,19 @@ void RaceScene::draw()
     petrol1.setPosition(sf::Vector2f(player1->getSprite()->getPosition().x - 250, player1->getSprite()->getPosition().y -250));
     window.draw(petrol1);
 
+    if(last_loser == player1 && delta - clock.getElapsedTime().asSeconds() > 0)
+    {
+        sf::Text t_delta;
+        ostringstream oss12;
+        oss12 << "Attendez " << (int)(delta - clock.getElapsedTime().asSeconds()) << " secondes...";
+        t_delta.setFont(font);
+        t_delta.setColor(sf::Color::White);
+        t_delta.setString(oss12.str());
+        t_delta.setCharacterSize(20);
+        t_delta.setPosition(sf::Vector2f(player1->getSprite()->getPosition().x - 50, player1->getSprite()->getPosition().y +200));
+        window.draw(t_delta);
+    }
+
     //player2 view
     window.setView(view_player2);
     view_player2.setCenter(player2->getSprite()->getPosition().x, player2->getSprite()->getPosition().y);
@@ -227,6 +240,19 @@ void RaceScene::draw()
     petrol2.setCharacterSize(20);
     petrol2.setPosition(sf::Vector2f(player2->getSprite()->getPosition().x - 250, player2->getSprite()->getPosition().y -250));
     window.draw(petrol2);
+
+    if(last_loser == player2 && delta - clock.getElapsedTime().asSeconds() > 0)
+    {
+        sf::Text t_delta;
+        ostringstream oss12;
+        oss12 << "Attendez " << (int)(delta - clock.getElapsedTime().asSeconds()) << " secondes...";
+        t_delta.setFont(font);
+        t_delta.setColor(sf::Color::White);
+        t_delta.setString(oss12.str());
+        t_delta.setCharacterSize(20);
+        t_delta.setPosition(sf::Vector2f(player2->getSprite()->getPosition().x - 50, player2->getSprite()->getPosition().y +200));
+        window.draw(t_delta);
+    }
 
     //player1 map
     if(winner != player1)
