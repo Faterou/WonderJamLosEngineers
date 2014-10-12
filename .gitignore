@@ -1,4 +1,5 @@
 *.layout
+bin/Debug
 obj
 SFML-2.1
 *.depend
