@@ -13,13 +13,22 @@ using namespace std;
 
 Voiture::Voiture(std::string nomPhoto) : GameObject(sf::Sprite(),CAR)
 {
+
+    m_vitesse_max_m = 1;
+    m_acceleration_m = 1;
+    m_maniabilite_m = 1;
+    m_suspension_m = 1;
+    m_machineEssence_m = 1;
+    m_penetrationZombie_m = 1;
+
     m_vitesse_courante = 0.01;
-    m_vitesse_max = 10;
-    m_acceleration = 0.01;
-    m_maniabilite = 4;
-    m_suspension = 1;
-    m_machineEssence = 1;
-    m_penetrationZombie = 0;
+    m_vitesse_max = (m_vitesse_max_m * 10);
+    m_acceleration = (m_maniabilite_m / 10);
+    m_maniabilite = (m_maniabilite_m + 3);
+    m_suspension = m_suspension_m;
+    m_machineEssence = m_maniabilite_m;
+    m_penetrationZombie = (m_penetrationZombie_m - 1);
+
 
     GameObject::setTexture(TextureManager::getInstance().getTexture(nomPhoto));
 }
@@ -27,6 +36,11 @@ Voiture::Voiture(std::string nomPhoto) : GameObject(sf::Sprite(),CAR)
 Voiture::~Voiture()
 {
     //dtor
+}
+
+void Voiture::miseAJourVoiture()
+{
+    m_vitesse_max = (m_vitesse_max_m * 10);
 }
 
 sf::Vector2f Voiture::getHeading()
@@ -91,6 +105,61 @@ float Voiture::getPenetrationZombie()
 {
     return m_penetrationZombie;
 }
+
+void Voiture::setVitesseMax_m(float vitesseMax)
+{
+    m_vitesse_max_m = vitesseMax;
+}
+float Voiture::getVitesseMax_m()
+{
+    return m_vitesse_max_m;
+}
+
+void Voiture::setAcceleration_m(float acceleration)
+{
+    m_acceleration_m = acceleration;
+}
+float Voiture::getAcceleration_m()
+{
+    return m_acceleration_m;
+}
+
+void Voiture::setManiabilite_m(float maniabilite)
+{
+    m_maniabilite_m = maniabilite;
+}
+float Voiture::getManiabilite_m()
+{
+    return m_maniabilite_m;
+}
+
+void Voiture::setMachineEssence_m(float machineEssence)
+{
+    m_machineEssence_m = machineEssence;
+}
+float Voiture::getMachineEssence_m()
+{
+    return m_machineEssence_m;
+}
+
+void Voiture::setSuspension_m(float suspension)
+{
+    m_suspension_m = suspension;
+}
+float Voiture::getSuspension_m()
+{
+    return m_suspension_m;
+}
+
+void Voiture::setPenetrationZombie_m(float penetrationZombie)
+{
+    m_penetrationZombie_m = penetrationZombie;
+}
+float Voiture::getPenetrationZombie_m()
+{
+    return m_penetrationZombie_m;
+}
+
 
 void Voiture::moveForward()
 {

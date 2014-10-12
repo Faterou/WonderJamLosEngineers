@@ -6,8 +6,12 @@
 #include <SFML/Audio.hpp>
 #include <windows.h>
 #include <iostream>
+#include "voiture.h"
 
 #define MAX_NUMBER_OF_ITEMS 4
+
+extern Voiture* player1;
+extern Voiture* player2;
 
 class StatsScene : public Scene
 {
@@ -24,12 +28,15 @@ class StatsScene : public Scene
     protected:
     private:
         int selectedItemIndex = 0;
-        int selectedStatVitesse = 0;
-        int selectedStatAcceleration = 0;
-        int selectedStatManiabilite = 0;
-        int selectedStatGenerateurDePetrole = 0;
-        int selectedStatSuspension = 0;
-        int selectedStatImpact = 0;
+        int selectedStatVitesse;
+        int selectedStatAcceleration;
+        int selectedStatManiabilite;
+        int selectedStatGenerateurDePetrole;
+        int selectedStatSuspension;
+        int selectedStatImpact;
+
+        sf::View view_player1;
+        sf::View view_player2;
 
         sf::Font font;
         sf::Text aptitude[6];
