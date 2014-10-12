@@ -27,7 +27,6 @@ bool CollisionHandler::checkAllCollisions()
                         (*it1)->onCollision(*it2);
                         (*it2)->onCollision(*it1);
                     }
-
                 }
             }
         }

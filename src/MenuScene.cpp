@@ -3,6 +3,8 @@
 #include "Destination.h"
 #include "StatsScene.h"
 #include "EndScene.h"
+#include "Scene.h"
+#include "RaceScene.h"
 #include "voiture.h"
 #include <stdlib.h>
 
@@ -83,8 +85,35 @@ void MenuScene::inputs()
                 std::cout << "TU peux pas y aller!!!" << std::endl;
             }
      }
+     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Return))
+     {
+         switch(selectedItemIndex)
+         {
+         case 0:        //Attention, ici la prochaine étape serait d'aller à une StatsScene
+         {
+            Scene* next_scene= new RaceScene();
+            this->changeScene(next_scene);
+            break;
+         }
+         case 1:
+            std::cout << "case 1 \n";
+            break;
+
+         case 2:
+            std::cout << "case 2 \n";
+            break;
+
+         case 3:
+             window.close();
+            break;
+
+         }
+
+
+     }
+
     //Pour ralentir la saisie
-     Sleep(100);
+     Sleep(50);
 }
 
 void MenuScene::draw()
