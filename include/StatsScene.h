@@ -3,6 +3,7 @@
 
 #include <Scene.h>
 
+extern sf::RenderWindow window;
 
 class StatsScene : public Scene
 {

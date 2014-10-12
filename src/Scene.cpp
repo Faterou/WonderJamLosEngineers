@@ -1,4 +1,5 @@
 #include "Scene.h"
+#include <iostream>
 using namespace std;
 
 extern Scene* current_scene;
@@ -19,6 +20,5 @@ void Scene::process()
 
 void Scene::changeScene(Scene* scene)
 {
-    delete current_scene;
     current_scene = scene;
 }
