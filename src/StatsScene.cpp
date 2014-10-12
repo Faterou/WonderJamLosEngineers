@@ -19,8 +19,6 @@ extern Voiture* player2;
 
 StatsScene::StatsScene(GameObject winner, GameObject loser, int time_difference)
 {
-
-
     view_player1.setViewport(sf::FloatRect(0, 0, 0.5, 1));
     view_player2.setViewport(sf::FloatRect(0.5, 0, 0.5, 1));
 
@@ -30,7 +28,6 @@ StatsScene::StatsScene(GameObject winner, GameObject loser, int time_difference)
     std::stringstream ss;
     ss << m_time_difference;
     string tempsRestant = ss.str();
-
 
     if (!font.loadFromFile("arial.ttf"))
     {
