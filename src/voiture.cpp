@@ -13,8 +13,6 @@ using namespace std;
 
 Voiture::Voiture(std::string nomPhoto) : GameObject(sf::Sprite(),CAR)
 {
-
-
     m_vitesse_max_m = 1;
     m_acceleration_m = 1;
     m_maniabilite_m = 1;

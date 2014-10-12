@@ -17,10 +17,12 @@ extern Voiture* player1;
 extern Voiture* player2;
 
 
-StatsScene::StatsScene(GameObject winner, GameObject loser, int time_difference)
+StatsScene::StatsScene(GameObject winner, GameObject loser, int time_difference) : view_player1(sf::FloatRect(0,0,500,500)), view_player2(sf::FloatRect(0,0,500,500))
 {
     view_player1.setViewport(sf::FloatRect(0, 0, 0.5, 1));
     view_player2.setViewport(sf::FloatRect(0.5, 0, 0.5, 1));
+
+
 
     horlogeDebutStats.restart();
     m_time_difference = time_difference;
@@ -40,89 +42,175 @@ StatsScene::StatsScene(GameObject winner, GameObject loser, int time_difference)
     compteur.setCharacterSize(20);
     compteur.setPosition(sf::Vector2f(200, 25));
 
-    aptitude[0].setFont(font);
-    aptitude[0].setColor(sf::Color::Red);
-    aptitude[0].setString("Vitesse");
-    aptitude[0].setCharacterSize(15);
-    aptitude[0].setPosition(sf::Vector2f(50, 50));
+    aptitude1[0].setFont(font);
+    aptitude1[0].setColor(sf::Color::Red);
+    aptitude1[0].setString("Vitesse");
+    aptitude1[0].setCharacterSize(15);
+    aptitude1[0].setPosition(sf::Vector2f(50, 50));
 
-    aptitude[1].setFont(font);
-    aptitude[1].setColor(sf::Color::White);
-    aptitude[1].setString("Acceleration");
-    aptitude[1].setCharacterSize(15);
-    aptitude[1].setPosition(sf::Vector2f(50, 125));
+    aptitude1[1].setFont(font);
+    aptitude1[1].setColor(sf::Color::White);
+    aptitude1[1].setString("Acceleration");
+    aptitude1[1].setCharacterSize(15);
+    aptitude1[1].setPosition(sf::Vector2f(50, 125));
 
-    aptitude[2].setFont(font);
-    aptitude[2].setColor(sf::Color::White);
-    aptitude[2].setString("Maniabilite");
-    aptitude[2].setCharacterSize(15);
-    aptitude[2].setPosition(sf::Vector2f(50, 200));
+    aptitude1[2].setFont(font);
+    aptitude1[2].setColor(sf::Color::White);
+    aptitude1[2].setString("Maniabilite");
+    aptitude1[2].setCharacterSize(15);
+    aptitude1[2].setPosition(sf::Vector2f(50, 200));
 
-    aptitude[3].setFont(font);
-    aptitude[3].setColor(sf::Color::White);
-    aptitude[3].setString("Generation de petrole");
-    aptitude[3].setCharacterSize(15);
-    aptitude[3].setPosition(sf::Vector2f(50, 275));
+    aptitude1[3].setFont(font);
+    aptitude1[3].setColor(sf::Color::White);
+    aptitude1[3].setString("Generation de petrole");
+    aptitude1[3].setCharacterSize(15);
+    aptitude1[3].setPosition(sf::Vector2f(50, 275));
 
-    aptitude[4].setFont(font);
-    aptitude[4].setColor(sf::Color::White);
-    aptitude[4].setString("Suspension");
-    aptitude[4].setCharacterSize(15);
-    aptitude[4].setPosition(sf::Vector2f(50, 350));
+    aptitude1[4].setFont(font);
+    aptitude1[4].setColor(sf::Color::White);
+    aptitude1[4].setString("Suspension");
+    aptitude1[4].setCharacterSize(15);
+    aptitude1[4].setPosition(sf::Vector2f(50, 350));
 
-    aptitude[5].setFont(font);
-    aptitude[5].setColor(sf::Color::White);
-    aptitude[5].setString("Impact");
-    aptitude[5].setCharacterSize(15);
-    aptitude[5].setPosition(sf::Vector2f(50, 425));
+    aptitude1[5].setFont(font);
+    aptitude1[5].setColor(sf::Color::White);
+    aptitude1[5].setString("Impact");
+    aptitude1[5].setCharacterSize(15);
+    aptitude1[5].setPosition(sf::Vector2f(50, 425));
+
+
+    aptitude2[0].setFont(font);
+    aptitude2[0].setColor(sf::Color::Red);
+    aptitude2[0].setString("Vitesse");
+    aptitude2[0].setCharacterSize(15);
+    aptitude2[0].setPosition(sf::Vector2f(50, 50));
+
+    aptitude2[1].setFont(font);
+    aptitude2[1].setColor(sf::Color::White);
+    aptitude2[1].setString("Acceleration");
+    aptitude2[1].setCharacterSize(15);
+    aptitude2[1].setPosition(sf::Vector2f(50, 125));
+
+    aptitude2[2].setFont(font);
+    aptitude2[2].setColor(sf::Color::White);
+    aptitude2[2].setString("Maniabilite");
+    aptitude2[2].setCharacterSize(15);
+    aptitude2[2].setPosition(sf::Vector2f(50, 200));
+
+    aptitude2[3].setFont(font);
+    aptitude2[3].setColor(sf::Color::White);
+    aptitude2[3].setString("Generation de petrole");
+    aptitude2[3].setCharacterSize(15);
+    aptitude2[3].setPosition(sf::Vector2f(50, 275));
+
+    aptitude2[4].setFont(font);
+    aptitude2[4].setColor(sf::Color::White);
+    aptitude2[4].setString("Suspension");
+    aptitude2[4].setCharacterSize(15);
+    aptitude2[4].setPosition(sf::Vector2f(50, 350));
+
+    aptitude2[5].setFont(font);
+    aptitude2[5].setColor(sf::Color::White);
+    aptitude2[5].setString("Impact");
+    aptitude2[5].setCharacterSize(15);
+    aptitude2[5].setPosition(sf::Vector2f(50, 425));
 
     for(int x(0); x < 20; x++)
     {
-        aptitudeVitesse[x].setFont(font);
-        aptitudeVitesse[x].setColor(sf::Color::White);
-        aptitudeVitesse[x].setCharacterSize(15);
-        aptitudeVitesse[x].setPosition(sf::Vector2f(225 + (10* x) ,50));
+        aptitudeVitesse1[x].setFont(font);
+        aptitudeVitesse1[x].setColor(sf::Color::White);
+        aptitudeVitesse1[x].setCharacterSize(15);
+        aptitudeVitesse1[x].setPosition(sf::Vector2f(225 + (10* x) ,50));
     }
 
      for(int u(0); u < 20; u++)
     {
-        aptitudeAcceleration[u].setFont(font);
-        aptitudeAcceleration[u].setColor(sf::Color::White);
-        aptitudeAcceleration[u].setCharacterSize(15);
-        aptitudeAcceleration[u].setPosition(sf::Vector2f(225 + (10* u) ,125));
+        aptitudeAcceleration1[u].setFont(font);
+        aptitudeAcceleration1[u].setColor(sf::Color::White);
+        aptitudeAcceleration1[u].setCharacterSize(15);
+        aptitudeAcceleration1[u].setPosition(sf::Vector2f(225 + (10* u) ,125));
     }
 
      for(int x(0); x < 20; x++)
     {
-        aptitudeManiabilite[x].setFont(font);
-        aptitudeManiabilite[x].setColor(sf::Color::White);
-        aptitudeManiabilite[x].setCharacterSize(15);
-        aptitudeManiabilite[x].setPosition(sf::Vector2f(225 + (10* x) ,200));
+        aptitudeManiabilite1[x].setFont(font);
+        aptitudeManiabilite1[x].setColor(sf::Color::White);
+        aptitudeManiabilite1[x].setCharacterSize(15);
+        aptitudeManiabilite1[x].setPosition(sf::Vector2f(225 + (10* x) ,200));
     }
 
      for(int x(0); x < 20; x++)
     {
-        aptitudeGenerationDePetrole[x].setFont(font);
-        aptitudeGenerationDePetrole[x].setColor(sf::Color::White);
-        aptitudeGenerationDePetrole[x].setCharacterSize(15);
-        aptitudeGenerationDePetrole[x].setPosition(sf::Vector2f(225 + (10* x) ,275));
+        aptitudeGenerationDePetrole1[x].setFont(font);
+        aptitudeGenerationDePetrole1[x].setColor(sf::Color::White);
+        aptitudeGenerationDePetrole1[x].setCharacterSize(15);
+        aptitudeGenerationDePetrole1[x].setPosition(sf::Vector2f(225 + (10* x) ,275));
     }
 
      for(int x(0); x < 20; x++)
     {
-        aptitudeSuspension[x].setFont(font);
-        aptitudeSuspension[x].setColor(sf::Color::White);
-        aptitudeSuspension[x].setCharacterSize(15);
-        aptitudeSuspension[x].setPosition(sf::Vector2f(225 + (10* x) ,350));
+        aptitudeSuspension1[x].setFont(font);
+        aptitudeSuspension1[x].setColor(sf::Color::White);
+        aptitudeSuspension1[x].setCharacterSize(15);
+        aptitudeSuspension1[x].setPosition(sf::Vector2f(225 + (10* x) ,350));
     }
 
      for(int x(0); x < 20; x++)
     {
-        aptitudeImpact[x].setFont(font);
-        aptitudeImpact[x].setColor(sf::Color::White);
-        aptitudeImpact[x].setCharacterSize(15);
-        aptitudeImpact[x].setPosition(sf::Vector2f(225 + (10* x) ,425));
+        aptitudeImpact1[x].setFont(font);
+        aptitudeImpact1[x].setColor(sf::Color::White);
+        aptitudeImpact1[x].setCharacterSize(15);
+        aptitudeImpact1[x].setPosition(sf::Vector2f(225 + (10* x) ,425));
     }
+
+    for(int x(0); x < 20; x++)
+    {
+        aptitudeVitesse2[x].setFont(font);
+        aptitudeVitesse2[x].setColor(sf::Color::White);
+        aptitudeVitesse2[x].setCharacterSize(15);
+        aptitudeVitesse2[x].setPosition(sf::Vector2f(225 + (10* x) ,50));
+    }
+
+     for(int u(0); u < 20; u++)
+    {
+        aptitudeAcceleration2[u].setFont(font);
+        aptitudeAcceleration2[u].setColor(sf::Color::White);
+        aptitudeAcceleration2[u].setCharacterSize(15);
+        aptitudeAcceleration2[u].setPosition(sf::Vector2f(225 + (10* u) ,125));
+    }
+
+     for(int x(0); x < 20; x++)
+    {
+        aptitudeManiabilite2[x].setFont(font);
+        aptitudeManiabilite2[x].setColor(sf::Color::White);
+        aptitudeManiabilite2[x].setCharacterSize(15);
+        aptitudeManiabilite2[x].setPosition(sf::Vector2f(225 + (10* x) ,200));
+    }
+
+     for(int x(0); x < 20; x++)
+    {
+        aptitudeGenerationDePetrole2[x].setFont(font);
+        aptitudeGenerationDePetrole2[x].setColor(sf::Color::White);
+        aptitudeGenerationDePetrole2[x].setCharacterSize(15);
+        aptitudeGenerationDePetrole2[x].setPosition(sf::Vector2f(225 + (10* x) ,275));
+    }
+
+     for(int x(0); x < 20; x++)
+    {
+        aptitudeSuspension2[x].setFont(font);
+        aptitudeSuspension2[x].setColor(sf::Color::White);
+        aptitudeSuspension2[x].setCharacterSize(15);
+        aptitudeSuspension2[x].setPosition(sf::Vector2f(225 + (10* x) ,350));
+    }
+
+     for(int x(0); x < 20; x++)
+    {
+        aptitudeImpact2[x].setFont(font);
+        aptitudeImpact2[x].setColor(sf::Color::White);
+        aptitudeImpact2[x].setCharacterSize(15);
+        aptitudeImpact2[x].setPosition(sf::Vector2f(225 + (10* x) ,425));
+    }
+
 }
 
 StatsScene::~StatsScene()
@@ -139,11 +227,11 @@ void StatsScene::inputs()
 
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
     {
-        if (selectedItemIndex  > 0)
+        if (selectedItemIndex1  > 0)
         {
-            aptitude[selectedItemIndex].setColor(sf::Color::White);
-            selectedItemIndex--;
-            aptitude[selectedItemIndex].setColor(sf::Color::Red);
+            aptitude1[selectedItemIndex1].setColor(sf::Color::White);
+            selectedItemIndex1--;
+            aptitude1[selectedItemIndex1].setColor(sf::Color::Red);
             Sleep(100);
         }
         else
@@ -153,11 +241,11 @@ void StatsScene::inputs()
 
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
      {
-        if (selectedItemIndex < 5)
+        if (selectedItemIndex1 < 5)
         {
-            aptitude[selectedItemIndex].setColor(sf::Color::White);
-            selectedItemIndex++;
-            aptitude[selectedItemIndex].setColor(sf::Color::Red);
+            aptitude1[selectedItemIndex1].setColor(sf::Color::White);
+            selectedItemIndex1++;
+            aptitude1[selectedItemIndex1].setColor(sf::Color::Red);
             Sleep(100);
         }
         else
@@ -177,16 +265,16 @@ void StatsScene::inputs()
         this->changeScene(next_scene);
     }
 
-    switch(selectedItemIndex)
+    switch(selectedItemIndex1)
     {
     case 0:
 
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
         {
-            if (selectedStatVitesse  > 0)
+            if (selectedStatVitesse1  > 0)
             {
-                aptitudeVitesse[selectedStatVitesse].setString("");
-                player1->setVitesseMax_m(--selectedStatVitesse);
+                aptitudeVitesse1[selectedStatVitesse1].setString("");
+                player1->setVitesseMax_m(--selectedStatVitesse1);
 
                 Sleep(100);
             }
@@ -196,10 +284,10 @@ void StatsScene::inputs()
 
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
         {
-            if (selectedStatVitesse < 19)
+            if (selectedStatVitesse1 < 19)
             {
-                player1->setVitesseMax_m(++selectedStatVitesse);
-                aptitudeVitesse[selectedStatVitesse].setString("+");
+                player1->setVitesseMax_m(++selectedStatVitesse1);
+                aptitudeVitesse1[selectedStatVitesse1].setString("+");
                 Sleep(100);
             }
             else
@@ -212,10 +300,10 @@ void StatsScene::inputs()
     case 1:
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
         {
-            if (selectedStatAcceleration  > 0)
+            if (selectedStatAcceleration1  > 0)
             {
-                aptitudeAcceleration[selectedStatAcceleration].setString("");
-                player1->setAcceleration_m(--selectedStatAcceleration);
+                aptitudeAcceleration1[selectedStatAcceleration1].setString("");
+                player1->setAcceleration_m(--selectedStatAcceleration1);
                 Sleep(100);
             }
             else
@@ -224,10 +312,10 @@ void StatsScene::inputs()
 
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
         {
-            if (selectedStatAcceleration < 19)
+            if (selectedStatAcceleration1 < 19)
             {
-                player1->setAcceleration_m(++selectedStatAcceleration);
-                aptitudeAcceleration[selectedStatAcceleration].setString("+");
+                player1->setAcceleration_m(++selectedStatAcceleration1);
+                aptitudeAcceleration1[selectedStatAcceleration1].setString("+");
                 Sleep(100);
             }
             else
@@ -241,10 +329,10 @@ void StatsScene::inputs()
     case 2:
          if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
         {
-            if (selectedStatManiabilite  > 0)
+            if (selectedStatManiabilite1  > 0)
             {
-                aptitudeManiabilite[selectedStatManiabilite].setString("");
-                player1->setManiabilite_m(--selectedStatManiabilite);
+                aptitudeManiabilite1[selectedStatManiabilite1].setString("");
+                player1->setManiabilite_m(--selectedStatManiabilite1);
                 Sleep(100);
             }
             else
@@ -253,11 +341,11 @@ void StatsScene::inputs()
 
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
         {
-            if (selectedStatManiabilite < 19)
+            if (selectedStatManiabilite1 < 19)
             {
                 cout << player1->getManiabilite_m();
-                player1->setManiabilite_m(++selectedStatManiabilite);
-                aptitudeManiabilite[selectedStatManiabilite].setString("+");
+                player1->setManiabilite_m(++selectedStatManiabilite1);
+                aptitudeManiabilite1[selectedStatManiabilite1].setString("+");
                 Sleep(100);
             }
             else
@@ -272,10 +360,10 @@ void StatsScene::inputs()
 
          if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
         {
-            if (selectedStatGenerateurDePetrole  > 0)
+            if (selectedStatGenerateurDePetrole1  > 0)
             {
-                aptitudeGenerationDePetrole[selectedStatGenerateurDePetrole].setString("");
-                player1->setMachineEssence_m(--selectedStatGenerateurDePetrole);
+                aptitudeGenerationDePetrole1[selectedStatGenerateurDePetrole1].setString("");
+                player1->setMachineEssence_m(--selectedStatGenerateurDePetrole1);
                 Sleep(100);
             }
             else
@@ -284,10 +372,10 @@ void StatsScene::inputs()
 
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
         {
-            if (selectedStatGenerateurDePetrole < 19)
+            if (selectedStatGenerateurDePetrole1 < 19)
             {
-                player1->setMachineEssence_m(++selectedStatGenerateurDePetrole);
-                aptitudeGenerationDePetrole[selectedStatGenerateurDePetrole].setString("+");
+                player1->setMachineEssence_m(++selectedStatGenerateurDePetrole1);
+                aptitudeGenerationDePetrole1[selectedStatGenerateurDePetrole1].setString("+");
                 Sleep(100);
             }
             else
@@ -302,10 +390,10 @@ void StatsScene::inputs()
 
          if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
         {
-            if (selectedStatSuspension  > 0)
+            if (selectedStatSuspension1  > 0)
             {
-                aptitudeSuspension[selectedStatSuspension].setString("");
-                player1->setSuspension_m(--selectedStatSuspension);
+                aptitudeSuspension1[selectedStatSuspension1].setString("");
+                player1->setSuspension_m(--selectedStatSuspension1);
                 Sleep(100);
             }
             else
@@ -314,10 +402,10 @@ void StatsScene::inputs()
 
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
         {
-            if (selectedStatSuspension < 19)
+            if (selectedStatSuspension1 < 19)
             {
-                player1->setSuspension_m(++selectedStatSuspension);
-                aptitudeSuspension[selectedStatSuspension].setString("+");
+                player1->setSuspension_m(++selectedStatSuspension1);
+                aptitudeSuspension1[selectedStatSuspension1].setString("+");
                 Sleep(100);
             }
             else
@@ -332,10 +420,10 @@ void StatsScene::inputs()
 
          if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
         {
-            if (selectedStatImpact  > 0)
+            if (selectedStatImpact1  > 0)
             {
-                aptitudeImpact[selectedStatImpact].setString("");
-                player1->setPenetrationZombie_m(--selectedStatImpact);
+                aptitudeImpact1[selectedStatImpact1].setString("");
+                player1->setPenetrationZombie_m(--selectedStatImpact1);
                 Sleep(100);
             }
             else
@@ -344,10 +432,10 @@ void StatsScene::inputs()
 
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
         {
-            if (selectedStatImpact < 19)
+            if (selectedStatImpact1 < 19)
             {
-                player1->setPenetrationZombie_m(++selectedStatImpact);
-                aptitudeImpact[selectedStatImpact].setString("+");
+                player1->setPenetrationZombie_m(++selectedStatImpact1);
+                aptitudeImpact1[selectedStatImpact1].setString("+");
                 Sleep(100);
 
             }
@@ -365,12 +453,12 @@ void StatsScene::inputs()
 
 void StatsScene::update()
 {
-    selectedStatVitesse = ((int)player1->getVitesseMax_m());
-    selectedStatAcceleration = ((int)player1->getAcceleration_m());
-    selectedStatManiabilite = ((int)player1->getManiabilite_m());
-    selectedStatGenerateurDePetrole = ((int)player1->getMachineEssence_m());
-    selectedStatSuspension = ((int)player1->getSuspension_m());
-    selectedStatImpact = ((int)player1->getPenetrationZombie_m());
+    selectedStatVitesse1 = ((int)player1->getVitesseMax_m());
+    selectedStatAcceleration1 = ((int)player1->getAcceleration_m());
+    selectedStatManiabilite1 = ((int)player1->getManiabilite_m());
+    selectedStatGenerateurDePetrole1 = ((int)player1->getMachineEssence_m());
+    selectedStatSuspension1 = ((int)player1->getSuspension_m());
+    selectedStatImpact1 = ((int)player1->getPenetrationZombie_m());
 
 
     int tempsActuel = horlogeDebutStats.getElapsedTime().asMilliseconds();
@@ -395,56 +483,87 @@ void StatsScene::draw()
 {
      window.clear();
 
-    sf::Texture flecheQuiPointe;
-    sf::Sprite fleche;
-
-    if (!flecheQuiPointe.loadFromFile("fleche.png"))
-    {
-        std::cout << "erreur" << std::endl;
-    }
-
-    fleche.setTexture(flecheQuiPointe);
-
+    window.setView(view_player1);
     window.draw(compteur);
 
 
    for(int i(0); i < 20; i++)
    {
-       window.draw((aptitudeVitesse[i]));
+       window.draw((aptitudeVitesse1[i]));
    }
 
    for(int i(0); i < 20; i++)
    {
-       window.draw((aptitudeAcceleration[i]));
+       window.draw((aptitudeAcceleration1[i]));
    }
 
    for(int i(0); i < 20; i++)
    {
-       window.draw((aptitudeManiabilite[i]));
+       window.draw((aptitudeManiabilite1[i]));
    }
 
    for(int i(0); i < 20; i++)
    {
-       window.draw((aptitudeGenerationDePetrole[i]));
+       window.draw((aptitudeGenerationDePetrole1[i]));
    }
 
    for(int i(0); i < 20; i++)
    {
-       window.draw((aptitudeSuspension[i]));
+       window.draw((aptitudeSuspension1[i]));
    }
 
    for(int i(0); i < 20; i++)
    {
-       window.draw((aptitudeImpact[i]));
+       window.draw((aptitudeImpact1[i]));
    }
 
 
     for (int i = 0; i < 6; i++)
     {
-        window.draw(aptitude[i]);
+        window.draw(aptitude1[i]);
     }
 
-    window.draw(fleche);
+    window.setView(view_player2);
+    window.draw(compteur);
+
+
+   for(int i(0); i < 20; i++)
+   {
+       window.draw((aptitudeVitesse2[i]));
+   }
+
+   for(int i(0); i < 20; i++)
+   {
+       window.draw((aptitudeAcceleration2[i]));
+   }
+
+   for(int i(0); i < 20; i++)
+   {
+       window.draw((aptitudeManiabilite2[i]));
+   }
+
+   for(int i(0); i < 20; i++)
+   {
+       window.draw((aptitudeGenerationDePetrole2[i]));
+   }
+
+   for(int i(0); i < 20; i++)
+   {
+       window.draw((aptitudeSuspension2[i]));
+   }
+
+   for(int i(0); i < 20; i++)
+   {
+       window.draw((aptitudeImpact2[i]));
+   }
+
+
+    for (int i = 0; i < 6; i++)
+    {
+        window.draw(aptitude2[i]);
+    }
+
+
 
     window.display();
 

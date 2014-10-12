@@ -24,30 +24,47 @@ class StatsScene : public Scene
         virtual void draw();
         void afficherStats();
 
-        int GetPressedItem() { return selectedItemIndex; }
+
     protected:
     private:
-        int selectedItemIndex = 0;
-        int selectedStatVitesse;
-        int selectedStatAcceleration;
-        int selectedStatManiabilite;
-        int selectedStatGenerateurDePetrole;
-        int selectedStatSuspension;
-        int selectedStatImpact;
+        int selectedItemIndex1 = 0;
+        int selectedStatVitesse1;
+        int selectedStatAcceleration1;
+        int selectedStatManiabilite1;
+        int selectedStatGenerateurDePetrole1;
+        int selectedStatSuspension1;
+        int selectedStatImpact1;
+
+        int selectedItemIndex2 = 0;
+        int selectedStatVitesse2;
+        int selectedStatAcceleration2;
+        int selectedStatManiabilite2;
+        int selectedStatGenerateurDePetrole2;
+        int selectedStatSuspension2;
+        int selectedStatImpact2;
 
         sf::View view_player1;
         sf::View view_player2;
 
         sf::Font font;
         sf::Text compteur;
-        sf::Text aptitude[6];
-        sf::Text aptitudeVitesse[20];
-        sf::Text aptitudeAcceleration[20];
-        sf::Text aptitudeManiabilite[20];
-        sf::Text aptitudeGenerationDePetrole[20];
-        sf::Text aptitudeSuspension[20];
-        sf::Text aptitudeImpact[20];
-        sf::Text barre[20];
+        sf::Text aptitude1[6];
+        sf::Text aptitudeVitesse1[20];
+        sf::Text aptitudeAcceleration1[20];
+        sf::Text aptitudeManiabilite1[20];
+        sf::Text aptitudeGenerationDePetrole1[20];
+        sf::Text aptitudeSuspension1[20];
+        sf::Text aptitudeImpact1[20];
+        sf::Text barre1[20];
+
+        sf::Text aptitude2[6];
+        sf::Text aptitudeVitesse2[20];
+        sf::Text aptitudeAcceleration2[20];
+        sf::Text aptitudeManiabilite2[20];
+        sf::Text aptitudeGenerationDePetrole2[20];
+        sf::Text aptitudeSuspension2[20];
+        sf::Text aptitudeImpact2[20];
+        sf::Text barre2[20];
 
         sf::Clock horlogeDebutStats;
         int m_time_difference;
