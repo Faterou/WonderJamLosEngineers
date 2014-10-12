@@ -150,7 +150,7 @@ void RaceScene::drawObjects()
 
 void RaceScene::draw()
 {
-
+    //player1 view
     window.clear();
     window.setView(view_player1);
     view_player1.setCenter(player1->getSprite()->getPosition().x, player1->getSprite()->getPosition().y);
@@ -183,6 +183,7 @@ void RaceScene::draw()
     petrol1.setPosition(sf::Vector2f(player1->getSprite()->getPosition().x - 250, player1->getSprite()->getPosition().y -250));
     window.draw(petrol1);
 
+    //player2 view
     window.setView(view_player2);
     view_player2.setCenter(player2->getSprite()->getPosition().x, player2->getSprite()->getPosition().y);
     map1.draw();
@@ -212,6 +213,58 @@ void RaceScene::draw()
     petrol2.setCharacterSize(20);
     petrol2.setPosition(sf::Vector2f(player2->getSprite()->getPosition().x - 250, player2->getSprite()->getPosition().y -250));
     window.draw(petrol2);
+
+    //player1 map
+    if(winner != player1)
+    {
+        sf::View view_player1_map(sf::FloatRect(-200,-200,8400, 8400));
+        view_player1_map.setViewport(sf::FloatRect(0.4, 0, 0.1, 0.2));
+        window.setView(view_player1_map);
+        view_player1_map.setCenter(4000,4000);
+
+        sf::RectangleShape rect1(sf::Vector2f(8400,8400));
+        rect1.setPosition(-200,-200);
+        rect1.setFillColor(sf::Color(0,0,0));
+        window.draw(rect1);
+
+        sf::RectangleShape rect11(sf::Vector2f(8000,8000));
+        rect11.setPosition(0,0);
+        rect11.setFillColor(sf::Color(109,189,50));
+        window.draw(rect11);
+
+        drawObjects();
+        sf::CircleShape circle(200);
+        circle.setFillColor(sf::Color::Blue);
+        circle.setPosition(player1->getSprite()->getPosition().x -50, player1->getSprite()->getPosition().y -50);
+        window.draw(circle);
+    }
+
+    //player2 map
+    if(winner != player1)
+    {
+        sf::View view_player2_map(sf::FloatRect(-200,-200,8400, 8400));
+        view_player2_map.setViewport(sf::FloatRect(0.9, 0, 0.1, 0.2));
+        window.setView(view_player2_map);
+        view_player2_map.setCenter(4000,4000);
+
+        sf::RectangleShape rect2(sf::Vector2f(8400,8400));
+        rect2.setPosition(-200,-200);
+        rect2.setFillColor(sf::Color(0,0,0));
+        window.draw(rect2);
+
+        sf::RectangleShape rect22(sf::Vector2f(8000,8000));
+        rect22.setPosition(0,0);
+        rect22.setFillColor(sf::Color(109,189,50));
+        window.draw(rect22);
+
+        drawObjects();
+        sf::CircleShape circle2(200);
+        circle2.setFillColor(sf::Color::Blue);
+        circle2.setPosition(player2->getSprite()->getPosition().x -50, player2->getSprite()->getPosition().y -50);
+        window.draw(circle2);
+    }
+
+
 
     window.display();
 }
