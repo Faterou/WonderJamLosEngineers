@@ -18,6 +18,11 @@ Voiture::Voiture(std::string nomPhoto) : GameObject(sf::Sprite(),CAR)
     m_maniabilite_m = 0;
     m_penetrationZombie_m = 0;
 
+    m_vitesse_max = 0;
+    m_acceleration = 0;
+    m_maniabilite = 0;
+    m_penetrationZombie = 0;
+
     m_vitesse_courante = 0.0;
 
     petrole = 0;
@@ -35,9 +40,9 @@ Voiture::~Voiture()
 void Voiture::miseAJourVoiture()
 {
     m_vitesse_max = ((m_vitesse_max_m+1) * 5);
-    m_acceleration = ((m_acceleration_m+1) / 10);
-    m_maniabilite = ((m_maniabilite_m+1) +1);
-    m_penetrationZombie = (m_penetrationZombie_m);
+    m_acceleration = ((m_acceleration_m+1) /10);
+    m_maniabilite = (m_maniabilite_m+1);
+    m_penetrationZombie = (m_penetrationZombie_m+1);
 }
 
 sf::Vector2f Voiture::getHeading()

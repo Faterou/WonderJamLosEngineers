@@ -15,6 +15,20 @@ extern Voiture* player2;
 
 MenuScene::MenuScene()
 {
+
+
+    if (!backgroundBuffer.loadFromFile("menuBackground.wav"))
+    {
+       std::cout << "impossible de loader la musique background \n";
+    }
+
+    m_sound.setBuffer(backgroundBuffer);
+
+    m_sound.setLoop(true);
+
+    m_sound.play();
+
+
     sf::Text menuPlay;
     sf::Text menuExit;
     sf::Text menuAide;
@@ -72,7 +86,7 @@ void MenuScene::inputs()
             menu[selectedItemIndex].setColor(sf::Color::White);
             selectedItemIndex--;
             menu[selectedItemIndex].setColor(sf::Color::Red);
-            std::cout << "allo" << std::endl;
+            //std::cout << selectedItemIndex << std::endl;
         }
     }
 
@@ -81,15 +95,10 @@ void MenuScene::inputs()
      {
             if(selectedItemIndex  < 3)
             {
-                std::cout << selectedItemIndex << std::endl;
+                //std::cout << selectedItemIndex << std::endl;
                 menu[selectedItemIndex].setColor(sf::Color::White);
                 selectedItemIndex++;
                 menu[selectedItemIndex].setColor(sf::Color::Red);
-            }
-
-            else
-            {
-                std::cout << "TU peux pas y aller!!!" << std::endl;
             }
      }
      if(sf::Keyboard::isKeyPressed(sf::Keyboard::Return))
@@ -99,12 +108,14 @@ void MenuScene::inputs()
          {
          case 0:        //Attention, ici la prochaine étape serait d'aller à une StatsScene
          {
-            Scene* next_scene = new StatsScene(*player1, *player2, 20000);
+            m_sound.stop();
+            Scene* next_scene = new StatsScene(player1, player2, 0);
             this->changeScene(next_scene);
             break;
          }
          case 1:
              {
+                m_sound.stop();
                 Scene* next_scene= new AideScene();
                 this->changeScene(next_scene);
                 break;
@@ -115,6 +126,7 @@ void MenuScene::inputs()
             break;
 
          case 3:
+             m_sound.stop();
              window.close();
             break;
 
@@ -149,6 +161,8 @@ void MenuScene::draw()
     window.display();
 
 }
+
+
 
 
 

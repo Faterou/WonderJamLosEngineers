@@ -16,7 +16,7 @@ extern Voiture* player2;
 class StatsScene : public Scene
 {
     public:
-        StatsScene(GameObject winner, GameObject loser, int time_difference);
+        StatsScene(GameObject* winner, GameObject* loser, int time_difference);
         virtual ~StatsScene();
 
         virtual void inputs();
@@ -68,6 +68,15 @@ class StatsScene : public Scene
 
         sf::Clock horlogeDebutStats;
         int m_time_difference;
+
+
+        sf::Sound m_sound;
+        sf::SoundBuffer backgroundBuffer;
+
+        GameObject* winner;
+        GameObject* loser;
+        int delta;
+
 
 
 

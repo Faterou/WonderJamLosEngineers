@@ -19,6 +19,8 @@ class AideScene : public Scene
 
     protected:
     private:
+        sf::Sound m_sound;
+        sf::SoundBuffer backgroundBuffer;
 };
 
 #endif // AIDESCENE_H
