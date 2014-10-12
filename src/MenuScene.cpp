@@ -6,10 +6,12 @@
 #include "Scene.h"
 #include "RaceScene.h"
 #include "AideScene.h"
+#include "StatsScene.h"
 #include "voiture.h"
 #include <stdlib.h>
 
-
+extern Voiture* player1;
+extern Voiture* player2;
 
 MenuScene::MenuScene()
 {
@@ -88,11 +90,12 @@ void MenuScene::inputs()
      }
      if(sf::Keyboard::isKeyPressed(sf::Keyboard::Return))
      {
+         Sleep(200);
          switch(selectedItemIndex)
          {
          case 0:        //Attention, ici la prochaine étape serait d'aller à une StatsScene
          {
-            Scene* next_scene= new RaceScene();
+            Scene* next_scene = new StatsScene(*player1, *player2, 10);
             this->changeScene(next_scene);
             break;
          }

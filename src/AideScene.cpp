@@ -16,11 +16,10 @@ AideScene::~AideScene()
 void AideScene::inputs()
 {
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
-       {
-            Scene* next_scene = new MenuScene();
-            this->changeScene(next_scene);
-       }
-
+    {
+        Scene* next_scene = new MenuScene();
+        this->changeScene(next_scene);
+    }
 }
 
 void AideScene::draw()
