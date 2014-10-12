@@ -39,10 +39,9 @@ Voiture::~Voiture()
 
 void Voiture::miseAJourVoiture()
 {
-    cout << 1/5 << endl;
-    m_vitesse_max = ((m_vitesse_max_m+1) * 20);
-    m_acceleration = ((m_acceleration_m+1) /5);
-    m_maniabilite = ((m_maniabilite_m+1) * 2 );
+    m_vitesse_max = ((m_vitesse_max_m+1) * 5);
+    m_acceleration = ((m_acceleration_m+1) /10);
+    m_maniabilite = (m_maniabilite_m+1);
     m_penetrationZombie = (m_penetrationZombie_m+1);
 }
 
