@@ -62,8 +62,8 @@
 		<Unit filename="include/StatsScene.h" />
 		<Unit filename="include/TextureManager.h" />
 		<Unit filename="include/Tree.h" />
+		<Unit filename="include/Voiture.h" />
 		<Unit filename="include/Zombie.h" />
-		<Unit filename="include/voiture.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/CollisionHandler.cpp" />
 		<Unit filename="src/Destination.cpp" />

@@ -6,10 +6,12 @@
 #include "voiture.h"
 #include <stdlib.h>
 #include <iostream>
+#include <Zombie.h>
 #include <ProbeObject.h>
+
 using namespace std;
 
-#define ZOMBIE_QUANTITY 100
+#define ZOMBIE_QUANTITY 2000
 #define TREE_QUANTITY 500
 
 extern Voiture* player1;
@@ -18,7 +20,7 @@ extern Voiture* player2;
 int RaceScene::round = 0;
 Map map1;
 
-RaceScene::RaceScene() : map(), chandler(), view_player1(sf::FloatRect(-250,-250,500,500)), view_player2(sf::FloatRect(0,0,500,500)), m_thread(&RaceScene::update,this)
+RaceScene::RaceScene() : map(), chandler(), view_player1(sf::FloatRect(-250,-250,500,500)), view_player2(sf::FloatRect(0,0,500,500)), m_thread(&RaceScene::checkCollisions,this), terminate_thread(false)
 {
 
     view_player1.setViewport(sf::FloatRect(0, 0, 0.5, 1));
@@ -89,8 +91,18 @@ void RaceScene::inputs(){
         }
     }
 }
-void RaceScene::update(){
-    while(1)
+
+void RaceScene::update()
+{
+    for(vector<Zombie*>::iterator it = getZombies()->begin(); it < getZombies()->end(); it++)
+    {
+        if(!(*it)->getDeath())
+            (*it)->move();
+    }
+}
+
+void RaceScene::checkCollisions(){
+    while(!terminate_thread)
     {
         chandler.checkAllCollisions();
     }
@@ -121,14 +133,14 @@ void RaceScene::draw()
     Destination dest;
     dest.setPosition(1,0);
     map1.draw();
-    dest.draw();
     drawObjects();
+    player1->draw();
 
 
     window.setView(view_player2);
     map1.draw();
-    dest.draw();
     drawObjects();
+    player2->draw();
 
     window.display();
 }
@@ -163,16 +175,6 @@ void RaceScene::populate()
         }
     }
 
-    for(int i=0; i<ZOMBIE_QUANTITY; i++)
-    {
-        // do
-        // pick random (x,y)
-        // while checkCollision not ok
-        // Zombie z = new Zombie()
-        // z.getSprite()->setPosition(x,y)
-        // gameObjects.append(z);
-    }
-
     player1->getSprite()->rotate(180);
     do
     {
@@ -192,12 +194,68 @@ void RaceScene::populate()
     Scene::getGameObjects()->push_back(player2);
 
 
+    Destination* dest = new Destination();
+    do
+    {
+        dest->getSprite()->move(rand() % (248*32),rand() % (248*32));
+    } while(chandler.checkAllCollisions(player2, Scene::getGameObjects()));
+    getGameObjects()->push_back(dest);
+    std::cout << dest->getSprite()->getPosition().x << "," << dest->getSprite()->getPosition().y << std::endl;
+
+
+    for(int i=0; i<ZOMBIE_QUANTITY; i++)
+    {
+        int x;
+        int y;
+        int rotation = rand() % 4;
+        int zombie_type = rand() % 3;
+        Zombie* z;
+        switch(zombie_type)
+        {
+            case 0:
+                z = new Zombie("zombie1.png");
+                break;
+            case 1:
+                z = new Zombie("zombie2.png");
+                break;
+            default:
+                z = new Zombie("zombie3.png");
+        }
+        do
+        {
+            x = rand() % 248*32;
+            y = rand() % 248*32;
+            z->getSprite()->setPosition(x,y);
+        } while(chandler.checkAllCollisions(z,Scene::getGameObjects()));
+        switch(rotation)
+        {
+            case 0:
+                z->getSprite()->setRotation(90);
+                break;
+            case 1:
+                z->getSprite()->setRotation(180);
+                break;
+            case 2:
+                z->getSprite()->setRotation(270);
+                break;
+        }
+        Scene::getGameObjects()->push_back(z);
+    }
+
+    for(vector<GameObject*>::iterator it = getGameObjects()->begin(); it < getGameObjects()->end(); it++)
+    {
+        if((*it)->getType() == GameObject::ZOMBIE)
+        {
+            getZombies()->push_back((Zombie*)*it);
+        }
+    }
 }
 
 void RaceScene::end_race(GameObject* winner, GameObject* loser, int time_difference)
 {
     if(round < MAX_ROUND)
     {
+        terminate_thread = true;
         round++;
         changeScene(new StatsScene(*winner, *loser, time_difference));
     }

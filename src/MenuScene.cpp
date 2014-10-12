@@ -10,59 +10,11 @@
 
 MenuScene::MenuScene()
 {
-    //ctor
-}
-
-MenuScene::~MenuScene()
-{
-    //dtor
-}
-
-void MenuScene::update(){}
-
-void MenuScene::inputs()
-{
-    sf::Event event1;
-
-    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
-    {
-        std::cout << "allo" << std::endl;
-        if (selectedItemIndex - 1 >= 0)
-        {
-        menu[selectedItemIndex].setColor(sf::Color::White);
-        selectedItemIndex--;
-        menu[selectedItemIndex].setColor(sf::Color::Red);
-        }
-    }
-
-
-    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
-     {
-        std::cout << selectedItemIndex << std::endl;
-
-            std::cout << selectedItemIndex << std::endl;
-            menu[selectedItemIndex].setColor(sf::Color::White);
-            selectedItemIndex++;
-            menu[selectedItemIndex].setColor(sf::Color::Red);
-     }
-
-
-
-}
-
-void MenuScene::draw()
-{
     window.clear();
-
-    sf::Texture texture;
-    sf::Sprite sprite;
-
-    if (!texture.loadFromFile("imageMenu.png"))
-    {
-        std::cout << "Ca marche pas gros mongole" << std::endl;
-    }
-
-    sprite.setTexture(texture);
+    sf::Text menuPlay;
+    sf::Text menuExit;
+    sf::Text menuAide;
+    sf::Text menuSetting;
 
     if (!font.loadFromFile("arial.ttf"))
     {
@@ -88,12 +40,72 @@ void MenuScene::draw()
     menu[3].setColor(sf::Color::White);
     menu[3].setString("Exit");
     menu[3].setPosition(sf::Vector2f(450, 350));
+}
 
+MenuScene::~MenuScene()
+{
+    //dtor
+}
+
+
+void MenuScene::update(){}
+
+void MenuScene::inputs()
+{
+    sf::Event event1;
+    //Peut être grandement amélioré, pour ralentir la saisie.
+
+
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+    {
+
+        if (selectedItemIndex > 0)
+        {
+            menu[selectedItemIndex].setColor(sf::Color::White);
+            selectedItemIndex--;
+            menu[selectedItemIndex].setColor(sf::Color::Red);
+            std::cout << "allo" << std::endl;
+        }
+    }
+
+
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+     {
+            if(selectedItemIndex  < 3)
+            {
+                std::cout << selectedItemIndex << std::endl;
+                menu[selectedItemIndex].setColor(sf::Color::White);
+                selectedItemIndex++;
+                menu[selectedItemIndex].setColor(sf::Color::Red);
+            }
+
+            else
+            {
+                std::cout << "TU peux pas y aller!!!" << std::endl;
+            }
+     }
+
+     Sleep(100);
+}
+
+void MenuScene::draw()
+{
+    window.clear();
+    sf::Texture texture;
+    sf::Sprite sprite;
+
+    if (!texture.loadFromFile("imageMenu.png"))
+    {
+        std::cout << "Ca marche pas gros mongole" << std::endl;
+    }
+
+    sprite.setTexture(texture);
     window.draw(sprite);
     for (int i = 0; i < 4; i++)
     {
         window.draw(menu[i]);
     }
+
 
     window.display();
 

@@ -15,6 +15,7 @@ class RaceScene : public Scene
         virtual void update();
         virtual void draw();
         virtual ~RaceScene();
+        void checkCollisions();
         void end_race(GameObject* winner, GameObject* loser, int time_difference);
         void drawObjects();
     protected:
@@ -26,6 +27,7 @@ class RaceScene : public Scene
         sf::View view_player2;
         static int round;
         sf::Thread m_thread;
+        bool terminate_thread;
 };
 
 #endif // RACESCENE_H

@@ -3,6 +3,7 @@
 
 #include <vector>
 #include "GameObject.h"
+#include "Zombie.h"
 
 class Scene
 {
@@ -15,9 +16,11 @@ class Scene
         void changeScene(Scene*);
 
         std::vector< GameObject* >* getGameObjects() {return &gameObjects;};
+        std::vector<Zombie*>* getZombies() {return &zombies;};
     protected:
     private:
         std::vector< GameObject* > gameObjects;
+        std::vector<Zombie*> zombies;
 };
 
 #endif // SCENE_H
