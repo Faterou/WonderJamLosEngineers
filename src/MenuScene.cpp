@@ -66,7 +66,11 @@ MenuScene::~MenuScene()
 }
 
 
-void MenuScene::update(){}
+void MenuScene::update()
+{
+
+
+}
 
 void MenuScene::inputs()
 {

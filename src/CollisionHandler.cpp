@@ -1,6 +1,7 @@
 
 #include "CollisionHandler.h"
 #include <iostream>
+#include <SFML/System.hpp>
 using namespace std;
 
 CollisionHandler::CollisionHandler()
@@ -10,15 +11,16 @@ CollisionHandler::CollisionHandler()
 
 bool CollisionHandler::checkAllCollisions()
 {
+//    sf::Clock clock;
     for(vector<GameObject*>::iterator it1 = current_scene->getGameObjects()->begin(); it1 < current_scene->getGameObjects()->end(); it1++)
     {
-        if((*it1)->getType() != GameObject::TREE)
+        if((*it1)->getType() == GameObject::CAR)
         {
             for(vector<GameObject*>::iterator it2 = current_scene->getGameObjects()->begin(); it2 < current_scene->getGameObjects()->end(); it2++)
             {
                 if(*it1 != *it2 && checkCollision(*it1,*it2))
                 {
-                    if(((*it1)->getType() == GameObject::ZOMBIE && ((Zombie*)(*it1))->getDeath()) || ((*it2)->getType() == GameObject::ZOMBIE && ((Zombie*)(*it2))->getDeath()))
+                    if(((*it2)->getType() == GameObject::ZOMBIE && ((Zombie*)(*it2))->getDeath()) || ((*it2)->getType() == GameObject::POINTS))
                     {
 
                     }
@@ -31,6 +33,8 @@ bool CollisionHandler::checkAllCollisions()
             }
         }
     }
+//    sf::Time t = clock.getElapsedTime();
+//    std::cout << "Temps check collision" << t.asSeconds() << std::endl;
 }
 
 bool CollisionHandler::checkAllCollisions(GameObject* go, vector<GameObject*>* objects)

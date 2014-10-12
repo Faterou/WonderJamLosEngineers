@@ -6,8 +6,12 @@
 #include <SFML/Audio.hpp>
 #include <windows.h>
 #include <iostream>
+#include "voiture.h"
 
 #define MAX_NUMBER_OF_ITEMS 4
+
+extern Voiture* player1;
+extern Voiture* player2;
 
 class StatsScene : public Scene
 {
@@ -20,27 +24,44 @@ class StatsScene : public Scene
         virtual void draw();
         void afficherStats();
 
-        int GetPressedItem() { return selectedItemIndex; }
+
+
     protected:
     private:
-        int selectedItemIndex = 0;
-        int selectedStatVitesse = 0;
-        int selectedStatAcceleration = 0;
-        int selectedStatManiabilite = 0;
-        int selectedStatGenerateurDePetrole = 0;
-        int selectedStatSuspension = 0;
-        int selectedStatImpact = 0;
+        int selectedItemIndex1 = 0;
+        int selectedStatVitesse1 = 0;
+        int selectedStatAcceleration1 = 0;
+        int selectedStatManiabilite1 = 0;
+        int selectedStatImpact1 = 0;
+
+        int selectedItemIndex2 = 0;
+        int selectedStatVitesse2 = 0;
+        int selectedStatAcceleration2 = 0;
+        int selectedStatManiabilite2 = 0;
+        int selectedStatImpact2 = 0;
+
+        sf::View view_player1;
+        sf::View view_player2;
 
         sf::Font font;
         sf::Text compteur;
-        sf::Text aptitude[6];
-        sf::Text aptitudeVitesse[20];
-        sf::Text aptitudeAcceleration[20];
-        sf::Text aptitudeManiabilite[20];
-        sf::Text aptitudeGenerationDePetrole[20];
-        sf::Text aptitudeSuspension[20];
-        sf::Text aptitudeImpact[20];
-        sf::Text barre[20];
+        sf::Text aptitude1[4];
+        sf::Text aptitudeVitesse1[20];
+        sf::Text aptitudeAcceleration1[20];
+        sf::Text aptitudeManiabilite1[20];
+        sf::Text aptitudeImpact1[20];
+        sf::Text barre1[20];
+
+        sf::Text aptitude2[4];
+        sf::Text aptitudeVitesse2[20];
+        sf::Text aptitudeAcceleration2[20];
+        sf::Text aptitudeManiabilite2[20];
+        sf::Text aptitudeImpact2[20];
+        sf::Text barre2[20];
+
+        sf::Text cash[6];
+        sf::Text description[6];
+        sf::Text pasAssezDargent[1];
 
         sf::Clock horlogeDebutStats;
         int m_time_difference;

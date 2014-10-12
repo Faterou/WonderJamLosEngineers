@@ -19,9 +19,12 @@ class Voiture : public GameObject
         float m_vitesse_max;
         float m_acceleration;
         float m_maniabilite;
-        float m_suspension;
-        float m_machineEssence;
         float m_penetrationZombie;
+
+        float m_vitesse_max_m;
+        float m_acceleration_m;
+        float m_maniabilite_m;
+        float m_penetrationZombie_m;
 
 
         sf::Vector2f getHeading();
@@ -30,8 +33,9 @@ class Voiture : public GameObject
         Voiture(std::string nomPhoto);
         virtual ~Voiture();
 
-        void set_vitesse_courante(float);
-        float get_vitesse_courante();
+        void set_vitesse_courante(float v){ m_vitesse_courante = v;}
+        float get_vitesse_courante(){return m_vitesse_courante;}
+        void miseAJourVoiture();
 
         void setVitesse_max(float vitesse);
         float getVitesse_max();
@@ -42,14 +46,21 @@ class Voiture : public GameObject
         void setManiabilite(float maniabilite);
         float getManiabilite();
 
-        void setSuspension(float suspension);
-        float getSuspension();
-
-        void setMachineEssence(float machineEssence);
-        float getMachineEssence();
 
         void setPenetrationZombie(float penetrationZombie);
         float getPenetrationZombie();
+
+        void setVitesseMax_m(float vitesseMax);
+        float getVitesseMax_m();
+
+        void setAcceleration_m(float acceleration);
+        float getAcceleration_m();
+
+        void setManiabilite_m(float maniabilite);
+        float getManiabilite_m();
+
+        void setPenetrationZombie_m(float penetrationZombie);
+        float getPenetrationZombie_m();
 
         void setMoney(float newAmount) {money = newAmount;};
         float getMoney() {return money;};

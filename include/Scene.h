@@ -16,6 +16,8 @@ class Scene
         void changeScene(Scene*);
 
         std::vector< GameObject* >* getGameObjects() {return &gameObjects;};
+        std::vector<GameObject*>::iterator addObjectToVector(GameObject*);
+        void deleteObjectFromVector(std::vector<GameObject*>::iterator);
         std::vector<Zombie*>* getZombies() {return &zombies;};
     protected:
     private:
