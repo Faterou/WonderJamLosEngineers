@@ -2,8 +2,12 @@
 #define STATSSCENE_H
 
 #include <Scene.h>
+#include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
+#include <windows.h>
+#include <iostream>
 
-extern sf::RenderWindow window;
+#define MAX_NUMBER_OF_ITEMS 4
 
 class StatsScene : public Scene
 {
@@ -14,8 +18,25 @@ class StatsScene : public Scene
         virtual void inputs();
         virtual void update();
         virtual void draw();
+        void afficherStats();
+
+        int GetPressedItem() { return selectedItemIndex; }
     protected:
     private:
+        int selectedItemIndex = 0;
+
+        sf::Font font;
+        sf::Text aptitude[6];
+        sf::Text aptitudeVitesse[20];
+        sf::Text aptitudeAcceleration[20];
+        sf::Text aptitudeManiabilite[20];
+        sf::Text aptitudeGenerationDePetrole[20];
+        sf::Text aptitudeSuspension[20];
+        sf::Text aptitudeImpact[20];
+        sf::Text barre[20];
+
+
+
 };
 
 #endif // STATSSCENE_H
