@@ -19,10 +19,10 @@ sf::RenderWindow window;
 Voiture* player1 = new Voiture("pickUp.png");
 Voiture* player2 = new Voiture("tank.png");
 
-Scene* current_scene = new MenuScene();
+//Scene* current_scene = new MenuScene();
 
 
-//Scene* current_scene = new RaceScene();
+Scene* current_scene = new RaceScene();
 //Scene* current_scene = new StatsScene(*player1, *player2, 10);
 /**
     Function to handle events of the main loop, like the one to close the window.
@@ -47,10 +47,7 @@ int main()
 
     //Pas certain que ça va là...
     player1->getSprite()->setOrigin((float)(player1->getSprite()->getGlobalBounds().width /2),(float)(player1->getSprite()->getGlobalBounds().height)/2);
-
-
     player2->getSprite()->setOrigin((float)(player2->getSprite()->getGlobalBounds().width /2),(float)(player2->getSprite()->getGlobalBounds().height)/2);
-
 
     while (window.isOpen())
     {

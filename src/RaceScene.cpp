@@ -20,7 +20,7 @@ extern Voiture* player2;
 int RaceScene::round = 0;
 Map map1;
 
-RaceScene::RaceScene() : map(), chandler(), view_player1(sf::FloatRect(-250,-250,500,500)), view_player2(sf::FloatRect(0,0,500,500)), m_thread(&RaceScene::update,this)
+RaceScene::RaceScene() : map(), chandler(), view_player1(sf::FloatRect(-250,-250,500,500)), view_player2(sf::FloatRect(0,0,500,500)), m_thread(&RaceScene::update,this), terminate_thread(false)
 {
 
     view_player1.setViewport(sf::FloatRect(0, 0, 0.5, 1));
@@ -92,7 +92,7 @@ void RaceScene::inputs(){
     }
 }
 void RaceScene::update(){
-    while(1)
+    while(!terminate_thread)
     {
         chandler.checkAllCollisions();
     }
@@ -123,13 +123,11 @@ void RaceScene::draw()
     Destination dest;
     dest.setPosition(1,0);
     map1.draw();
-    dest.draw();
     drawObjects();
 
 
     window.setView(view_player2);
     map1.draw();
-    dest.draw();
     drawObjects();
 
     window.display();
@@ -183,6 +181,16 @@ void RaceScene::populate()
     Scene::getGameObjects()->push_back(player1);
     Scene::getGameObjects()->push_back(player2);
 
+
+    Destination* dest = new Destination();
+    do
+    {
+        dest->getSprite()->move(rand() % (248*32),rand() % (248*32));
+    } while(chandler.checkAllCollisions(player2, Scene::getGameObjects()));
+    getGameObjects()->push_back(dest);
+    std::cout << dest->getSprite()->getPosition().x << "," << dest->getSprite()->getPosition().y << std::endl;
+
+
     for(int i=0; i<ZOMBIE_QUANTITY; i++)
     {
         int x;
@@ -221,12 +229,14 @@ void RaceScene::populate()
         }
         Scene::getGameObjects()->push_back(z);
     }
+
 }
 
 void RaceScene::end_race(GameObject* winner, GameObject* loser, int time_difference)
 {
     if(round < MAX_ROUND)
     {
+        terminate_thread = true;
         round++;
         changeScene(new StatsScene(*winner, *loser, time_difference));
     }
