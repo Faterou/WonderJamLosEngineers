@@ -36,7 +36,7 @@ if(OpenFile.is_open())
                 else
                 {
                    //on met les valeurs du fichier dans la matrices map
-                    map[loadCounter.x][loadCounter.y] = sf::Vector2i(1,0);
+                    map[loadCounter.x][loadCounter.y] = sf::Vector2i(x-'0',y-'0');
 
                     if(x-'0' == 0 && y - '0' == 1)
                     {
@@ -69,16 +69,13 @@ Map::~Map()
 
 void Map::draw()
 {
-   for(int i = 0; i < loadCounter.x; i++)
+   for(int i = 0; i < loadCounter.x; i += 2)
         {
-             for(int j = 0; j < loadCounter.y; j++)
+             for(int j = 0; j < loadCounter.y; j+=2)
              {
-                 if(map[i][j].x != -1 && map[i][j].y != -1)
-                 {
                      tiles.setPosition(i*32, j*32);
-                     tiles.setTextureRect(sf::IntRect(map[i][j].x*32, map[i][j].y * 32, 32 , 32));
+                     //tiles.setTextureRect(sf::IntRect(0, 0, 64 , 64));
                      window.draw(tiles);
-                 }
              }
         }
 }

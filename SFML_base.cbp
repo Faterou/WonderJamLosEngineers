@@ -26,6 +26,7 @@
 				<Option object_output="obj/Release/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
+				<Option projectCompilerOptionsRelation="0" />
 				<Compiler>
 					<Add option="-O2" />
 					<Add option="-std=c++11" />
@@ -56,14 +57,13 @@
 		<Unit filename="include/MenuItem.h" />
 		<Unit filename="include/MenuScene.h" />
 		<Unit filename="include/OrientedBoundingBox.h" />
-		<Unit filename="include/ProbeObject.h" />
 		<Unit filename="include/RaceScene.h" />
 		<Unit filename="include/Scene.h" />
 		<Unit filename="include/StatsScene.h" />
 		<Unit filename="include/TextureManager.h" />
 		<Unit filename="include/Tree.h" />
+		<Unit filename="include/Voiture.h" />
 		<Unit filename="include/Zombie.h" />
-		<Unit filename="include/voiture.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/CollisionHandler.cpp" />
 		<Unit filename="src/Destination.cpp" />
@@ -73,7 +73,6 @@
 		<Unit filename="src/MenuItem.cpp" />
 		<Unit filename="src/MenuScene.cpp" />
 		<Unit filename="src/OrientedBoundingBox.cpp" />
-		<Unit filename="src/ProbeObject.cpp" />
 		<Unit filename="src/RaceScene.cpp" />
 		<Unit filename="src/Scene.cpp" />
 		<Unit filename="src/StatsScene.cpp" />

@@ -17,13 +17,13 @@ class MenuScene : public Scene
         virtual void update();
         virtual void draw();
 
+
         int GetPressedItem() { return selectedItemIndex; }
 
     protected:
     private:
         int selectedItemIndex = 0;
         sf::Font font;
-
         sf::Text menu[4];
 
 };
