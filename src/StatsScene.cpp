@@ -53,13 +53,10 @@ StatsScene::StatsScene(GameObject winner, GameObject loser, int time_difference)
     aptitude[5].setCharacterSize(15);
     aptitude[5].setPosition(sf::Vector2f(50, 425));
 
-
-
     for(int x(0); x < 20; x++)
     {
         aptitudeVitesse[x].setFont(font);
         aptitudeVitesse[x].setColor(sf::Color::White);
-        aptitudeVitesse[x].setString("+");
         aptitudeVitesse[x].setCharacterSize(15);
         aptitudeVitesse[x].setPosition(sf::Vector2f(225 + (10* x) ,50));
     }
@@ -68,7 +65,6 @@ StatsScene::StatsScene(GameObject winner, GameObject loser, int time_difference)
     {
         aptitudeAcceleration[u].setFont(font);
         aptitudeAcceleration[u].setColor(sf::Color::White);
-        aptitudeAcceleration[u].setString("+");
         aptitudeAcceleration[u].setCharacterSize(15);
         aptitudeAcceleration[u].setPosition(sf::Vector2f(225 + (10* u) ,125));
     }
@@ -77,7 +73,6 @@ StatsScene::StatsScene(GameObject winner, GameObject loser, int time_difference)
     {
         aptitudeManiabilite[x].setFont(font);
         aptitudeManiabilite[x].setColor(sf::Color::White);
-        aptitudeManiabilite[x].setString("+");
         aptitudeManiabilite[x].setCharacterSize(15);
         aptitudeManiabilite[x].setPosition(sf::Vector2f(225 + (10* x) ,200));
     }
@@ -86,7 +81,6 @@ StatsScene::StatsScene(GameObject winner, GameObject loser, int time_difference)
     {
         aptitudeGenerationDePetrole[x].setFont(font);
         aptitudeGenerationDePetrole[x].setColor(sf::Color::White);
-        aptitudeGenerationDePetrole[x].setString("+");
         aptitudeGenerationDePetrole[x].setCharacterSize(15);
         aptitudeGenerationDePetrole[x].setPosition(sf::Vector2f(225 + (10* x) ,275));
     }
@@ -95,7 +89,6 @@ StatsScene::StatsScene(GameObject winner, GameObject loser, int time_difference)
     {
         aptitudeSuspension[x].setFont(font);
         aptitudeSuspension[x].setColor(sf::Color::White);
-        aptitudeSuspension[x].setString("+");
         aptitudeSuspension[x].setCharacterSize(15);
         aptitudeSuspension[x].setPosition(sf::Vector2f(225 + (10* x) ,350));
     }
@@ -104,7 +97,6 @@ StatsScene::StatsScene(GameObject winner, GameObject loser, int time_difference)
     {
         aptitudeImpact[x].setFont(font);
         aptitudeImpact[x].setColor(sf::Color::White);
-        aptitudeImpact[x].setString("+");
         aptitudeImpact[x].setCharacterSize(15);
         aptitudeImpact[x].setPosition(sf::Vector2f(225 + (10* x) ,425));
     }
@@ -121,31 +113,118 @@ void StatsScene::afficherStats()
 
 void StatsScene::inputs()
 {
-    sf::Event event1;
+
 
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
     {
-        std::cout << "allo" << std::endl;
         if (selectedItemIndex  > 0)
         {
-        aptitude[selectedItemIndex].setColor(sf::Color::White);
-        selectedItemIndex--;
-        aptitude[selectedItemIndex].setColor(sf::Color::Red);
-        Sleep(100);
+            aptitude[selectedItemIndex].setColor(sf::Color::White);
+            selectedItemIndex--;
+            aptitude[selectedItemIndex].setColor(sf::Color::Red);
+            Sleep(100);
         }
+        else
+            cout << "wow wow wow el malade calme toi" << endl;
     }
 
 
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
      {
-        if (selectedItemIndex > 0)
+        if (selectedItemIndex < 5)
         {
             aptitude[selectedItemIndex].setColor(sf::Color::White);
             selectedItemIndex++;
             aptitude[selectedItemIndex].setColor(sf::Color::Red);
             Sleep(100);
         }
+        else
+            {
+                std::cout << "TU peux pas y aller!!!" << std::endl;
+            }
      }
+
+    switch(selectedItemIndex)
+    {
+    case 0:
+
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+        {
+            if (selectedItemIndex  > 0)
+            {
+                selectedStatVitesse--;
+                aptitudeVitesse[selectedStatVitesse].setString("");
+                Sleep(100);
+            }
+            else
+                cout << "wow wow wow el malade calme toi" << endl;
+        }
+
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+        {
+            if (selectedItemIndex < 19)
+            {
+                selectedStatVitesse++;
+                aptitudeVitesse[selectedStatVitesse].setString("+");
+                Sleep(100);
+            }
+            else
+            {
+                std::cout << "TU peux pas y aller!!!" << std::endl;
+            }
+        }
+
+        break;
+    case 1:
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+        {
+            if (selectedStatAcceleration  > 0)
+            {
+                selectedStatAcceleration--;
+                aptitudeAcceleration[selectedStatAcceleration].setString("");
+                Sleep(100);
+            }
+            else
+                cout << "wow wow wow el malade calme toi" << endl;
+        }
+
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+        {
+            if (selectedStatAcceleration < 19)
+            {
+                selectedStatAcceleration++;
+                aptitudeAcceleration[selectedStatAcceleration].setString("+");
+                Sleep(100);
+            }
+            else
+            {
+                std::cout << "TU peux pas y aller!!!" << std::endl;
+            }
+        }
+
+        break;
+
+    case 2:
+
+        break;
+
+    case 3:
+
+        break;
+
+    case 4:
+
+        break;
+
+    case 5:
+
+        break;
+
+
+    }
+
+
+
 
 }
 void StatsScene::update(){}
@@ -153,19 +232,8 @@ void StatsScene::draw()
 {
      window.clear();
 
-    sf::Texture texture;
     sf::Texture flecheQuiPointe;
     sf::Sprite fleche;
-    sf::Sprite sprite;
-
-    if (!texture.loadFromFile("imageMenu.png"))
-    {
-        std::cout << "Ca marche pas gros mongole" << std::endl;
-    }
-
-    sprite.setTexture(texture);
-
-
 
     if (!flecheQuiPointe.loadFromFile("fleche.png"))
     {

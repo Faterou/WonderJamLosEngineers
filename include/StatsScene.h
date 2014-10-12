@@ -24,6 +24,12 @@ class StatsScene : public Scene
     protected:
     private:
         int selectedItemIndex = 0;
+        int selectedStatVitesse = 0;
+        int selectedStatAcceleration = 0;
+        int selectedStatManiabilite = 0;
+        int selectedStatGenerateurDePetrole = 0;
+        int selectedStatSuspension = 0;
+        int selectedStatImpact = 0;
 
         sf::Font font;
         sf::Text aptitude[6];
