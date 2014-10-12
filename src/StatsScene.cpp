@@ -19,6 +19,17 @@ extern Voiture* player2;
 
 StatsScene::StatsScene(GameObject winner, GameObject loser, int time_difference) : view_player1(sf::FloatRect(0,0,500,500)), view_player2(sf::FloatRect(0,0,500,500))
 {
+    if (!backgroundBuffer.loadFromFile("menuBackground.wav"))
+    {
+       std::cout << "impossible de loader la musique background \n";
+    }
+
+    m_sound.setBuffer(backgroundBuffer);
+
+    m_sound.setLoop(true);
+
+    m_sound.play();
+
     view_player1.setViewport(sf::FloatRect(0, 0, 0.5, 1));
     view_player2.setViewport(sf::FloatRect(0.5, 0, 0.5, 1));
 

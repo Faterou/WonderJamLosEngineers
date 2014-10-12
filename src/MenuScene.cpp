@@ -86,7 +86,7 @@ void MenuScene::inputs()
             menu[selectedItemIndex].setColor(sf::Color::White);
             selectedItemIndex--;
             menu[selectedItemIndex].setColor(sf::Color::Red);
-            std::cout << "allo" << std::endl;
+            //std::cout << selectedItemIndex << std::endl;
         }
     }
 
@@ -95,15 +95,10 @@ void MenuScene::inputs()
      {
             if(selectedItemIndex  < 3)
             {
-                std::cout << selectedItemIndex << std::endl;
+                //std::cout << selectedItemIndex << std::endl;
                 menu[selectedItemIndex].setColor(sf::Color::White);
                 selectedItemIndex++;
                 menu[selectedItemIndex].setColor(sf::Color::Red);
-            }
-
-            else
-            {
-                std::cout << "TU peux pas y aller!!!" << std::endl;
             }
      }
      if(sf::Keyboard::isKeyPressed(sf::Keyboard::Return))
