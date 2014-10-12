@@ -3,3 +3,9 @@ bin/Debug
 obj
 SFML-2.1
 *.depend
+bin/Release/sfml-window-d-2.dll
+bin/Release/sfml-system-d-2.dll
+bin/Release/sfml-network-d-2.dll
+bin/Release/sfml-network-2.dll
+bin/Release/sfml-graphics-d-2.dll
+bin/Release/sfml-audio-d-2.dll
