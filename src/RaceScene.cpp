@@ -121,7 +121,6 @@ void RaceScene::inputs(){
         {
             player1->moveBackward();
         }
-        std::cout << player1->getSprite()->getPosition().x << "," << player1->getSprite()->getPosition().y << std::endl;
     }
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
     {
@@ -172,11 +171,11 @@ void RaceScene::inputs(){
             player2->rotateLeft();
         }
     }
-    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
-    {
-        m_sound.stop();
-        window.close();
-    }
+//    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
+//    {
+//        m_sound.stop();
+//        window.close();
+//    }
 
     if(!action1)
     {
@@ -215,10 +214,6 @@ void RaceScene::drawObjects()
         if((*Scene::getGameObjects())[i] != NULL)
         {
             (*Scene::getGameObjects())[i]->draw();
-        }
-        else
-        {
-            std::cout << "Problem in RaceScene::drawObjects  -> null object" << std::endl;
         }
     }
 }
@@ -439,8 +434,6 @@ void RaceScene::populate()
     } while(chandler.checkAllCollisions(player2, Scene::getGameObjects()));
     getGameObjects()->push_back(dest);
     destination = dest;
-    std::cout << dest->getSprite()->getPosition().x << "," << dest->getSprite()->getPosition().y << std::endl;
-
 
     for(int i=0; i<ZOMBIE_QUANTITY; i++)
     {

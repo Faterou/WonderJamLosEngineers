@@ -284,17 +284,13 @@ void StatsScene::inputs()
         }
      }
 
-    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
-    {
-        window.close();
-    }
 
-    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Return))
-    {
-        m_sound.stop();
-        Scene* next_scene = new RaceScene(winner, loser, delta);
-        this->changeScene(next_scene);
-    }
+//    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Return))
+//    {
+//        m_sound.stop();
+//        Scene* next_scene = new RaceScene(winner, loser, delta);
+//        this->changeScene(next_scene);
+//    }
 
     switch(selectedItemIndex1)
     {
@@ -438,16 +434,16 @@ void StatsScene::inputs()
         }
      }
 
-    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
-    {
-        window.close();
-    }
+//    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
+//    {
+//        window.close();
+//    }
 
-    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Return))
-    {
-        Scene* next_scene = new RaceScene(winner, loser, delta);
-        this->changeScene(next_scene);
-    }
+//    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Return))
+//    {
+//        Scene* next_scene = new RaceScene(winner, loser, delta);
+//        this->changeScene(next_scene);
+//    }
 
     switch(selectedItemIndex2)
     {
@@ -608,8 +604,6 @@ void StatsScene::update()
         Scene* next_scene = new RaceScene(winner, loser, delta);
         this->changeScene(next_scene);
     }
-
-    std::cout << "temps actuel: " << tempsActuel << endl;
 }
 
 void StatsScene::draw()

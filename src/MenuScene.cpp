@@ -122,7 +122,6 @@ void MenuScene::inputs()
              }
 
          case 2:
-            std::cout << "case 2 \n";
             break;
 
          case 3:
