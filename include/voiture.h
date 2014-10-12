@@ -30,8 +30,8 @@ class Voiture : public GameObject
         Voiture(std::string nomPhoto);
         virtual ~Voiture();
 
-        void set_vitesse_courante(float);
-        float get_vitesse_courante();
+        void set_vitesse_courante(float v){ m_vitesse_courante = v;}
+        float get_vitesse_courante(){return m_vitesse_courante;}
 
         void setVitesse_max(float vitesse);
         float getVitesse_max();

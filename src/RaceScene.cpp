@@ -301,7 +301,9 @@ void RaceScene::populate()
 
 void RaceScene::end_race(GameObject* winner, GameObject* loser, int time_difference)
 {
-    if(round < MAX_ROUND)
+    player1->set_vitesse_courante(0);
+    player2->set_vitesse_courante(0);
+    if(false && round < MAX_ROUND)
     {
         terminate_thread = true;
         round++;
@@ -309,7 +311,7 @@ void RaceScene::end_race(GameObject* winner, GameObject* loser, int time_differe
     }
     else
     {
-        changeScene(new EndScene(*winner, *loser, time_difference));
+        changeScene(new EndScene(winner, loser, time_difference));
     }
 }
 

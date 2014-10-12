@@ -12,7 +12,6 @@ using namespace std;
 
 StatsScene::StatsScene(GameObject winner, GameObject loser, int time_difference)
 {
-
     if (!font.loadFromFile("arial.ttf"))
     {
         std::cout << "erreur" << std::endl;
