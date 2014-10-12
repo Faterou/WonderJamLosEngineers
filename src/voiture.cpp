@@ -13,22 +13,14 @@ using namespace std;
 
 Voiture::Voiture(std::string nomPhoto) : GameObject(sf::Sprite(),CAR)
 {
-
-
     m_vitesse_max_m = 1;
     m_acceleration_m = 1;
     m_maniabilite_m = 1;
     m_suspension_m = 1;
     m_machineEssence_m = 1;
-    m_penetrationZombie_m = 1;
+    m_penetrationZombie_m = 0;
 
     m_vitesse_courante = 0.01;
-    m_vitesse_max = (m_vitesse_max_m * 10);
-    m_acceleration = (m_acceleration_m / 100);
-    m_maniabilite = (m_maniabilite_m + 3);
-    m_suspension = m_suspension_m;
-    m_machineEssence = m_maniabilite_m;
-    m_penetrationZombie = (m_penetrationZombie_m - 1);
 
     petrole = 0;
     money =0;
@@ -44,12 +36,12 @@ Voiture::~Voiture()
 
 void Voiture::miseAJourVoiture()
 {
-    m_vitesse_max = (m_vitesse_max_m * 10);
-    m_acceleration = (m_acceleration_m  / 100 );
-    m_maniabilite = (m_maniabilite_m);
+    m_vitesse_max = (m_vitesse_max_m * 4);
+    m_acceleration = (m_acceleration_m  / 4 );
+    m_maniabilite = (m_maniabilite_m * 2 );
     m_machineEssence = (m_machineEssence_m);
     m_suspension = (m_suspension_m);
-    m_penetrationZombie = (m_penetrationZombie_m + 1);
+    m_penetrationZombie = (m_penetrationZombie_m);
 }
 
 sf::Vector2f Voiture::getHeading()
@@ -209,11 +201,11 @@ void Voiture::idle()
 {
     if(m_vitesse_courante > 0)
     {
-        m_vitesse_courante = m_vitesse_courante - 0.01;
+        m_vitesse_courante = m_vitesse_courante - m_acceleration * 2;
     }
     else if(m_vitesse_courante < 0)
     {
-        m_vitesse_courante = m_vitesse_courante + 0.01;
+        m_vitesse_courante = m_vitesse_courante + m_acceleration * 2;
     }
 }
 void Voiture::onCollision(GameObject* object)

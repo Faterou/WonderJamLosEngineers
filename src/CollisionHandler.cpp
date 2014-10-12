@@ -14,13 +14,13 @@ bool CollisionHandler::checkAllCollisions()
 //    sf::Clock clock;
     for(vector<GameObject*>::iterator it1 = current_scene->getGameObjects()->begin(); it1 < current_scene->getGameObjects()->end(); it1++)
     {
-        if((*it1)->getType() != GameObject::TREE && (*it1)->getType() != GameObject::ZOMBIE)
+        if((*it1)->getType() == GameObject::CAR)
         {
             for(vector<GameObject*>::iterator it2 = current_scene->getGameObjects()->begin(); it2 < current_scene->getGameObjects()->end(); it2++)
             {
                 if(*it1 != *it2 && checkCollision(*it1,*it2))
                 {
-                    if(((*it1)->getType() == GameObject::ZOMBIE && ((Zombie*)(*it1))->getDeath()) || ((*it2)->getType() == GameObject::ZOMBIE && ((Zombie*)(*it2))->getDeath()))
+                    if(((*it2)->getType() == GameObject::ZOMBIE && ((Zombie*)(*it2))->getDeath()) || ((*it2)->getType() == GameObject::POINTS))
                     {
 
                     }
