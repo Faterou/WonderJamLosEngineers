@@ -30,7 +30,7 @@ RaceScene::RaceScene(GameObject* last_winner, GameObject* last_loser, int delta)
 
 
     populate();
-    if (!font.loadFromFile("arial.ttf"))
+    if (!font.loadFromFile("infected.ttf"))
     {
         std::cout << "erreur" << std::endl;
     }
@@ -189,12 +189,12 @@ void RaceScene::draw()
 
     sf::Text petrol1;
     ostringstream oss;
-    oss << "Pétrole: " << player1->getPetrole();
+    oss << "Petrole: " << player1->getPetrole();
     petrol1.setFont(font);
     petrol1.setColor(sf::Color::White);
     petrol1.setString(oss.str());
-    petrol1.setCharacterSize(20);
-    petrol1.setPosition(sf::Vector2f(player1->getSprite()->getPosition().x - 250, player1->getSprite()->getPosition().y -250));
+    petrol1.setCharacterSize(40);
+    petrol1.setPosition(sf::Vector2f(player1->getSprite()->getPosition().x - 240, player1->getSprite()->getPosition().y -250));
     window.draw(petrol1);
 
     if(last_loser == player1 && delta - clock.getElapsedTime().asSeconds() > 0)
@@ -205,8 +205,8 @@ void RaceScene::draw()
         t_delta.setFont(font);
         t_delta.setColor(sf::Color::White);
         t_delta.setString(oss12.str());
-        t_delta.setCharacterSize(20);
-        t_delta.setPosition(sf::Vector2f(player1->getSprite()->getPosition().x - 50, player1->getSprite()->getPosition().y +200));
+        t_delta.setCharacterSize(30);
+        t_delta.setPosition(sf::Vector2f(player1->getSprite()->getPosition().x-40, player1->getSprite()->getPosition().y +200));
         window.draw(t_delta);
     }
 
@@ -233,12 +233,12 @@ void RaceScene::draw()
     }
     sf::Text petrol2;
     ostringstream oss2;
-    oss2 << "Pétrole: " << player2->getPetrole();
+    oss2 << "Petrole: " << player2->getPetrole();
     petrol2.setFont(font);
     petrol2.setColor(sf::Color::White);
     petrol2.setString(oss2.str());
-    petrol2.setCharacterSize(20);
-    petrol2.setPosition(sf::Vector2f(player2->getSprite()->getPosition().x - 250, player2->getSprite()->getPosition().y -250));
+    petrol2.setCharacterSize(40);
+    petrol2.setPosition(sf::Vector2f(player2->getSprite()->getPosition().x - 240, player2->getSprite()->getPosition().y -250));
     window.draw(petrol2);
 
     if(last_loser == player2 && delta - clock.getElapsedTime().asSeconds() > 0)
@@ -249,8 +249,8 @@ void RaceScene::draw()
         t_delta.setFont(font);
         t_delta.setColor(sf::Color::White);
         t_delta.setString(oss12.str());
-        t_delta.setCharacterSize(20);
-        t_delta.setPosition(sf::Vector2f(player2->getSprite()->getPosition().x - 50, player2->getSprite()->getPosition().y +200));
+        t_delta.setCharacterSize(30);
+        t_delta.setPosition(sf::Vector2f(player2->getSprite()->getPosition().x -40, player2->getSprite()->getPosition().y +200));
         window.draw(t_delta);
     }
 
