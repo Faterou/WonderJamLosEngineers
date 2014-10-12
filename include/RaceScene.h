@@ -25,6 +25,7 @@ class RaceScene : public Scene
         sf::View view_player1;
         sf::View view_player2;
         static int round;
+        sf::Thread m_thread;
 };
 
 #endif // RACESCENE_H
