@@ -7,7 +7,7 @@
 class GameObject
 {
     public:
-        enum Type {ZOMBIE, CAR, DESTINATION, MENU_ITEM, TREE};
+        enum Type {ZOMBIE, CAR, DESTINATION, POINTS, TREE};
         GameObject();
         GameObject(sf::Sprite, Type);
         virtual void onCollision(GameObject*);

@@ -2,11 +2,13 @@
 #define M_PI           3.14159265358979323846
 #endif
 #include "Zombie.h"
+#include "Scene.h"
 using namespace std;
-extern sf::Window window;
+extern sf::RenderWindow window;
+extern Scene* current_scene;
 
 //Constructeur
-Zombie::Zombie(string nomPhoto) : GameObject(sf::Sprite(),ZOMBIE)
+Zombie::Zombie(string nomPhoto) : GameObject(sf::Sprite(),ZOMBIE), points()
 {
     GameObject::setTexture(TextureManager::getInstance().getTexture(nomPhoto));
     getSprite()->setOrigin(getSprite()->getGlobalBounds().width/2,getSprite()->getGlobalBounds().height/2);
@@ -68,12 +70,26 @@ void Zombie::move()
     getSprite()->move(0.2f*getHeading());
 }
 
+void Zombie::drawPoints()
+{
+    sf::Clock clock;
+    while(clock.getElapsedTime().asSeconds() < 3)
+    {
+        window.draw(*getSpritePoints());
+        window.display();
+    }
+}
+
 void Zombie::onCollision(GameObject* collidedTo)
 {
     if(collidedTo->getType() == GameObject::CAR)
     {
         death = true;
         GameObject::setTexture(TextureManager::getInstance().getTexture("blood1.png"));
+//        *points = sf::Sprite(*(TextureManager::getInstance().getTexture("petrolepoint.png")));
+//        points->setPosition(getSprite()->getPosition());
+//        current_scene->getGameObjects()->push_back(new GameObject(*points,GameObject::POINTS));
+//        current_scene->getGameObjects()->at(current_scene->getGameObjects()->size()-1);
     }
 }
 

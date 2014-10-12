@@ -13,6 +13,8 @@ class Zombie: public GameObject
         void setSprite(sf::Sprite*);
         void move();
         bool getDeath();
+        void drawPoints();
+        sf::Sprite* getSpritePoints(){return points;};
         virtual void onCollision(GameObject*);
         Zombie();
         Zombie(std::string);
@@ -21,6 +23,7 @@ class Zombie: public GameObject
     private:
         sf::Vector2f getHeading();
         bool death = false;
+        sf::Sprite* points;
 
 };
 
