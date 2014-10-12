@@ -17,10 +17,6 @@ extern Voiture* player1;
 extern Voiture* player2;
 
 
-
-extern Voiture* player1;
-extern Voiture* player2;
-
 StatsScene::StatsScene(GameObject winner, GameObject loser, int time_difference)
 {
 
