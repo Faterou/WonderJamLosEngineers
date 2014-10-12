@@ -87,10 +87,6 @@ void MenuScene::inputs()
      }
      if(sf::Keyboard::isKeyPressed(sf::Keyboard::Return))
      {
-         /*
-         Scene* next_scene= new RaceScene();
-         this->changeScene(next_scene);
-         */
          switch(selectedItemIndex)
          {
          case 0:        //Attention, ici la prochaine étape serait d'aller à une StatsScene
@@ -117,7 +113,7 @@ void MenuScene::inputs()
      }
 
     //Pour ralentir la saisie
-     Sleep(100);
+     Sleep(50);
 }
 
 void MenuScene::draw()
