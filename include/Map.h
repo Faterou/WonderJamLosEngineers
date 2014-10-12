@@ -30,7 +30,7 @@ class Map
     private:
         sf::Texture tileTexture;
         sf::Sprite tiles;
-        sf::Vector2i map[250][250];
+        sf::Vector2i map[500][500];
         sf::Vector2i loadCounter = sf::Vector2i(0,0);
 
         std::vector<GameObject*> treeVector;
