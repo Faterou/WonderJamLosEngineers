@@ -15,7 +15,7 @@ EndScene::EndScene(GameObject* winner, GameObject* loser, int time_difference)
     if(winner == player1) player_number = 1;
     else player_number = 2;
 
-    oss << " Winner: " << std::endl << " player  " <<player_number;
+    oss << " Winner: " << std::endl << " player " <<player_number;
     results = oss.str();
 }
 
@@ -48,7 +48,7 @@ void EndScene::draw()
     t.setColor(sf::Color::Red);
     t.setString(results);
     t.setCharacterSize(100);
-    t.setPosition(sf::Vector2f(300, 150));
+    t.setPosition(sf::Vector2f(300, 120));
     window.draw(t);
     window.display();
 }
