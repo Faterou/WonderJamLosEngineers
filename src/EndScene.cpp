@@ -40,6 +40,7 @@ void EndScene::inputs()
 {
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape) || sf::Keyboard::isKeyPressed(sf::Keyboard::Return))
     {
+        m_sound.stop();
         changeScene(new MenuScene());
         Sleep(100);
     }

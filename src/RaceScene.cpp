@@ -498,10 +498,12 @@ void RaceScene::end_race(GameObject* winner, GameObject* loser, int time_differe
     {
         terminate_thread = true;
         round++;
+        m_sound.stop();
         changeScene(new StatsScene(winner, loser, time_difference));
     }
     else
     {
+        m_sound.stop();
         changeScene(new EndScene(winner, loser, time_difference));
     }
 }

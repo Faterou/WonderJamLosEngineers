@@ -272,6 +272,7 @@ void StatsScene::inputs()
 
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Return))
     {
+        m_sound.stop();
         Scene* next_scene = new RaceScene(winner, loser, delta);
         this->changeScene(next_scene);
     }
@@ -590,6 +591,7 @@ void StatsScene::update()
 
     if(tempsActuel >= m_time_difference)
     {
+        m_sound.stop();
         Scene* next_scene = new RaceScene(winner, loser, delta);
         this->changeScene(next_scene);
     }

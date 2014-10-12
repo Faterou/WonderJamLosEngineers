@@ -108,16 +108,16 @@ void MenuScene::inputs()
          {
          case 0:        //Attention, ici la prochaine étape serait d'aller à une StatsScene
          {
+            m_sound.stop();
             Scene* next_scene = new StatsScene(player1, player2, 0);
             this->changeScene(next_scene);
-            m_sound.stop();
             break;
          }
          case 1:
              {
+                m_sound.stop();
                 Scene* next_scene= new AideScene();
                 this->changeScene(next_scene);
-                m_sound.stop();
                 break;
              }
 
