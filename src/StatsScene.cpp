@@ -155,7 +155,7 @@ StatsScene::StatsScene(GameObject winner, GameObject loser, int time_difference)
         aptitudeSuspension1[x].setPosition(sf::Vector2f(225 + (10* x) ,350));
     }
 
-     for(int x(0); x < 20; x++)
+     for(int x(0); x < 5; x++)
     {
         aptitudeImpact1[x].setFont(font);
         aptitudeImpact1[x].setColor(sf::Color::White);
@@ -203,7 +203,7 @@ StatsScene::StatsScene(GameObject winner, GameObject loser, int time_difference)
         aptitudeSuspension2[x].setPosition(sf::Vector2f(225 + (10* x) ,350));
     }
 
-     for(int x(0); x < 20; x++)
+     for(int x(0); x < 5; x++)
     {
         aptitudeImpact2[x].setFont(font);
         aptitudeImpact2[x].setColor(sf::Color::White);
@@ -223,6 +223,7 @@ void StatsScene::afficherStats()
 
 void StatsScene::inputs()
 {
+
 
 
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
@@ -432,7 +433,7 @@ void StatsScene::inputs()
 
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
         {
-            if (selectedStatImpact1 < 19)
+            if (selectedStatImpact1 < 5)
             {
                 player1->setPenetrationZombie_m(++selectedStatImpact1);
                 aptitudeImpact1[selectedStatImpact1].setString("+");
@@ -447,8 +448,230 @@ void StatsScene::inputs()
 
         break;
     }
-          cout << player1->getPenetrationZombie_m() << endl;
+
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::W))
+    {
+        if (selectedItemIndex2  > 0)
+        {
+            aptitude2[selectedItemIndex2].setColor(sf::Color::White);
+            selectedItemIndex2--;
+            aptitude2[selectedItemIndex2].setColor(sf::Color::Red);
+            Sleep(100);
+        }
+        else
+            cout << "wow wow wow el malade calme toi" << endl;
+    }
+
+
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+     {
+        if (selectedItemIndex2 < 5)
+        {
+            aptitude2[selectedItemIndex2].setColor(sf::Color::White);
+            selectedItemIndex2++;
+            aptitude2[selectedItemIndex2].setColor(sf::Color::Red);
+            Sleep(100);
+        }
+        else
+            {
+                std::cout << "TU peux pas y aller!!!" << std::endl;
+            }
+     }
+
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
+    {
+        window.close();
+    }
+
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Return))
+    {
+        Scene* next_scene = new RaceScene();
+        this->changeScene(next_scene);
+    }
+
+    switch(selectedItemIndex2)
+    {
+    case 0:
+
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+        {
+            if (selectedStatVitesse2  > 0)
+            {
+                aptitudeVitesse2[selectedStatVitesse2].setString("");
+                player2->setVitesseMax_m(--selectedStatVitesse2);
+
+                Sleep(100);
+            }
+            else
+                cout << "wow wow wow el malade calme toi" << endl;
+        }
+
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+        {
+            if (selectedStatVitesse2 < 19)
+            {
+                player2->setVitesseMax_m(++selectedStatVitesse2);
+                aptitudeVitesse2[selectedStatVitesse2].setString("+");
+                Sleep(100);
+            }
+            else
+            {
+                std::cout << "TU peux pas y aller!!!" << std::endl;
+            }
+        }
+
+        break;
+    case 1:
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+        {
+            if (selectedStatAcceleration2  > 0)
+            {
+                aptitudeAcceleration2[selectedStatAcceleration2].setString("");
+                player2->setAcceleration_m(--selectedStatAcceleration2);
+                Sleep(100);
+            }
+            else
+                cout << "wow wow wow el malade calme toi" << endl;
+        }
+
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+        {
+            if (selectedStatAcceleration2 < 19)
+            {
+                player2->setAcceleration_m(++selectedStatAcceleration2);
+                aptitudeAcceleration2[selectedStatAcceleration2].setString("+");
+                Sleep(100);
+            }
+            else
+            {
+                std::cout << "TU peux pas y aller!!!" << std::endl;
+            }
+        }
+
+        break;
+
+    case 2:
+         if(sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+        {
+            if (selectedStatManiabilite2  > 0)
+            {
+                aptitudeManiabilite2[selectedStatManiabilite2].setString("");
+                player2->setManiabilite_m(--selectedStatManiabilite2);
+                Sleep(100);
+            }
+            else
+                cout << "wow wow wow el malade calme toi" << endl;
+        }
+
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+        {
+            if (selectedStatManiabilite2 < 19)
+            {
+                player2->setManiabilite_m(++selectedStatManiabilite2);
+                aptitudeManiabilite2[selectedStatManiabilite2].setString("+");
+                Sleep(100);
+            }
+            else
+            {
+                std::cout << "TU peux pas y aller!!!" << std::endl;
+            }
+        }
+
+        break;
+
+    case 3:
+
+         if(sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+        {
+            if (selectedStatGenerateurDePetrole2  > 0)
+            {
+                aptitudeGenerationDePetrole2[selectedStatGenerateurDePetrole2].setString("");
+                player2->setMachineEssence_m(--selectedStatGenerateurDePetrole2);
+                Sleep(100);
+            }
+            else
+                cout << "wow wow wow el malade calme toi" << endl;
+        }
+
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+        {
+            if (selectedStatGenerateurDePetrole2 < 19)
+            {
+                player2->setMachineEssence_m(++selectedStatGenerateurDePetrole2);
+                aptitudeGenerationDePetrole2[selectedStatGenerateurDePetrole2].setString("+");
+                Sleep(100);
+            }
+            else
+            {
+                std::cout << "TU peux pas y aller!!!" << std::endl;
+            }
+        }
+
+        break;
+
+    case 4:
+
+         if(sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+        {
+            if (selectedStatSuspension2  > 0)
+            {
+                aptitudeSuspension2[selectedStatSuspension2].setString("");
+                player2->setSuspension_m(--selectedStatSuspension2);
+                Sleep(100);
+            }
+            else
+                cout << "wow wow wow el malade calme toi" << endl;
+        }
+
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+        {
+            if (selectedStatSuspension2 < 19)
+            {
+                player2->setSuspension_m(++selectedStatSuspension2);
+                aptitudeSuspension2[selectedStatSuspension2].setString("+");
+                Sleep(100);
+            }
+            else
+            {
+                std::cout << "TU peux pas y aller!!!" << std::endl;
+            }
+        }
+
+        break;
+
+    case 5:
+
+         if(sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+        {
+            if (selectedStatImpact2  > 0)
+            {
+                aptitudeImpact2[selectedStatImpact2].setString("");
+                player2->setPenetrationZombie_m(--selectedStatImpact2);
+                Sleep(100);
+            }
+            else
+                cout << "wow wow wow el malade calme toi" << endl;
+        }
+
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+        {
+            if (selectedStatImpact2 < 19)
+            {
+                player2->setPenetrationZombie_m(++selectedStatImpact2);
+                aptitudeImpact2[selectedStatImpact2].setString("+");
+                Sleep(100);
+
+            }
+            else
+            {
+                std::cout << "TU peux pas y aller!!!" << std::endl;
+            }
+        }
+
+        break;
+    }
           player1->miseAJourVoiture();
+          player2->miseAJourVoiture();
 }
 
 void StatsScene::update()
@@ -459,6 +682,13 @@ void StatsScene::update()
     selectedStatGenerateurDePetrole1 = ((int)player1->getMachineEssence_m());
     selectedStatSuspension1 = ((int)player1->getSuspension_m());
     selectedStatImpact1 = ((int)player1->getPenetrationZombie_m());
+
+    selectedStatVitesse2 = ((int)player2->getVitesseMax_m());
+    selectedStatAcceleration2 = ((int)player2->getAcceleration_m());
+    selectedStatManiabilite2 = ((int)player2->getManiabilite_m());
+    selectedStatGenerateurDePetrole2 = ((int)player2->getMachineEssence_m());
+    selectedStatSuspension2 = ((int)player2->getSuspension_m());
+    selectedStatImpact2 = ((int)player2->getPenetrationZombie_m());
 
 
     int tempsActuel = horlogeDebutStats.getElapsedTime().asMilliseconds();

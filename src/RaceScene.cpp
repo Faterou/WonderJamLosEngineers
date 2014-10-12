@@ -192,6 +192,17 @@ void RaceScene::draw()
     window.display();
 }
 
+struct compare_objects
+{
+    bool operator() (GameObject* go1, GameObject* go2) { return go1->getSprite()->getPosition().y < go2->getSprite()->getPosition().y ;}
+};
+
+void RaceScene::sort_trees()
+{
+    compare_objects cmp;
+    std::sort(Scene::getGameObjects()->begin(), Scene::getGameObjects()->end(), cmp);
+}
+
 /**
     Method to populate the map with zombies
 */
@@ -221,6 +232,8 @@ void RaceScene::populate()
             Scene::getGameObjects()->push_back(new Tree(s[j]));
         }
     }
+
+    sort_trees();
 
     player1->getSprite()->rotate(180);
     do
