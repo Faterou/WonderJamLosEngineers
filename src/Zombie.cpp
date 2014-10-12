@@ -7,11 +7,24 @@ using namespace std;
 extern sf::RenderWindow window;
 extern Scene* current_scene;
 
+void managePoints(vector<GameObject*>::iterator object)
+{
+    sf::Clock clock;
+    while(clock.getElapsedTime().asSeconds() < 0.5)
+    {
+        (*object)->getSprite()->setScale(clock.getElapsedTime().asSeconds()*3+1,clock.getElapsedTime().asSeconds()*3 +1);
+    }
+    current_scene->deleteObjectFromVector(object);
+}
+
 //Constructeur
-Zombie::Zombie(string nomPhoto) : GameObject(sf::Sprite(),ZOMBIE), points()
+Zombie::Zombie(string nomPhoto) : GameObject(sf::Sprite(),ZOMBIE), points(), pointsInVector()
 {
     GameObject::setTexture(TextureManager::getInstance().getTexture(nomPhoto));
     getSprite()->setOrigin(getSprite()->getGlobalBounds().width/2,getSprite()->getGlobalBounds().height/2);
+    points.setType(GameObject::POINTS);
+    points.setTexture(TextureManager::getInstance().getTexture("petrolepoint.png"));
+    points.getSprite()->setOrigin(points.getSprite()->getGlobalBounds().width/2,points.getSprite()->getGlobalBounds().height/2);
 }
 //Destructeur
 Zombie::~Zombie()
@@ -72,12 +85,7 @@ void Zombie::move()
 
 void Zombie::drawPoints()
 {
-    sf::Clock clock;
-    while(clock.getElapsedTime().asSeconds() < 3)
-    {
-        window.draw(*getSpritePoints());
-        window.display();
-    }
+
 }
 
 void Zombie::onCollision(GameObject* collidedTo)
@@ -86,10 +94,10 @@ void Zombie::onCollision(GameObject* collidedTo)
     {
         death = true;
         GameObject::setTexture(TextureManager::getInstance().getTexture("blood1.png"));
-//        *points = sf::Sprite(*(TextureManager::getInstance().getTexture("petrolepoint.png")));
-//        points->setPosition(getSprite()->getPosition());
-//        current_scene->getGameObjects()->push_back(new GameObject(*points,GameObject::POINTS));
-//        current_scene->getGameObjects()->at(current_scene->getGameObjects()->size()-1);
+        points.getSprite()->move(getSprite()->getPosition());
+        pointsInVector = current_scene->addObjectToVector(&points);
+        sf::Thread thread(&managePoints,pointsInVector);
+        thread.launch();
     }
 }
 
