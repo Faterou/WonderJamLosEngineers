@@ -12,6 +12,9 @@ class Voiture : public GameObject
 {
     private:
 
+        float money;
+        int petrole;
+
         float m_vitesse_courante;
         float m_vitesse_max;
         float m_acceleration;
@@ -47,10 +50,18 @@ class Voiture : public GameObject
         void setPenetrationZombie(float penetrationZombie);
         float getPenetrationZombie();
 
+        void setMoney(float newAmount) {money = newAmount;};
+        float getMoney() {return money;};
+
+        void setPetrole(int newAmount) {petrole = newAmount;};
+        int getPetrole() {return petrole;};
+
         void moveForward();
         void moveBackward();
         void rotateLeft();
         void rotateRight();
+        void move();
+        void idle();
 
         virtual void onCollision(GameObject*);
 };

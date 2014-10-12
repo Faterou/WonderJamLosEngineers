@@ -14,16 +14,14 @@ using namespace std;
 Voiture::Voiture(std::string nomPhoto) : GameObject(sf::Sprite(),CAR)
 {
     m_vitesse_courante = 0.01;
-    m_vitesse_max = 1;
+    m_vitesse_max = 10;
     m_acceleration = 0.01;
-    m_maniabilite = 1.1;
+    m_maniabilite = 4;
     m_suspension = 1;
     m_machineEssence = 1;
-    m_penetrationZombie = 1;
+    m_penetrationZombie = 0;
 
     GameObject::setTexture(TextureManager::getInstance().getTexture(nomPhoto));
-
-
 }
 
 Voiture::~Voiture()
@@ -96,14 +94,14 @@ float Voiture::getPenetrationZombie()
 
 void Voiture::moveForward()
 {
-    m_vitesse_courante = m_vitesse_courante + m_acceleration;
-    GameObject::getSprite()->move(-(m_vitesse_courante*getHeading()));
+    if(m_vitesse_courante < m_vitesse_max)
+        m_vitesse_courante = m_vitesse_courante + m_acceleration;
 }
 
 void Voiture::moveBackward()
 {
-    m_vitesse_courante = m_vitesse_courante + m_acceleration;
-    GameObject::getSprite()->move(m_vitesse_courante*getHeading());
+    if(m_vitesse_courante > -m_vitesse_max)
+        m_vitesse_courante = m_vitesse_courante - m_acceleration;
 }
 
 void Voiture::rotateLeft()
@@ -115,9 +113,34 @@ void Voiture::rotateRight()
 {
     GameObject::getSprite()->rotate(m_maniabilite);
 }
+
+void Voiture::move()
+{
+    GameObject::getSprite()->move(-(m_vitesse_courante*getHeading()));
+}
+
+void Voiture::idle()
+{
+    if(m_vitesse_courante > 0)
+    {
+        m_vitesse_courante = m_vitesse_courante - 0.01;
+    }
+    else if(m_vitesse_courante < 0)
+    {
+        m_vitesse_courante = m_vitesse_courante + 0.01;
+    }
+}
 void Voiture::onCollision(GameObject* object)
 {
-    GameObject::getSprite()->move(m_vitesse_courante*getHeading());
-    m_vitesse_courante = 0;
+    if(object->getType() == GameObject::TREE || object->getType() == GameObject::CAR)
+    {
+        m_vitesse_courante = 0;
+        GameObject::getSprite()->move(m_vitesse_courante*getHeading());
+    }
+    else if (object->getType() == GameObject::ZOMBIE)
+    {
+        m_vitesse_courante = m_vitesse_courante / (7-m_penetrationZombie);
+    }
+
 }
 

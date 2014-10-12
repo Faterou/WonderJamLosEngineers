@@ -11,7 +11,7 @@
 
 using namespace std;
 
-#define ZOMBIE_QUANTITY 2000
+#define ZOMBIE_QUANTITY 1000
 #define TREE_QUANTITY 500
 
 extern Voiture* player1;
@@ -37,59 +37,78 @@ RaceScene::~RaceScene()
 }
 
 void RaceScene::inputs(){
+    bool action1 = 0;
+    bool action2 = 0;
     sf::Event event;
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
     {
+        action1 = 1;
         player1->moveForward();
         view_player1.setCenter(player1->getSprite()->getPosition());
 
     }
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
     {
+        action1 = 1;
         player1->moveBackward();
         view_player1.setCenter(player1->getSprite()->getPosition());
     }
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
     {
+        action1 = 1;
         player1->rotateRight();
     }
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
     {
+        action1 = 1;
         player1->rotateLeft();
     }
 
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::W))
     {
+        action2 = 1;
         player2->moveForward();
         view_player2.setCenter(player2->getSprite()->getPosition());
     }
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::S))
     {
+        action2 = 1;
         player2->moveBackward();
         view_player2.setCenter(player2->getSprite()->getPosition());
     }
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::D))
     {
+        action2 = 1;
         player2->rotateRight();
     }
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::A))
     {
+        action2 = 1;
         player2->rotateLeft();
     }
-
-    while(window.pollEvent(event))
+    if(!action1)
     {
-        if(event.type == sf::Event::KeyReleased)
-        {
-            switch(event.key.code)
-            {
-                case sf::Keyboard::Up:
-                    cout << "KEY RELEASED!!!!" << endl;
-                    break;
-                default:;
-            }
-        }
+        player1->idle();
+        view_player1.setCenter(player1->getSprite()->getPosition());
     }
+    if(!action2)
+    {
+        player2->idle();
+        view_player2.setCenter(player2->getSprite()->getPosition());
+    }
+//    while(window.pollEvent(event))
+//    {
+//        if(event.type == sf::Event::KeyReleased)
+//        {
+//            switch(event.key.code)
+//            {
+//                case sf::Keyboard::Up:
+//                    cout << "KEY RELEASED!!!!" << endl;
+//                    break;
+//                default:;
+//            }
+//        }
+//    }
 }
 
 void RaceScene::update()
@@ -99,6 +118,8 @@ void RaceScene::update()
         if(!(*it)->getDeath())
             (*it)->move();
     }
+    player1->move();
+    player2->move();
 }
 
 void RaceScene::checkCollisions(){
@@ -136,7 +157,7 @@ void RaceScene::draw()
     drawObjects();
     player1->draw();
 
-
+    //PROBLEME: Player1 est dessiné avant les taches de sang dans la view de player2
     window.setView(view_player2);
     map1.draw();
     drawObjects();
